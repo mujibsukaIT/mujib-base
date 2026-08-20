@@ -1,190 +1,403 @@
 <!DOCTYPE html>
-
 <html lang="id">
-
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-  <title>Mujib Base</title>
-
-
-  <style>
-
-    * {
-
-      box-sizing: border-box;
-
-      margin: 0;
-
-      padding: 0;
-
-    }
-
-
-    body {
-
-      font-family: Arial, sans-serif;
-
-      background: #111;
-
-      color: white;
-
-      padding: 20px;
-
-    }
-
-
-    .header {
-
-      text-align: center;
-
-      margin-bottom: 25px;
-
-    }
-
-
-    .header h1 {
-
-      font-size: 28px;
-
-      margin-bottom: 6px;
-
-    }
-
-
-    .header p {
-
-      color: #aaa;
-
-      font-size: 14px;
-
-    }
-
-
-    .gallery {
-
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 12px;
-
-      max-width: 700px;
-
-      margin: auto;
-
-    }
-
-
-    .gallery img {
-
-      width: 100%;
-
-      display: block;
-
-      border-radius: 12px;
-
-      cursor: pointer;
-
-      transition: 0.2s;
-
-    }
-
-
-    .gallery img:hover {
-
-      transform: scale(1.02);
-
-    }
-
-
-    .wa {
-
-      display: block;
-
-      width: 100%;
-
-      max-width: 700px;
-
-      margin: 25px auto 10px;
-
-      padding: 15px;
-
-      text-align: center;
-
-      text-decoration: none;
-
-      color: white;
-
-      background: #25D366;
-
-      border-radius: 12px;
-
-      font-weight: bold;
-
-      font-size: 16px;
-
-    }
-
-
-    @media (min-width: 700px) {
-
-      .gallery {
-
-        grid-template-columns: repeat(3, 1fr);
-
-      }
-
-    }
-
-  </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08080d">
+
+  <title>MUJIB S.Coc. — ART BASE</title>
+
+  <style>
+    :root {
+      --bg: #08080d;
+      --card: #12121a;
+      --text: #f5f5f7;
+      --muted: #9292a2;
+      --purple: #8b5cf6;
+      --wa: #25d366;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(139, 92, 246, .25),
+          transparent 38%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: min(100%, 760px);
+      margin: auto;
+      padding: 25px 14px 100px;
+    }
+
+    header {
+      text-align: center;
+      padding: 15px 5px 28px;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      margin: auto;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6d28d9,
+          #a855f7
+        );
+
+      box-shadow:
+        0 12px 35px rgba(139,92,246,.3);
+
+      font-size: 30px;
+    }
+
+    h1 {
+      margin: 14px 0 5px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .item {
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      cursor: pointer;
+    }
+
+    .item img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px 10px;
+      color: var(--muted);
+    }
+
+    .wa {
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+
+      width: min(732px, calc(100% - 28px));
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      min-height: 54px;
+      border-radius: 16px;
+
+      background: var(--wa);
+      color: #06140a;
+
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+
+      box-shadow:
+        0 8px 30px rgba(37,211,102,.25);
+    }
+
+    .wa-icon {
+      font-size: 23px;
+    }
+
+    footer {
+      margin-top: 25px;
+      text-align: center;
+      color: #555562;
+      font-size: 11px;
+    }
+
+    /* Fullscreen image */
+    .viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 15px;
+      background: rgba(0,0,0,.94);
+    }
+
+    .viewer.active {
+      display: flex;
+    }
+
+    .viewer img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+
+      width: 42px;
+      height: 42px;
+
+      border: 0;
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.12);
+      color: white;
+
+      font-size: 25px;
+    }
+
+    @media (min-width: 650px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <main class="container">
 
-  <div class="header">
+    <header>
+      <div class="logo">⚔️</div>
 
-    <h1>⚔️ MUJIB, S.Coc. ART BASE</h1>
+      <h1>MUJIB S.Coc.</h1>
 
-    <p>Clash of Clans Base Collection</p>
+      <p class="subtitle">
+        ART BASE • Clash of Clans
+      </p>
+    </header>
 
-  </div>
+    <section
+      id="gallery"
+      class="gallery"
+    >
+      <div class="loading">
+        Memuat koleksi base...
+      </div>
+    </section>
+
+    <footer>
+      © MUJIB S.Coc. ART BASE
+    </footer>
+
+  </main>
+
+  <!-- WhatsApp -->
+  <a
+    class="wa"
+    href="https://wa.me/6285876832230?text=Halo%20Mujib%2C%20saya%20mau%20order%20Art%20Base."
+  >
+    <span class="wa-icon">💬</span>
+    ORDER VIA WHATSAPP
+  </a>
+
+  <!-- Image Viewer -->
+  <div
+    id="viewer"
+    class="viewer"
+  >
+    <button
+      class="close"
+      onclick="closeViewer()"
+    >
+      ×
+    </button>
+
+    <img
+      id="viewerImage"
+      src=""
+      alt="Preview"
+    >
+  </div>
 
 
-  <div class="gallery">
+  <script>
+
+    const owner = "mujibsukaIT";
+    const repo = "mujib-base";
+    const branch = "main";
+
+    const gallery =
+      document.getElementById("gallery");
+
+    const viewer =
+      document.getElementById("viewer");
+
+    const viewerImage =
+      document.getElementById("viewerImage");
 
 
-    <img src="Order Base Nama - Mujib.jpg" alt="Base 1">
+    async function loadImages() {
 
-    <img src="images/base2.jpg" alt="Base 2">
+      try {
 
-    <img src="images/base3.jpg" alt="Base 3">
+        const api =
+          `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`;
 
-    <img src="images/base4.jpg" alt="Base 4">
+        const response =
+          await fetch(api);
+
+        if (!response.ok) {
+          throw new Error("GitHub API error");
+        }
+
+        const files =
+          await response.json();
 
 
-  </div>
+        const imageFiles =
+          files.filter(file => {
+
+            if (file.type !== "file") {
+              return false;
+            }
+
+            const name =
+              file.name.toLowerCase();
+
+            return (
+              name.endsWith(".jpg") ||
+              name.endsWith(".jpeg") ||
+              name.endsWith(".png") ||
+              name.endsWith(".webp") ||
+              name.endsWith(".gif")
+            );
+
+          });
 
 
-  <a class="wa"
+        gallery.innerHTML = "";
 
-     href="https://wa.me/6285876832230"
 
-     target="_blank">
+        if (imageFiles.length === 0) {
 
-    💬 ORDER VIA WHATSAPP
+          gallery.innerHTML = `
+            <div class="loading">
+              Belum ada gambar base.
+            </div>
+          `;
 
-  </a>
+          return;
+        }
 
+
+        imageFiles.forEach(file => {
+
+          const card =
+            document.createElement("div");
+
+          card.className = "item";
+
+
+          const img =
+            document.createElement("img");
+
+          img.src =
+            file.download_url;
+
+          img.alt =
+            file.name;
+
+          img.loading = "lazy";
+
+
+          card.onclick = () => {
+
+            viewerImage.src =
+              file.download_url;
+
+            viewer.classList.add("active");
+
+          };
+
+
+          card.appendChild(img);
+
+          gallery.appendChild(card);
+
+        });
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+        gallery.innerHTML = `
+          <div class="loading">
+            Gagal memuat gambar 😭<br>
+            Coba refresh halaman.
+          </div>
+        `;
+
+      }
+
+    }
+
+
+    function closeViewer() {
+
+      viewer.classList.remove("active");
+
+      viewerImage.src = "";
+
+    }
+
+
+    viewer.onclick = (event) => {
+
+      if (event.target === viewer) {
+        closeViewer();
+      }
+
+    };
+
+
+    loadImages();
+
+  </script>
 
 </body>
-
 </html>
-
