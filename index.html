@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#08070d">
 <meta name="description" content="Mujib, S.Coc. — Custom Base Nama Clash of Clans">
+<meta name="application-name" content="Mujib, S.Coc. ART BASE">
 <title>Mujib, S.Coc. — ART BASE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -32,7 +36,7 @@ body {
         radial-gradient(circle at 50% -12%, rgba(139, 92, 246, .28), transparent 38%),
         var(--bg);
     color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 button,
@@ -62,8 +66,8 @@ a { -webkit-tap-highlight-color: transparent; }
     height: 184px;
     padding: 0;
     text-align: center;
-    transition: height .42s cubic-bezier(.22,.61,.36,1),
-                flex-basis .42s cubic-bezier(.22,.61,.36,1),
+    transition: height .42s cubic-bezier(.16,1,.3,1),
+                flex-basis .42s cubic-bezier(.16,1,.3,1),
                 filter .35s ease;
     filter: drop-shadow(0 0 0 rgba(0,0,0,0));
 }
@@ -87,11 +91,11 @@ a { -webkit-tap-highlight-color: transparent; }
     box-shadow: 0 0 0 1px rgba(255,255,255,.08),
                 0 10px 32px rgba(139,92,246,.25);
     transform: translate3d(-50%,0,0);
-    transition: transform .48s cubic-bezier(.22,.61,.36,1),
-                width .42s cubic-bezier(.22,.61,.36,1),
+    transition: transform .48s cubic-bezier(.16,1,.3,1),
+                width .42s cubic-bezier(.16,1,.3,1),
                 height .42s cubic-bezier(.22,.61,.36,1),
                 border-radius .35s ease;
-    animation: logoPop .65s ease both;
+    animation: profileFade .55s ease both;
 }
 
 .logo {
@@ -104,15 +108,17 @@ a { -webkit-tap-highlight-color: transparent; }
 .profile-name {
     top: 88px;
     margin: 0;
+    font-family: "Space Grotesk", system-ui, sans-serif;
     font-size: clamp(29px,7vw,42px);
     line-height: 1;
-    font-weight: 900;
-    letter-spacing: -1.3px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-shadow: 0 0 24px rgba(192,132,252,.12);
     transform: translate3d(-50%,0,0);
     transform-origin: left center;
-    transition: transform .48s cubic-bezier(.22,.61,.36,1),
-                font-size .42s cubic-bezier(.22,.61,.36,1);
-    animation: fadeUp .55s ease both;
+    transition: transform .48s cubic-bezier(.16,1,.3,1),
+                font-size .42s cubic-bezier(.16,1,.3,1);
+    animation: profileFade .55s .05s ease both;
     white-space: nowrap;
 }
 
@@ -124,9 +130,10 @@ a { -webkit-tap-highlight-color: transparent; }
     border-radius: 999px;
     background: rgba(139,92,246,.08);
     color: #cbb8ff;
+    font-family: "Orbitron", "Space Grotesk", sans-serif;
     font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
     transform: translate3d(-50%,0,0);
     transition: opacity .24s ease, transform .35s ease;
 }
@@ -156,7 +163,9 @@ a { -webkit-tap-highlight-color: transparent; }
 
 .profile.scrolled .profile-name {
     font-size: clamp(20px,5vw,28px);
+    font-weight: 700;
     transform: translate3d(calc(-50% + 88px),12px,0);
+    letter-spacing: -1px;
 }
 
 .profile.scrolled .badge,
@@ -317,7 +326,7 @@ a { -webkit-tap-highlight-color: transparent; }
     padding: 10px 14px calc(9px + var(--safe-bottom));
     background: linear-gradient(to top, rgba(8,7,13,.98) 0%, rgba(8,7,13,.90) 62%, rgba(8,7,13,0) 100%);
     transform: translate3d(0,0,0);
-    transition: transform .42s cubic-bezier(.22,.61,.36,1), opacity .28s ease;
+    transition: transform .42s cubic-bezier(.16,1,.3,1), opacity .28s ease;
     will-change: transform;
     pointer-events: auto;
 }
@@ -330,7 +339,10 @@ a { -webkit-tap-highlight-color: transparent; }
 
 .price-title {
     margin: 0 0 7px;
+    font-family: "Orbitron", "Space Grotesk", sans-serif;
     font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
 }
 
 .price-grid {
@@ -537,9 +549,9 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes logoPop {
-    from { opacity: 0; transform: scale(.65) rotate(-6deg); }
-    to { opacity: 1; transform: scale(1) rotate(0); }
+@keyframes profileFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes galleryIn {
@@ -911,9 +923,10 @@ function openViewer(index) {
 function closeImageViewer() {
     viewer.classList.remove("active");
     viewer.setAttribute("aria-hidden", "true");
-    viewerImage.classList.remove("show");
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
+    viewerImage.classList.remove("show", "dragging", "swipe-out-left", "swipe-out-right");
+    viewerImage.style.transform = "";
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
 }
 
 function showImage(direction = 0) {
@@ -947,6 +960,10 @@ function nextImage() {
 closeViewer.addEventListener("click", closeImageViewer);
 prevButton.addEventListener("click", previousImage);
 nextButton.addEventListener("click", nextImage);
+
+viewer.addEventListener("touchmove", event => {
+    if (event.target === viewer) event.preventDefault();
+}, { passive: false });
 
 viewer.addEventListener("click", event => {
     if (event.target === viewer) {
