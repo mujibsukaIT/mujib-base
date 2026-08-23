@@ -89,10 +89,8 @@ a { -webkit-tap-highlight-color: transparent; }
     box-shadow: 0 0 0 1px rgba(255,255,255,.08),
                 0 10px 32px rgba(139,92,246,.25);
     transform: translate3d(-50%,0,0);
-    transition: transform .48s cubic-bezier(.16,1,.3,1),
-                width .42s cubic-bezier(.16,1,.3,1),
-                height .42s cubic-bezier(.22,.61,.36,1),
-                border-radius .35s ease;
+    transition: transform .38s cubic-bezier(.22,1,.36,1),
+                border-radius .28s ease;
     animation: profileFade .55s ease both;
 }
 
@@ -114,8 +112,7 @@ a { -webkit-tap-highlight-color: transparent; }
     text-shadow: 0 0 24px rgba(192,132,252,.12);
     transform: translate3d(-50%,0,0);
     transform-origin: left center;
-    transition: transform .48s cubic-bezier(.16,1,.3,1),
-                font-size .42s cubic-bezier(.16,1,.3,1);
+    transition: transform .38s cubic-bezier(.22,1,.36,1);
     animation: profileFade .55s .05s ease both;
     white-space: nowrap;
 }
@@ -155,24 +152,26 @@ a { -webkit-tap-highlight-color: transparent; }
 }
 
 .profile.scrolled .logo-wrap {
-    left: 18px;
+    left: 50%;
     top: 50%;
-    width: 42px;
-    height: 42px;
-    border-radius: 13px;
-    transform: translate3d(0,-50%,0);
+    width: 78px;
+    height: 78px;
+    border-radius: 23px;
+    transform: translate3d(calc(-100% + 18px),-50%,0) scale(.54);
+    transform-origin: left center;
 }
 
 .profile.scrolled .profile-name {
-    left: 72px;
+    left: 50%;
     top: 50%;
     max-width: calc(100% - 84px);
-    font-size: clamp(20px,5vw,28px);
+    font-size: clamp(29px,7vw,42px);
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
-    transform: translate3d(0,-50%,0);
-    letter-spacing: -1px;
+    transform: translate3d(calc(-50% + 72px),-50%,0) scale(.68);
+    transform-origin: left center;
+    letter-spacing: -1.5px;
 }
 
 .profile.scrolled .badge,
@@ -459,21 +458,27 @@ footer {
 }
 
 .viewer-image-wrap {
-    width: 100%;
+    position: relative;
+    width: min(100%, 1040px);
     min-height: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    padding: 0 8px;
+    border-radius: 14px;
 }
 
 .viewer-image {
     display: block;
     touch-action: pan-y;
+    user-select: none;
+    -webkit-user-drag: none;
     will-change: transform, opacity;
     width: auto;
     height: auto;
-    max-width: 96vw;
-    max-height: 72vh;
+    max-width: min(92vw, 1040px);
+    max-height: 70vh;
     object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 20px 70px rgba(0,0,0,.70);
@@ -493,13 +498,13 @@ footer {
 
 .viewer-image.swipe-out-left {
     opacity: 0;
-    transform: translate3d(-24%,0,0) scale(.98);
+    transform: translate3d(-100%,0,0) scale(1);
     transition: transform .20s ease, opacity .16s ease;
 }
 
 .viewer-image.swipe-out-right {
     opacity: 0;
-    transform: translate3d(24%,0,0) scale(.98);
+    transform: translate3d(100%,0,0) scale(1);
     transition: transform .20s ease, opacity .16s ease;
 }
 
@@ -616,20 +621,23 @@ footer {
     }
 
     .profile.scrolled .logo-wrap {
-        left: 14px;
+        left: 50%;
         top: 50%;
-        width: 38px;
-        height: 38px;
-        transform: translate3d(0,-50%,0);
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+        transform: translate3d(calc(-100% + 14px),-50%,0) scale(.79);
+        transform-origin: left center;
     }
 
     .profile.scrolled .profile-name {
-        left: 62px;
+        left: 50%;
         top: 50%;
-        max-width: calc(100% - 74px);
-        font-size: 21px;
+        max-width: calc(100% - 66px);
+        font-size: clamp(22px,4vw,30px);
         white-space: nowrap;
-        transform: translate3d(0,-50%,0);
+        transform: translate3d(calc(-50% + 54px),-50%,0) scale(.72);
+        transform-origin: left center;
     }
 
     .warning {
@@ -884,9 +892,10 @@ function updateScrollUI() {
     const current = scrollArea.scrollTop;
     const delta = current - lastScrollTop;
 
-    if (current > 24) {
+    const compact = profile.classList.contains("scrolled");
+    if (!compact && current > 56) {
         profile.classList.add("scrolled");
-    } else {
+    } else if (compact && current < 14) {
         profile.classList.remove("scrolled");
     }
 
@@ -944,6 +953,7 @@ function closeImageViewer() {
 }
 
 function showImage(direction = 0) {
+    viewerImage.style.transform = "";
     viewerImage.classList.remove("show", "dragging", "swipe-out-left", "swipe-out-right");
 
     const path = images[currentIndex];
@@ -1033,10 +1043,8 @@ viewerImage.addEventListener("touchmove", event => {
     }
 
     const limited = Math.max(-window.innerWidth * .55, Math.min(window.innerWidth * .55, dx));
-    const resistance = limited * .72;
-    const scale = 1 - Math.min(Math.abs(limited) / window.innerWidth, .08);
-
-    viewerImage.style.transform = `translate3d(${resistance}px,0,0) scale(${scale})`;
+    const resistance = limited * .82;
+    viewerImage.style.transform = `translate3d(${resistance}px,0,0) scale(1)`;
 }, { passive: true });
 
 viewerImage.addEventListener("touchend", () => {
@@ -1072,6 +1080,7 @@ viewerImage.addEventListener("touchcancel", () => {
 function swipeToNext() {
     if (swipeLocked || currentIndex >= images.length - 1) return;
     swipeLocked = true;
+    viewerImage.style.transform = "";
     viewerImage.classList.add("swipe-out-left");
 
     setTimeout(() => {
@@ -1084,6 +1093,7 @@ function swipeToNext() {
 function swipeToPrevious() {
     if (swipeLocked || currentIndex <= 0) return;
     swipeLocked = true;
+    viewerImage.style.transform = "";
     viewerImage.classList.add("swipe-out-right");
 
     setTimeout(() => {
