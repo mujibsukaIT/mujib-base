@@ -4,14 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#08070d">
+<meta name="description" content="Mujib, S.Coc. — Custom Base Nama Clash of Clans">
+<meta name="application-name" content="Mujib, S.Coc. ART BASE">
 
 <title>Mujib, S.Coc. — ART BASE</title>
-<meta name="description" content="Mujib, S.Coc. — Custom Base Nama Clash of Clans">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 :root{
@@ -19,11 +23,15 @@
   --panel:#12101b;
   --text:#f7f5fb;
   --muted:#a19bad;
+
   --purple:#9b5cff;
   --purple2:#c084fc;
+
   --green:#25d366;
   --warning:#f59e0b;
+
   --safe-bottom:env(safe-area-inset-bottom,0px);
+
   --dock-height:155px;
 }
 
@@ -35,7 +43,8 @@ html,
 body{
   margin:0;
   width:100%;
-  min-height:100%;
+  height:100%;
+
   background:
     radial-gradient(
       circle at 50% -10%,
@@ -43,7 +52,9 @@ body{
       transparent 40%
     ),
     var(--bg);
+
   color:var(--text);
+
   font-family:"Space Grotesk",system-ui,sans-serif;
 }
 
@@ -56,17 +67,22 @@ a{
   -webkit-tap-highlight-color:transparent;
 }
 
+
 /* =========================================================
    PAGE
 ========================================================= */
 
 .page{
   position:relative;
+
   width:min(100%,1100px);
   height:100dvh;
+
   margin:auto;
+
   overflow:hidden;
 }
+
 
 /* =========================================================
    HEADER
@@ -74,7 +90,9 @@ a{
 
 .profile{
   position:absolute;
+
   z-index:20;
+
   top:0;
   left:0;
   right:0;
@@ -91,8 +109,8 @@ a{
   background:
     linear-gradient(
       to bottom,
-      rgba(8,7,13,.96),
-      rgba(8,7,13,.72) 65%,
+      rgba(8,7,13,.97),
+      rgba(8,7,13,.74) 65%,
       transparent
     );
 
@@ -108,6 +126,7 @@ a{
   margin:auto;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -120,6 +139,7 @@ a{
 .logo-wrap{
   width:76px;
   height:76px;
+
   flex:0 0 76px;
 
   overflow:hidden;
@@ -128,7 +148,9 @@ a{
 
   background:#050509;
 
-  border:1px solid rgba(192,132,252,.18);
+  border:
+    1px solid
+    rgba(192,132,252,.18);
 
   box-shadow:
     0 0 0 1px rgba(255,255,255,.04),
@@ -137,6 +159,7 @@ a{
 
 .logo{
   display:block;
+
   width:100%;
   height:100%;
 
@@ -147,6 +170,7 @@ a{
 
 .profile-copy{
   min-width:0;
+
   text-align:left;
 }
 
@@ -178,7 +202,9 @@ a{
 
   margin-top:9px;
 
-  padding:6px 14px;
+  padding:
+    6px
+    14px;
 
   border:
     1px solid
@@ -194,13 +220,17 @@ a{
   font-family:"Orbitron",sans-serif;
 
   font-size:10px;
+
   font-weight:700;
 
   letter-spacing:1.25px;
 }
 
 .subtitle{
-  margin:8px 0 0;
+  margin:
+    8px
+    0
+    0;
 
   color:var(--muted);
 
@@ -208,6 +238,7 @@ a{
 
   white-space:nowrap;
 }
+
 
 /* HEADER SAAT SCROLL */
 
@@ -217,27 +248,25 @@ a{
 
 .profile.scrolled .profile-main{
   transform:scale(.68);
+
   transform-origin:center top;
 }
 
 .profile.scrolled .badge,
 .profile.scrolled .subtitle{
   opacity:0;
+
   height:0;
+
   margin:0;
+
   overflow:hidden;
 }
+
 
 /* =========================================================
    SCROLL AREA
 ========================================================= */
-
-/*
-   PENTING:
-   Scroll sekarang full dari bawah header sampai bawah layar.
-   Bottom dock hanya MENIMPA area ini, bukan memotong tinggi
-   katalog.
-*/
 
 .scroll-area{
   position:absolute;
@@ -253,14 +282,17 @@ a{
   padding:
     122px
     14px
-    calc(var(--dock-height) + 120px + var(--safe-bottom));
+    calc(var(--dock-height) + 150px + var(--safe-bottom));
 
   overscroll-behavior:contain;
 
   -webkit-overflow-scrolling:touch;
 
   scrollbar-width:thin;
-  scrollbar-color:#6d3fc4 transparent;
+
+  scrollbar-color:
+    #6d3fc4
+    transparent;
 }
 
 .scroll-area::-webkit-scrollbar{
@@ -269,8 +301,10 @@ a{
 
 .scroll-area::-webkit-scrollbar-thumb{
   background:#6d3fc4;
+
   border-radius:20px;
 }
+
 
 /* =========================================================
    WARNING
@@ -278,6 +312,7 @@ a{
 
 .warning{
   display:flex;
+
   align-items:flex-start;
 
   gap:10px;
@@ -289,7 +324,9 @@ a{
     auto
     15px;
 
-  padding:11px 13px;
+  padding:
+    11px
+    13px;
 
   border:
     1px solid
@@ -311,11 +348,15 @@ a{
 
 .warning-icon{
   flex:0 0 auto;
+
   font-size:20px;
+
+  line-height:1.4;
 }
 
 .warning-text{
   flex:1;
+
   min-width:0;
 
   color:#ddd7e8;
@@ -327,6 +368,7 @@ a{
   color:#fff;
 }
 
+
 /* =========================================================
    SECTION TITLE
 ========================================================= */
@@ -335,6 +377,7 @@ a{
 .price-title,
 .section-heading{
   display:flex;
+
   align-items:center;
 
   gap:9px;
@@ -352,7 +395,8 @@ a{
 
 .section-title{
   margin:
-    6px auto
+    6px
+    auto
     11px;
 
   max-width:1100px;
@@ -387,6 +431,7 @@ a{
       transparent
     );
 }
+
 
 /* =========================================================
    GALLERY
@@ -463,7 +508,9 @@ a{
 .loading{
   grid-column:1/-1;
 
-  padding:50px 10px;
+  padding:
+    50px
+    10px;
 
   text-align:center;
 
@@ -471,6 +518,7 @@ a{
 
   font-size:13px;
 }
+
 
 /* =========================================================
    BOTTOM DOCK
@@ -501,6 +549,8 @@ a{
   transition:
     transform .4s cubic-bezier(.16,1,.3,1),
     opacity .25s ease;
+
+  will-change:transform;
 }
 
 .bottom.dock-hidden{
@@ -515,6 +565,7 @@ a{
 
   pointer-events:none;
 }
+
 
 /* =========================================================
    PRICE
@@ -548,7 +599,9 @@ a{
 }
 
 .price{
-  padding:8px 4px;
+  padding:
+    8px
+    4px;
 
   text-align:center;
 
@@ -570,6 +623,7 @@ a{
 
 .price .th{
   font-size:11px;
+
   font-weight:800;
 }
 
@@ -584,7 +638,9 @@ a{
 }
 
 footer{
-  margin:6px 0;
+  margin:
+    6px
+    0;
 
   text-align:center;
 
@@ -592,6 +648,7 @@ footer{
 
   font-size:10px;
 }
+
 
 /* =========================================================
    ACTION BUTTONS
@@ -638,7 +695,9 @@ footer{
 
   cursor:pointer;
 
-  font-family:"Space Grotesk",sans-serif;
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
   font-size:11px;
 
@@ -686,6 +745,7 @@ footer{
   white-space:nowrap;
 }
 
+
 /* =========================================================
    MODALS
 ========================================================= */
@@ -715,6 +775,7 @@ footer{
 
 .info-modal.active{
   opacity:1;
+
   visibility:visible;
 }
 
@@ -820,8 +881,14 @@ footer{
   text-transform:uppercase;
 }
 
+
+/* =========================================================
+   ORDER MODAL
+========================================================= */
+
 .modal-order-list{
   display:grid;
+
   gap:9px;
 }
 
@@ -898,7 +965,9 @@ footer{
 .modal-note{
   margin-top:12px;
 
-  padding:11px 12px;
+  padding:
+    11px
+    12px;
 
   border:
     1px solid
@@ -916,8 +985,9 @@ footer{
   line-height:1.5;
 }
 
+
 /* =========================================================
-   TESTIMONI
+   TESTIMONIAL
 ========================================================= */
 
 .testimonial-panel{
@@ -925,7 +995,9 @@ footer{
 }
 
 .testimonial-empty{
-  padding:32px 15px;
+  padding:
+    38px
+    18px;
 
   border:
     1px dashed
@@ -939,7 +1011,7 @@ footer{
   text-align:center;
 }
 
-.testimonial-empty .icon{
+.testimonial-empty-icon{
   font-size:34px;
 }
 
@@ -960,45 +1032,10 @@ footer{
   color:#c5bdcf;
 
   font-size:11px;
+
+  line-height:1.5;
 }
 
-/*
-   TEMPAT TESTIMONI
-   Nanti screenshot pelanggan tinggal dimasukkan
-   ke folder:
-
-   site/testimoni/
-
-   Contoh:
-   site/testimoni/001.jpg
-   site/testimoni/002.jpg
-*/
-
-.testimonial-gallery{
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0,1fr)
-    );
-
-  gap:9px;
-
-  margin-top:12px;
-}
-
-.testimonial-gallery img{
-  display:block;
-
-  width:100%;
-
-  border-radius:13px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-}
 
 /* =========================================================
    VIEWER
@@ -1036,6 +1073,7 @@ footer{
 
 .viewer.active{
   opacity:1;
+
   visibility:visible;
 }
 
@@ -1105,7 +1143,7 @@ footer{
 .viewer-image{
   display:block;
 
-  touch-action:none;
+  touch-action:pan-y;
 
   user-select:none;
 
@@ -1130,7 +1168,6 @@ footer{
   opacity:0;
 
   transform:
-    translate3d(0,0,0)
     scale(.94);
 
   transition:
@@ -1191,7 +1228,7 @@ footer{
 
   text-align:center;
 
-  font-family:"Orbitron";
+  font-family:"Orbitron",sans-serif;
 
   font-size:12px;
 
@@ -1201,7 +1238,9 @@ footer{
 .viewer-tip{
   width:min(92vw,680px);
 
-  padding:10px 14px;
+  padding:
+    10px
+    14px;
 
   border:
     1px solid
@@ -1225,6 +1264,7 @@ footer{
   color:#f7c44f;
 }
 
+
 /* =========================================================
    ANIMATION
 ========================================================= */
@@ -1239,28 +1279,23 @@ footer{
   }
 }
 
-@media(prefers-reduced-motion:reduce){
+@media (prefers-reduced-motion:reduce){
+
   *,
-  *::before,
-  *::after{
+  *:before,
+  *:after{
     animation:none!important;
+
     transition:none!important;
   }
 }
 
+
 /* =========================================================
-   TABLET / DESKTOP
+   RESPONSIVE
 ========================================================= */
 
-@media(min-width:700px){
-
-  .profile{
-    height:116px;
-  }
-
-  .scroll-area{
-    padding-top:116px;
-  }
+@media (min-width:700px){
 
   .gallery{
     grid-template-columns:
@@ -1270,70 +1305,47 @@ footer{
       );
   }
 
-  .gallery-item img{
-    aspect-ratio:16/10;
+  .scroll-area{
+    padding-left:18px;
+    padding-right:18px;
   }
 }
 
-/* =========================================================
-   LANDSCAPE
-========================================================= */
 
-@media(
-  orientation:landscape
-) and (min-width:700px){
+@media (orientation:landscape) and (min-width:700px){
+
+  :root{
+    --dock-height:132px;
+  }
 
   .profile{
-    height:96px;
+    height:100px;
 
     padding:
-      7px
-      14px
-      4px;
+      8px
+      14px;
+      6px;
   }
 
   .profile-main{
-    gap:10px;
+    gap:12px;
 
-    transform:scale(.76);
+    transform:
+      scale(.76);
+
+    transform-origin:
+      center top;
   }
 
   .profile.scrolled{
-    height:56px;
-  }
-
-  .profile.scrolled .profile-main{
-    transform:scale(.55);
-  }
-
-  .logo-wrap{
-    width:70px;
-    height:70px;
-    flex-basis:70px;
-  }
-
-  .profile-name{
-    font-size:32px;
-  }
-
-  .badge{
-    margin-top:5px;
-    padding:4px 11px;
-    font-size:8px;
-  }
-
-  .subtitle{
-    margin-top:5px;
-    font-size:10px;
+    height:58px;
   }
 
   .scroll-area{
     padding:
-      96px
-      10px
-      calc(
-        var(--dock-height) + 80px
-      );
+      100px
+      14px
+      calc(var(--dock-height) + 120px + var(--safe-bottom));
   }
 
   .gallery{
@@ -1352,14 +1364,18 @@ footer{
 
   .warning{
     font-size:10px;
-    padding:8px 11px;
+
+    padding:
+      8px
+      11px;
+
     margin-bottom:8px;
   }
 
   .section-title{
     margin:
       4px
-      auto
+      0
       7px;
 
     font-size:10px;
@@ -1369,18 +1385,19 @@ footer{
     padding:
       6px
       10px
-      calc(
-        5px + var(--safe-bottom)
-      );
+      calc(6px + var(--safe-bottom));
   }
 
   .price-title{
     margin-bottom:4px;
+
     font-size:10px;
   }
 
   .price{
-    padding:6px 4px;
+    padding:
+      6px
+      4px;
   }
 
   .price .th{
@@ -1392,12 +1409,14 @@ footer{
   }
 
   footer{
-    margin:3px 0;
-    font-size:8px;
+    margin:4px 0;
+
+    font-size:9px;
   }
 
   .action-button{
-    height:40px;
+    height:42px;
+
     font-size:9px;
   }
 
@@ -1406,55 +1425,59 @@ footer{
   }
 }
 
-/* =========================================================
-   SMALL PHONE
-========================================================= */
 
-@media(max-width:520px){
+@media (max-width:520px){
 
   .profile{
-    height:126px;
-  }
-
-  .scroll-area{
-    padding-top:126px;
+    padding-left:10px;
+    padding-right:10px;
   }
 
   .profile-main{
-    gap:12px;
+    gap:11px;
   }
 
   .logo-wrap{
-    width:70px;
-    height:70px;
-    flex-basis:70px;
-    border-radius:20px;
+    width:64px;
+    height:64px;
+
+    flex-basis:64px;
+
+    border-radius:18px;
   }
 
   .profile-name{
-    font-size:
-      clamp(
-        23px,
-        7vw,
-        31px
-      );
+    font-size:clamp(
+      21px,
+      7vw,
+      32px
+    );
   }
 
   .badge{
+    margin-top:7px;
+
+    padding:
+      5px
+      10px;
+
     font-size:8px;
-    letter-spacing:1px;
   }
 
   .subtitle{
+    margin-top:6px;
+
     font-size:11px;
   }
 
-  .gallery{
-    gap:8px;
+  .scroll-area{
+    padding-left:10px;
+    padding-right:10px;
   }
 
   .action-button{
     height:46px;
+
     font-size:10px;
   }
 
@@ -1463,36 +1486,24 @@ footer{
   }
 }
 
-/* =========================================================
-   VERY SMALL PHONE
-========================================================= */
 
-@media(max-width:360px){
+@media (max-width:520px){
 
-  .profile{
-    height:118px;
+  .gallery{
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0,1fr)
+      );
   }
+}
+
+
+@media (max-width:360px){
 
   .scroll-area{
-    padding-top:118px;
-  }
-
-  .profile-main{
-    gap:8px;
-  }
-
-  .logo-wrap{
-    width:62px;
-    height:62px;
-    flex-basis:62px;
-  }
-
-  .profile-name{
-    font-size:22px;
-  }
-
-  .subtitle{
-    font-size:10px;
+    padding-left:9px;
+    padding-right:9px;
   }
 
   .gallery{
@@ -1501,6 +1512,7 @@ footer{
 
   .warning{
     padding:10px;
+
     font-size:11px;
   }
 
@@ -1519,26 +1531,28 @@ footer{
 </style>
 </head>
 
+
 <body>
 
 <main class="page">
 
-<!-- =======================================================
+
+<!-- =====================================================
      HEADER
-======================================================= -->
+===================================================== -->
 
 <header class="profile" id="profile">
 
   <div class="profile-main">
 
     <div class="logo-wrap">
-      <!-- FILE: site/logo.png -->
+
       <img
         class="logo"
-        src="./logo.png"
+        src="./Picsart_26-02-06_20-30-07-527.png"
         alt="Logo Mujib S.Coc."
-        onerror="this.style.opacity='.12'"
       >
+
     </div>
 
     <div class="profile-copy">
@@ -1562,15 +1576,18 @@ footer{
 </header>
 
 
-<!-- =======================================================
+<!-- =====================================================
      SCROLL CONTENT
-======================================================= -->
+===================================================== -->
 
 <section
   class="scroll-area"
   id="scrollArea"
   aria-label="Katalog base nama"
 >
+
+
+  <!-- WARNING -->
 
   <div class="warning">
 
@@ -1594,31 +1611,39 @@ footer{
   </div>
 
 
+  <!-- GALLERY TITLE -->
+
   <div class="section-title">
     Contoh Hasil Base Nama
   </div>
 
 
+  <!-- GALLERY -->
+
   <div
     class="gallery"
     id="gallery"
   >
+
     <div class="loading">
       Memuat base...
     </div>
+
   </div>
+
 
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      BOTTOM DOCK
-======================================================= -->
+===================================================== -->
 
 <section
   class="bottom"
   id="bottomDock"
 >
+
 
   <div class="price-title">
     Price List
@@ -1627,7 +1652,9 @@ footer{
 
   <div class="price-grid">
 
+
     <div class="price">
+
       <div class="th">
         TH 8 – 10
       </div>
@@ -1635,10 +1662,12 @@ footer{
       <div class="rp">
         Rp. 15.000
       </div>
+
     </div>
 
 
     <div class="price">
+
       <div class="th">
         TH 11 – 13
       </div>
@@ -1646,10 +1675,12 @@ footer{
       <div class="rp">
         Rp. 20.000
       </div>
+
     </div>
 
 
     <div class="price">
+
       <div class="th">
         TH 14 – 18
       </div>
@@ -1657,7 +1688,9 @@ footer{
       <div class="rp">
         Rp. 25.000
       </div>
+
     </div>
+
 
   </div>
 
@@ -1669,13 +1702,19 @@ footer{
 
   <div class="action-row">
 
+
     <button
       class="action-button action-order"
       id="orderInfoButton"
       type="button"
     >
+
       <span>📝</span>
-      <b>CARA PESAN</b>
+
+      <b>
+        CARA PESAN
+      </b>
+
     </button>
 
 
@@ -1685,8 +1724,13 @@ footer{
       target="_blank"
       rel="noopener noreferrer"
     >
+
       <span>💬</span>
-      <b>ORDER VIA WHATSAPP</b>
+
+      <b>
+        ORDER VIA WHATSAPP
+      </b>
+
     </a>
 
 
@@ -1695,9 +1739,15 @@ footer{
       id="testimonialButton"
       type="button"
     >
+
       <span>⭐</span>
-      <b>TESTIMONI</b>
+
+      <b>
+        TESTIMONI
+      </b>
+
     </button>
+
 
   </div>
 
@@ -1706,15 +1756,16 @@ footer{
 </main>
 
 
-<!-- =======================================================
-     CARA PEMESANAN
-======================================================= -->
+<!-- =====================================================
+     CARA PEMESANAN MODAL
+===================================================== -->
 
 <div
   class="info-modal"
   id="orderModal"
   aria-hidden="true"
 >
+
 
   <div
     class="info-modal-backdrop"
@@ -1723,6 +1774,7 @@ footer{
 
 
   <div class="info-panel">
+
 
     <button
       class="info-close"
@@ -1740,6 +1792,7 @@ footer{
 
 
     <div class="modal-order-list">
+
 
       <article class="modal-order-card">
 
@@ -1776,9 +1829,8 @@ footer{
           </h3>
 
           <p>
-            Tentukan pesanan.
-            Metode pembayaran menggunakan
-            <b>QRIS</b> yang akan diberikan
+            Tentukan pesanan. Metode pembayaran
+            menggunakan QRIS yang akan diberikan
             sebelum proses pembuatan dimulai.
           </p>
 
@@ -1796,13 +1848,12 @@ footer{
         <div>
 
           <h3>
-            Kirim Nama & Referensi model base
+            Kirim Nama & Referensi Model Base
           </h3>
 
           <p>
-            Kirim nama yang ingin dibuat
-            dan pilih model base dari contoh
-            yang tersedia.
+            Kirim nama yang ingin dibuat dan pilih
+            referensi model base dari contoh yang tersedia.
           </p>
 
         </div>
@@ -1823,32 +1874,34 @@ footer{
           </h3>
 
           <p>
-            Hasil akan dikirim melalui WhatsApp
-            dalam bentuk link base CoC yang
-            bisa langsung dibuka di game.
+            Hasil dikirim melalui WhatsApp dalam bentuk
+            link base CoC yang bisa langsung dibuka di game.
           </p>
 
         </div>
 
       </article>
 
+
     </div>
 
 
     <div class="modal-note">
-      🔒
-      <b>Tanpa login akun.</b>
+
+      🔒 <b>Tanpa login akun.</b>
       Pembuatan base hanya memakai link base CoC.
+
     </div>
+
 
   </div>
 
 </div>
 
 
-<!-- =======================================================
-     TESTIMONI
-======================================================= -->
+<!-- =====================================================
+     TESTIMONIAL MODAL
+===================================================== -->
 
 <div
   class="info-modal"
@@ -1856,13 +1909,17 @@ footer{
   aria-hidden="true"
 >
 
+
   <div
     class="info-modal-backdrop"
     data-close-modal="testimonialModal"
   ></div>
 
 
-  <div class="info-panel testimonial-panel">
+  <div
+    class="info-panel testimonial-panel"
+  >
+
 
     <button
       class="info-close"
@@ -1881,7 +1938,7 @@ footer{
 
     <div class="testimonial-empty">
 
-      <div class="icon">
+      <div class="testimonial-empty-icon">
         ⭐
       </div>
 
@@ -1896,33 +1953,15 @@ footer{
 
     </div>
 
-    <!--
-      ======================================================
-      TEMPAT SCREENSHOT TESTIMONI
-
-      Nanti upload screenshot ke:
-
-      site/testimoni/
-
-      Contoh:
-
-      site/testimoni/001.jpg
-      site/testimoni/002.jpg
-      site/testimoni/003.jpg
-
-      Setelah screenshot tersedia,
-      bagian ini bisa diubah menjadi galeri otomatis.
-      ======================================================
-    -->
 
   </div>
 
 </div>
 
 
-<!-- =======================================================
-     IMAGE VIEWER
-======================================================= -->
+<!-- =====================================================
+     FULLSCREEN IMAGE VIEWER
+===================================================== -->
 
 <div
   class="viewer"
@@ -1930,12 +1969,14 @@ footer{
   aria-hidden="true"
 >
 
+
   <div
     class="viewer-box"
     role="dialog"
     aria-modal="true"
     aria-label="Preview base nama"
   >
+
 
     <div class="viewer-top">
 
@@ -1995,11 +2036,11 @@ footer{
 
     <div class="viewer-tip">
 
-      💡
-      <b>Tips:</b>
+      💡 <b>Tips:</b>
       Tekan dan tahan gambar untuk menyimpan ke galeri.
 
     </div>
+
 
   </div>
 
@@ -2009,11 +2050,13 @@ footer{
 <script>
 
 /* =========================================================
-   GITHUB
+   GITHUB CONFIG
 ========================================================= */
 
 const OWNER = "mujibsukaIT";
+
 const REPO = "mujib-base";
+
 const BRANCH = "main";
 
 const API =
@@ -2038,7 +2081,6 @@ const profile =
 
 const bottomDock =
   document.getElementById("bottomDock");
-
 
 const viewer =
   document.getElementById("viewer");
@@ -2083,14 +2125,16 @@ let isDraggingImage = false;
 
 
 /* =========================================================
-   PATH
+   ENCODE GITHUB PATH
 ========================================================= */
 
 function encodePath(path){
 
   return path
     .split("/")
-    .map(part => encodeURIComponent(part))
+    .map(
+      part => encodeURIComponent(part)
+    )
     .join("/");
 
 }
@@ -2131,21 +2175,36 @@ async function loadGallery(){
       await response.json();
 
 
+    /*
+      HANYA AMBIL FILE GAMBAR DI gallery/
+    */
+
     images =
       (tree.tree || [])
 
-        .filter(item =>
-          item.type === "blob" &&
-          /^gallery\//i.test(item.path) &&
-          /\.(webp|jpg|jpeg|png)$/i.test(item.path)
+        .filter(
+          item =>
+            item.type === "blob" &&
+            /^gallery\//i.test(item.path) &&
+            /\.(webp|jpg|jpeg|png)$/i.test(item.path)
         )
 
-        .map(item => item.path)
+        /*
+          TERBARU DI ATAS
+
+          Urutan nama file dibalik.
+          Cocok untuk nama file screenshot
+          yang memakai timestamp.
+        */
+
+        .map(
+          item => item.path
+        )
 
         .sort(
           (a,b) =>
-            a.localeCompare(
-              b,
+            b.localeCompare(
+              a,
               undefined,
               {
                 numeric:true,
@@ -2165,11 +2224,11 @@ async function loadGallery(){
         `;
 
       return;
-
     }
 
 
     renderGallery();
+
 
   }catch(error){
 
@@ -2199,6 +2258,7 @@ function renderGallery(){
 
   images.forEach(
     (path,index) => {
+
 
       const item =
         document.createElement("button");
@@ -2239,7 +2299,17 @@ function renderGallery(){
 
 
       image.src =
-        RAW + encodePath(path);
+        RAW +
+        encodePath(path);
+
+
+      image.onerror =
+        () => {
+
+          image.style.opacity =
+            ".25";
+
+        };
 
 
       item.appendChild(image);
@@ -2273,16 +2343,41 @@ function updateScrollUI(){
     current - lastScrollTop;
 
 
+  /*
+    Header mengecil setelah
+    sedikit scroll.
+  */
+
   if(current > 35){
 
-    profile.classList.add("scrolled");
-
-  }else if(current < 8){
-
-    profile.classList.remove("scrolled");
+    profile.classList.add(
+      "scrolled"
+    );
 
   }
 
+
+  if(current < 8){
+
+    profile.classList.remove(
+      "scrolled"
+    );
+
+  }
+
+
+  /*
+    Bottom dock:
+
+    scroll turun
+      -> hide
+
+    scroll naik
+      -> show
+
+    posisi paling atas
+      -> show
+  */
 
   if(Math.abs(delta) > 1){
 
@@ -2295,7 +2390,9 @@ function updateScrollUI(){
         "dock-hidden"
       );
 
-    }else if(delta < 0){
+    }
+
+    else if(delta < 0){
 
       bottomDock.classList.remove(
         "dock-hidden"
@@ -2339,7 +2436,9 @@ scrollArea.addEventListener(
     }
 
   },
-  {passive:true}
+  {
+    passive:true
+  }
 );
 
 
@@ -2349,7 +2448,9 @@ scrollArea.addEventListener(
 
 function openViewer(index){
 
-  if(!images.length)return;
+  if(!images.length){
+    return;
+  }
 
 
   currentIndex =
@@ -2368,6 +2469,9 @@ function openViewer(index){
 
 
   document.body.style.overflow =
+    "hidden";
+
+  document.documentElement.style.overflow =
     "hidden";
 
 
@@ -2402,6 +2506,9 @@ function closeImageViewer(){
   document.body.style.overflow =
     "";
 
+  document.documentElement.style.overflow =
+    "";
+
 }
 
 
@@ -2417,12 +2524,17 @@ function showImage(){
     "";
 
 
+  viewerImage.style.opacity =
+    "";
+
+
   const path =
     images[currentIndex];
 
 
   viewerImage.src =
-    RAW + encodePath(path);
+    RAW +
+    encodePath(path);
 
 
   viewerImage.alt =
@@ -2460,13 +2572,11 @@ function showImage(){
 }
 
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
 function previousImage(){
 
-  if(currentIndex <= 0)return;
+  if(currentIndex <= 0){
+    return;
+  }
 
   currentIndex--;
 
@@ -2480,7 +2590,11 @@ function nextImage(){
   if(
     currentIndex >=
     images.length - 1
-  )return;
+  ){
+
+    return;
+
+  }
 
   currentIndex++;
 
@@ -2488,6 +2602,10 @@ function nextImage(){
 
 }
 
+
+/* =========================================================
+   VIEWER BUTTONS
+========================================================= */
 
 closeViewer.addEventListener(
   "click",
@@ -2535,7 +2653,11 @@ document.addEventListener(
       !viewer.classList.contains(
         "active"
       )
-    )return;
+    ){
+
+      return;
+
+    }
 
 
     if(event.key === "Escape"){
@@ -2563,14 +2685,16 @@ document.addEventListener(
 
 
 /* =========================================================
-   TOUCH SWIPE
+   SWIPE
 ========================================================= */
 
 viewerImage.addEventListener(
   "touchstart",
   event => {
 
-    if(swipeLocked)return;
+    if(swipeLocked){
+      return;
+    }
 
 
     const touch =
@@ -2596,7 +2720,9 @@ viewerImage.addEventListener(
     );
 
   },
-  {passive:true}
+  {
+    passive:true
+  }
 );
 
 
@@ -2607,11 +2733,25 @@ viewerImage.addEventListener(
     if(
       !isDraggingImage ||
       swipeLocked
-    )return;
+    ){
+
+      return;
+
+    }
 
 
     const touch =
       event.touches[0];
+
+
+    const dx =
+      touch.clientX -
+      touchStartX;
+
+
+    const dy =
+      touch.clientY -
+      touchStartY;
 
 
     touchCurrentX =
@@ -2622,19 +2762,9 @@ viewerImage.addEventListener(
       touch.clientY;
 
 
-    const dx =
-      touchCurrentX -
-      touchStartX;
-
-
-    const dy =
-      touchCurrentY -
-      touchStartY;
-
-
     /*
-      Kalau gerakan lebih dominan vertikal,
-      jangan geser gambar.
+      Kalau gerakan lebih vertikal,
+      jangan ganggu gesture.
     */
 
     if(
@@ -2650,36 +2780,24 @@ viewerImage.addEventListener(
     }
 
 
-    const width =
-      window.innerWidth;
-
-
-    const maxDrag =
-      width * .42;
+    const limit =
+      window.innerWidth * .55;
 
 
     const limited =
       Math.max(
-        -maxDrag,
-        Math.min(
-          maxDrag,
-          dx
-        )
+        -limit,
+        Math.min(limit,dx)
       );
 
 
     viewerImage.style.transform =
-      `
-      translate3d(
-        ${limited}px,
-        0,
-        0
-      )
-      scale(1)
-      `;
+      `translate3d(${limited * .82}px,0,0) scale(1)`;
 
   },
-  {passive:true}
+  {
+    passive:true
+  }
 );
 
 
@@ -2690,7 +2808,11 @@ viewerImage.addEventListener(
     if(
       !isDraggingImage ||
       swipeLocked
-    )return;
+    ){
+
+      return;
+
+    }
 
 
     const dx =
@@ -2711,8 +2833,8 @@ viewerImage.addEventListener(
       Math.max(
         55,
         Math.min(
-          105,
-          window.innerWidth * .15
+          110,
+          window.innerWidth * .16
         )
       );
 
@@ -2741,20 +2863,23 @@ viewerImage.addEventListener(
 
     if(
       dx < 0 &&
-      currentIndex <
-      images.length - 1
+      currentIndex < images.length - 1
     ){
 
       swipeToNext();
 
-    }else if(
+    }
+
+    else if(
       dx > 0 &&
       currentIndex > 0
     ){
 
       swipeToPrevious();
 
-    }else{
+    }
+
+    else{
 
       viewerImage.style.transform =
         "translate3d(0,0,0) scale(1)";
@@ -2762,7 +2887,9 @@ viewerImage.addEventListener(
     }
 
   },
-  {passive:true}
+  {
+    passive:true
+  }
 );
 
 
@@ -2773,31 +2900,34 @@ viewerImage.addEventListener(
     isDraggingImage =
       false;
 
-
     viewerImage.classList.remove(
       "dragging"
     );
-
 
     viewerImage.style.transform =
       "translate3d(0,0,0) scale(1)";
 
   },
-  {passive:true}
+  {
+    passive:true
+  }
 );
 
 
 /* =========================================================
-   SWIPE ANIMATION
+   SWIPE NEXT
 ========================================================= */
 
 function swipeToNext(){
 
   if(
     swipeLocked ||
-    currentIndex >=
-    images.length - 1
-  )return;
+    currentIndex >= images.length - 1
+  ){
+
+    return;
+
+  }
 
 
   swipeLocked =
@@ -2805,17 +2935,11 @@ function swipeToNext(){
 
 
   viewerImage.style.transition =
-    `
-    transform .18s ease,
-    opacity .18s ease
-    `;
+    "transform .18s ease, opacity .18s ease";
 
 
   viewerImage.style.transform =
-    `
-    translate3d(-105%,0,0)
-    scale(.98)
-    `;
+    "translate3d(-105%,0,0) scale(.98)";
 
 
   viewerImage.style.opacity =
@@ -2827,10 +2951,8 @@ function swipeToNext(){
 
       currentIndex++;
 
-
       viewerImage.style.transition =
         "";
-
 
       viewerImage.style.opacity =
         "";
@@ -2849,12 +2971,20 @@ function swipeToNext(){
 }
 
 
+/* =========================================================
+   SWIPE PREVIOUS
+========================================================= */
+
 function swipeToPrevious(){
 
   if(
     swipeLocked ||
     currentIndex <= 0
-  )return;
+  ){
+
+    return;
+
+  }
 
 
   swipeLocked =
@@ -2862,17 +2992,11 @@ function swipeToPrevious(){
 
 
   viewerImage.style.transition =
-    `
-    transform .18s ease,
-    opacity .18s ease
-    `;
+    "transform .18s ease, opacity .18s ease";
 
 
   viewerImage.style.transform =
-    `
-    translate3d(105%,0,0)
-    scale(.98)
-    `;
+    "translate3d(105%,0,0) scale(.98)";
 
 
   viewerImage.style.opacity =
@@ -2884,10 +3008,8 @@ function swipeToPrevious(){
 
       currentIndex--;
 
-
       viewerImage.style.transition =
         "";
-
 
       viewerImage.style.opacity =
         "";
@@ -2916,7 +3038,9 @@ function openInfoModal(id){
     document.getElementById(id);
 
 
-  if(!modal)return;
+  if(!modal){
+    return;
+  }
 
 
   modal.classList.add(
@@ -2942,7 +3066,9 @@ function closeInfoModal(id){
     document.getElementById(id);
 
 
-  if(!modal)return;
+  if(!modal){
+    return;
+  }
 
 
   modal.classList.remove(
@@ -2973,10 +3099,12 @@ function closeInfoModal(id){
 }
 
 
+/* =========================================================
+   MODAL BUTTONS
+========================================================= */
+
 document
-  .getElementById(
-    "orderInfoButton"
-  )
+  .getElementById("orderInfoButton")
   .addEventListener(
     "click",
     () =>
@@ -2987,9 +3115,7 @@ document
 
 
 document
-  .getElementById(
-    "testimonialButton"
-  )
+  .getElementById("testimonialButton")
   .addEventListener(
     "click",
     () =>
@@ -3021,13 +3147,21 @@ document
   );
 
 
+/* =========================================================
+   ESC MODAL
+========================================================= */
+
 document.addEventListener(
   "keydown",
   event => {
 
     if(
       event.key !== "Escape"
-    )return;
+    ){
+
+      return;
+
+    }
 
 
     document
