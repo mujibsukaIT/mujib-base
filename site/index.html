@@ -2,94 +2,147 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#08070d">
-<meta name="description" content="Mujib, S.Coc. — Custom Base Nama Clash of Clans">
+
 <title>Mujib, S.Coc. — ART BASE</title>
+<meta name="description" content="Mujib, S.Coc. — Custom Base Nama Clash of Clans">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#08070d;
+  --panel:#12101b;
   --text:#f7f5fb;
   --muted:#a19bad;
   --purple:#9b5cff;
   --purple2:#c084fc;
   --green:#25d366;
-  --safe:env(safe-area-inset-bottom,0px);
+  --warning:#f59e0b;
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --dock-height:155px;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
-html,body{
+html,
+body{
   margin:0;
   width:100%;
-  height:100%;
-  overflow:hidden;
+  min-height:100%;
   background:
-    radial-gradient(circle at 50% -12%,rgba(139,92,246,.28),transparent 38%),
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(139,92,246,.28),
+      transparent 40%
+    ),
     var(--bg);
   color:var(--text);
   font-family:"Space Grotesk",system-ui,sans-serif;
 }
 
-button,a{
+body{
+  overflow:hidden;
+}
+
+button,
+a{
   -webkit-tap-highlight-color:transparent;
 }
 
-/* PAGE */
+/* =========================================================
+   PAGE
+========================================================= */
 
 .page{
   position:relative;
   width:min(100%,1100px);
   height:100dvh;
   margin:auto;
-  padding:10px 14px calc(8px + var(--safe));
   overflow:hidden;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .profile{
-  position:relative;
+  position:absolute;
   z-index:20;
-  height:185px;
-  transition:height .42s cubic-bezier(.16,1,.3,1);
+  top:0;
+  left:0;
+  right:0;
+
+  height:122px;
+
+  padding:
+    14px
+    18px
+    8px;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(8,7,13,.96),
+      rgba(8,7,13,.72) 65%,
+      transparent
+    );
+
+  transition:
+    height .35s cubic-bezier(.16,1,.3,1),
+    opacity .25s ease;
 }
 
 .profile-main{
-  position:absolute;
-  left:50%;
-  top:6px;
+  width:max-content;
+  max-width:calc(100% - 20px);
+
+  margin:auto;
+
   display:flex;
   align-items:center;
-  gap:14px;
-  width:max-content;
-  max-width:100%;
-  transform:translateX(-50%);
-  transition:transform .42s cubic-bezier(.16,1,.3,1);
+  justify-content:center;
+
+  gap:16px;
+
+  transition:
+    transform .35s cubic-bezier(.16,1,.3,1);
 }
 
 .logo-wrap{
-  width:78px;
-  height:78px;
-  flex:0 0 78px;
-  border-radius:23px;
+  width:76px;
+  height:76px;
+  flex:0 0 76px;
+
   overflow:hidden;
+
+  border-radius:22px;
+
   background:#050509;
+
+  border:1px solid rgba(192,132,252,.18);
+
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.08),
-    0 10px 32px rgba(139,92,246,.25);
+    0 0 0 1px rgba(255,255,255,.04),
+    0 10px 35px rgba(139,92,246,.22);
 }
 
 .logo{
+  display:block;
   width:100%;
   height:100%;
-  display:block;
+
   object-fit:contain;
+
+  background:#050509;
 }
 
 .profile-copy{
@@ -99,66 +152,111 @@ button,a{
 
 .profile-name{
   margin:0;
+
   font-family:"Orbitron",sans-serif;
-  font-size:clamp(25px,6vw,42px);
-  line-height:1.02;
+
+  font-size:clamp(
+    24px,
+    5vw,
+    40px
+  );
+
+  line-height:1;
+
   font-weight:800;
-  letter-spacing:-1px;
+
+  letter-spacing:-1.3px;
+
   white-space:nowrap;
-  text-shadow:0 0 24px rgba(192,132,252,.14);
+
+  text-shadow:
+    0 0 24px rgba(192,132,252,.16);
 }
 
 .badge{
-  display:inline-block;
+  display:table;
+
   margin-top:9px;
-  padding:6px 13px;
-  border:1px solid rgba(155,92,255,.4);
+
+  padding:6px 14px;
+
+  border:
+    1px solid
+    rgba(155,92,255,.45);
+
   border-radius:999px;
-  background:rgba(139,92,246,.08);
+
+  background:
+    rgba(139,92,246,.08);
+
   color:#cbb8ff;
+
   font-family:"Orbitron",sans-serif;
+
   font-size:10px;
   font-weight:700;
+
   letter-spacing:1.25px;
 }
 
 .subtitle{
-  margin:9px 0 0;
+  margin:8px 0 0;
+
   color:var(--muted);
+
   font-size:13px;
+
   white-space:nowrap;
 }
 
+/* HEADER SAAT SCROLL */
+
 .profile.scrolled{
-  height:58px;
+  height:64px;
 }
 
 .profile.scrolled .profile-main{
-  top:2px;
-  transform:translateX(-50%) scale(.64);
+  transform:scale(.68);
+  transform-origin:center top;
 }
 
 .profile.scrolled .badge,
 .profile.scrolled .subtitle{
   opacity:0;
-  pointer-events:none;
   height:0;
   margin:0;
   overflow:hidden;
 }
 
-/* SCROLL */
+/* =========================================================
+   SCROLL AREA
+========================================================= */
+
+/*
+   PENTING:
+   Scroll sekarang full dari bawah header sampai bawah layar.
+   Bottom dock hanya MENIMPA area ini, bukan memotong tinggi
+   katalog.
+*/
 
 .scroll-area{
-  height:calc(100dvh - 195px);
+  position:absolute;
+
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+
   overflow-y:auto;
   overflow-x:hidden;
 
-  /* ruang ekstra supaya katalog tetap bisa discroll sampai
-     melewati area sticky price list */
-  padding:0 2px 430px;
+  padding:
+    122px
+    14px
+    calc(var(--dock-height) + 120px + var(--safe-bottom));
 
   overscroll-behavior:contain;
+
   -webkit-overflow-scrolling:touch;
 
   scrollbar-width:thin;
@@ -174,34 +272,54 @@ button,a{
   border-radius:20px;
 }
 
-/* WARNING */
+/* =========================================================
+   WARNING
+========================================================= */
 
 .warning{
   display:flex;
   align-items:flex-start;
+
   gap:10px;
-  margin:0 0 14px;
+
+  max-width:1100px;
+
+  margin:
+    4px
+    auto
+    15px;
+
   padding:11px 13px;
-  border:1px solid rgba(245,158,11,.28);
+
+  border:
+    1px solid
+    rgba(245,158,11,.28);
+
   border-radius:15px;
+
   background:
     linear-gradient(
       135deg,
       rgba(245,158,11,.08),
       rgba(139,92,246,.05)
     );
+
   font-size:11.5px;
+
   line-height:1.55;
 }
 
 .warning-icon{
+  flex:0 0 auto;
   font-size:20px;
-  line-height:1.45;
 }
 
 .warning-text{
   flex:1;
+  min-width:0;
+
   color:#ddd7e8;
+
   text-align:justify;
 }
 
@@ -209,23 +327,36 @@ button,a{
   color:#fff;
 }
 
-/* TITLES */
+/* =========================================================
+   SECTION TITLE
+========================================================= */
 
 .section-title,
 .price-title,
-.info-title{
+.section-heading{
   display:flex;
   align-items:center;
+
   gap:9px;
+
   white-space:nowrap;
+
   font-family:"Orbitron",sans-serif;
+
   font-weight:800;
+
   letter-spacing:1.4px;
+
   text-transform:uppercase;
 }
 
 .section-title{
-  margin:5px 0 11px;
+  margin:
+    6px auto
+    11px;
+
+  max-width:1100px;
+
   font-size:12px;
 }
 
@@ -234,8 +365,11 @@ button,a{
 .price-title:before,
 .price-title:after{
   content:"";
+
   height:1px;
+
   flex:1;
+
   background:
     linear-gradient(
       90deg,
@@ -254,27 +388,51 @@ button,a{
     );
 }
 
-/* GALLERY */
+/* =========================================================
+   GALLERY
+========================================================= */
 
 .gallery{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
   gap:10px;
+
+  max-width:1100px;
+
+  margin:auto;
 }
 
 .gallery-item{
   position:relative;
+
   overflow:hidden;
+
   padding:0;
-  border:1px solid rgba(255,255,255,.08);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
   border-radius:15px;
+
   background:#12101b;
+
   cursor:pointer;
 
   opacity:0;
-  transform:translateY(10px) scale(.985);
 
-  animation:galleryIn .4s ease forwards;
+  transform:
+    translateY(10px)
+    scale(.985);
+
+  animation:
+    galleryIn .4s ease forwards;
 
   transition:
     transform .18s ease,
@@ -282,7 +440,8 @@ button,a{
 }
 
 .gallery-item:hover{
-  border-color:rgba(192,132,252,.4);
+  border-color:
+    rgba(192,132,252,.4);
 }
 
 .gallery-item:active{
@@ -291,68 +450,112 @@ button,a{
 
 .gallery-item img{
   display:block;
+
   width:100%;
+
   aspect-ratio:16/10;
+
   object-fit:cover;
+
   background:#0d0b13;
 }
 
 .loading{
   grid-column:1/-1;
+
   padding:50px 10px;
+
   text-align:center;
+
   color:var(--muted);
+
   font-size:13px;
 }
 
-/* BOTTOM DOCK */
+/* =========================================================
+   BOTTOM DOCK
+========================================================= */
 
 .bottom{
   position:absolute;
-  z-index:30;
+
+  z-index:100;
+
   left:0;
   right:0;
   bottom:0;
 
-  padding:10px 14px calc(9px + var(--safe));
+  padding:
+    8px
+    14px
+    calc(8px + var(--safe-bottom));
 
   background:
     linear-gradient(
       to top,
-      rgba(8,7,13,.99),
-      rgba(8,7,13,.93) 64%,
-      rgba(8,7,13,0)
+      rgba(8,7,13,.99) 0%,
+      rgba(8,7,13,.97) 70%,
+      rgba(8,7,13,0) 100%
     );
 
-  transform:translate3d(0,0,0);
-
   transition:
-    transform .42s cubic-bezier(.16,1,.3,1),
-    opacity .28s ease;
+    transform .4s cubic-bezier(.16,1,.3,1),
+    opacity .25s ease;
 }
 
 .bottom.dock-hidden{
-  transform:translate3d(0,calc(100% + 18px),0);
+  transform:
+    translate3d(
+      0,
+      calc(100% + 20px),
+      0
+    );
+
   opacity:.98;
+
   pointer-events:none;
 }
 
+/* =========================================================
+   PRICE
+========================================================= */
+
 .price-title{
-  margin:0 0 7px;
+  margin:
+    0
+    auto
+    6px;
+
+  max-width:1100px;
+
   font-size:12px;
 }
 
 .price-grid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+
   gap:7px;
+
+  max-width:1100px;
+
+  margin:auto;
 }
 
 .price{
   padding:8px 4px;
+
   text-align:center;
 
-  border:1px solid rgba(155,92,255,.30);
+  border:
+    1px solid
+    rgba(155,92,255,.30);
+
   border-radius:13px;
 
   background:
@@ -361,6 +564,8 @@ button,a{
       rgba(155,92,255,.10),
       rgba(18,16,27,.94)
     );
+
+  backdrop-filter:blur(8px);
 }
 
 .price .th{
@@ -370,47 +575,76 @@ button,a{
 
 .price .rp{
   margin-top:4px;
+
   color:#bd79ff;
+
   font-size:13px;
+
   font-weight:900;
 }
 
 footer{
-  margin:7px 0;
+  margin:6px 0;
+
   text-align:center;
+
   color:#625b6d;
-  font-size:11px;
+
+  font-size:10px;
 }
 
-/* ACTION BUTTONS */
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
 
 .action-row{
   display:grid;
-  grid-template-columns:1fr 1.35fr 1fr;
+
+  grid-template-columns:
+    1fr
+    1.35fr
+    1fr;
+
   gap:7px;
+
+  max-width:1100px;
+
+  margin:auto;
 }
 
 .action-button{
   min-width:0;
-  height:50px;
+
+  height:48px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   gap:6px;
 
-  padding:0 7px;
+  padding:
+    0
+    7px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
 
   border-radius:15px;
-  border:1px solid rgba(255,255,255,.1);
 
   text-decoration:none;
+
   cursor:pointer;
 
   font-family:"Space Grotesk",sans-serif;
+
   font-size:11px;
 
-  transition:transform .18s ease;
+  transition:
+    transform .18s ease,
+    filter .18s ease;
 }
 
 .action-button:active{
@@ -426,14 +660,20 @@ footer{
       rgba(18,16,27,.95)
     );
 
-  border-color:rgba(155,92,255,.34);
+  border-color:
+    rgba(155,92,255,.34);
+
   color:#dfd2ff;
 }
 
 .action-whatsapp{
   background:var(--green);
+
   color:#06140a;
-  box-shadow:0 7px 25px rgba(37,211,102,.18);
+
+  box-shadow:
+    0 7px 25px
+    rgba(37,211,102,.18);
 }
 
 .action-button span{
@@ -442,23 +682,30 @@ footer{
 
 .action-button b{
   font-weight:900;
+
   white-space:nowrap;
 }
 
-/* MODAL */
+/* =========================================================
+   MODALS
+========================================================= */
 
-.modal{
+.info-modal{
   position:fixed;
+
   inset:0;
+
   z-index:3000;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   padding:16px;
 
   opacity:0;
+
   visibility:hidden;
 
   transition:
@@ -466,30 +713,42 @@ footer{
     visibility .22s ease;
 }
 
-.modal.active{
+.info-modal.active{
   opacity:1;
   visibility:visible;
 }
 
-.backdrop{
+.info-modal-backdrop{
   position:absolute;
+
   inset:0;
-  background:rgba(0,0,0,.76);
+
+  background:
+    rgba(0,0,0,.76);
+
   backdrop-filter:blur(7px);
 }
 
-.panel{
+.info-panel{
   position:relative;
+
   z-index:1;
 
-  width:min(94vw,700px);
-  max-height:min(84dvh,720px);
+  width:min(94vw,620px);
+
+  max-height:min(82dvh,700px);
 
   overflow:auto;
 
-  padding:22px 18px 18px;
+  padding:
+    22px
+    18px
+    18px;
 
-  border:1px solid rgba(155,92,255,.34);
+  border:
+    1px solid
+    rgba(155,92,255,.34);
+
   border-radius:22px;
 
   background:
@@ -504,55 +763,81 @@ footer{
     0 25px 100px rgba(0,0,0,.7),
     0 0 40px rgba(139,92,246,.1);
 
-  transform:translateY(16px) scale(.97);
+  transform:
+    translateY(16px)
+    scale(.97);
 
   transition:
     transform .28s cubic-bezier(.16,1,.3,1);
 }
 
-.modal.active .panel{
-  transform:translateY(0) scale(1);
+.info-modal.active .info-panel{
+  transform:
+    translateY(0)
+    scale(1);
 }
 
-.close{
+.info-close{
   position:absolute;
+
   top:10px;
   right:10px;
 
   width:38px;
   height:38px;
 
-  border:1px solid rgba(255,255,255,.12);
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
   border-radius:50%;
 
-  background:rgba(20,16,30,.9);
+  background:
+    rgba(20,16,30,.9);
+
   color:#fff;
 
   font-size:25px;
+
   cursor:pointer;
 }
 
-.info-title{
-  padding:5px 42px 16px 2px;
+.info-panel-title{
+  padding:
+    5px
+    42px
+    16px
+    2px;
+
+  font-family:"Orbitron",sans-serif;
+
   font-size:15px;
+
+  font-weight:800;
+
+  letter-spacing:1.1px;
+
+  text-transform:uppercase;
 }
 
-/* ORDER STEPS */
-
-.steps{
+.modal-order-list{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
   gap:9px;
 }
 
-.step{
+.modal-order-card{
   display:flex;
+
   gap:11px;
+
   align-items:flex-start;
 
   padding:12px;
 
-  border:1px solid rgba(155,92,255,.22);
+  border:
+    1px solid
+    rgba(155,92,255,.22);
+
   border-radius:15px;
 
   background:
@@ -563,105 +848,171 @@ footer{
     );
 }
 
-.num{
+.modal-number{
   flex:0 0 30px;
 
   width:30px;
   height:30px;
 
   display:grid;
+
   place-items:center;
 
   border-radius:50%;
 
-  background:rgba(155,92,255,.18);
-  border:1px solid rgba(192,132,252,.35);
+  background:
+    rgba(155,92,255,.18);
+
+  border:
+    1px solid
+    rgba(192,132,252,.35);
 
   color:#d3a7ff;
 
-  font-family:"Orbitron";
+  font-family:"Orbitron",sans-serif;
+
   font-weight:800;
+
   font-size:12px;
 }
 
-.step h3{
-  margin:1px 0 4px;
+.modal-order-card h3{
+  margin:
+    1px
+    0
+    4px;
+
   font-size:12px;
 }
 
-.step p{
+.modal-order-card p{
   margin:0;
+
   color:#bcb4c8;
+
   font-size:11px;
+
   line-height:1.5;
 }
 
-.note{
+.modal-note{
   margin-top:12px;
+
   padding:11px 12px;
 
-  border:1px solid rgba(245,158,11,.22);
+  border:
+    1px solid
+    rgba(245,158,11,.22);
+
   border-radius:13px;
 
   color:#d9d2e1;
-  background:rgba(245,158,11,.05);
+
+  background:
+    rgba(245,158,11,.05);
 
   font-size:10.5px;
+
   line-height:1.5;
 }
 
-/* TESTIMONIAL */
+/* =========================================================
+   TESTIMONI
+========================================================= */
+
+.testimonial-panel{
+  max-height:76dvh;
+}
 
 .testimonial-empty{
-  padding:38px 18px;
+  padding:32px 15px;
 
-  border:1px dashed rgba(192,132,252,.35);
+  border:
+    1px dashed
+    rgba(192,132,252,.32);
+
   border-radius:17px;
 
+  background:
+    rgba(155,92,255,.055);
+
   text-align:center;
-  color:#c5bdcf;
 }
 
 .testimonial-empty .icon{
-  font-size:32px;
+  font-size:34px;
 }
 
-.testimonial-empty strong{
-  display:block;
-  margin-top:8px;
+.testimonial-empty h3{
+  margin:
+    10px
+    0
+    5px;
 
-  font-family:"Orbitron";
+  font-family:"Orbitron",sans-serif;
+
   font-size:13px;
-  color:#fff;
 }
 
 .testimonial-empty p{
-  margin:7px 0 0;
+  margin:0;
+
+  color:#c5bdcf;
+
   font-size:11px;
 }
 
-.testimonial-grid{
+/*
+   TEMPAT TESTIMONI
+   Nanti screenshot pelanggan tinggal dimasukkan
+   ke folder:
+
+   site/testimoni/
+
+   Contoh:
+   site/testimoni/001.jpg
+   site/testimoni/002.jpg
+*/
+
+.testimonial-gallery{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap:9px;
+
+  margin-top:12px;
 }
 
-.testimonial-grid img{
+.testimonial-gallery img{
   display:block;
+
   width:100%;
 
-  border-radius:14px;
-  border:1px solid rgba(155,92,255,.25);
+  border-radius:13px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
 }
 
-/* IMAGE VIEWER */
+/* =========================================================
+   VIEWER
+========================================================= */
 
 .viewer{
   position:fixed;
+
   inset:0;
+
   z-index:2000;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -675,6 +1026,7 @@ footer{
     );
 
   opacity:0;
+
   visibility:hidden;
 
   transition:
@@ -689,17 +1041,23 @@ footer{
 
 .viewer-box{
   width:min(96vw,1100px);
+
   max-height:100%;
 
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
+
   gap:8px;
 }
 
 .viewer-top{
   width:100%;
+
   display:flex;
+
   justify-content:flex-end;
 }
 
@@ -707,13 +1065,21 @@ footer{
   width:42px;
   height:42px;
 
-  border:1px solid rgba(255,255,255,.14);
+  border:
+    1px solid
+    rgba(255,255,255,.14);
+
   border-radius:50%;
 
-  background:rgba(15,12,24,.82);
+  background:
+    rgba(15,12,24,.82);
+
   color:#fff;
 
   font-size:27px;
+
+  line-height:1;
+
   cursor:pointer;
 }
 
@@ -723,12 +1089,16 @@ footer{
   width:min(100%,1040px);
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   overflow:hidden;
 
-  padding:0 8px;
+  padding:
+    0
+    8px;
+
   border-radius:14px;
 }
 
@@ -736,20 +1106,32 @@ footer{
   display:block;
 
   touch-action:none;
+
   user-select:none;
+
   -webkit-user-drag:none;
 
+  will-change:
+    transform,
+    opacity;
+
   max-width:min(92vw,1040px);
+
   max-height:70vh;
 
   object-fit:contain;
 
   border-radius:12px;
 
-  box-shadow:0 20px 70px rgba(0,0,0,.7);
+  box-shadow:
+    0 20px 70px
+    rgba(0,0,0,.7);
 
   opacity:0;
-  transform:scale(.94);
+
+  transform:
+    translate3d(0,0,0)
+    scale(.94);
 
   transition:
     opacity .2s ease,
@@ -758,7 +1140,10 @@ footer{
 
 .viewer-image.show{
   opacity:1;
-  transform:translate3d(0,0,0) scale(1);
+
+  transform:
+    translate3d(0,0,0)
+    scale(1);
 }
 
 .viewer-image.dragging{
@@ -767,8 +1152,11 @@ footer{
 
 .navigation{
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   gap:24px;
 }
 
@@ -776,13 +1164,21 @@ footer{
   width:46px;
   height:46px;
 
-  border:1px solid rgba(155,92,255,.35);
+  border:
+    1px solid
+    rgba(155,92,255,.35);
+
   border-radius:50%;
 
-  background:rgba(15,12,24,.9);
+  background:
+    rgba(15,12,24,.9);
+
   color:#fff;
 
   font-size:30px;
+
+  line-height:1;
+
   cursor:pointer;
 }
 
@@ -792,10 +1188,13 @@ footer{
 
 .counter{
   min-width:65px;
+
   text-align:center;
 
   font-family:"Orbitron";
+
   font-size:12px;
+
   font-weight:700;
 }
 
@@ -804,79 +1203,146 @@ footer{
 
   padding:10px 14px;
 
-  border:1px solid rgba(245,158,11,.24);
+  border:
+    1px solid
+    rgba(245,158,11,.24);
+
   border-radius:14px;
 
-  background:rgba(18,16,27,.84);
+  background:
+    rgba(18,16,27,.84);
+
   color:#ddd7e8;
 
   text-align:center;
+
   font-size:11px;
+
+  line-height:1.45;
 }
 
 .viewer-tip b{
   color:#f7c44f;
 }
 
-/* ANIMATION */
+/* =========================================================
+   ANIMATION
+========================================================= */
 
 @keyframes galleryIn{
   to{
     opacity:1;
-    transform:translateY(0) scale(1);
+
+    transform:
+      translateY(0)
+      scale(1);
   }
 }
 
-/* RESPONSIVE */
-
-@media(max-width:520px){
-
-  .steps{
-    grid-template-columns:1fr;
-  }
-
-  .action-button{
-    font-size:10px;
-    height:48px;
-  }
-
-  .action-button span{
-    font-size:16px;
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation:none!important;
+    transition:none!important;
   }
 }
+
+/* =========================================================
+   TABLET / DESKTOP
+========================================================= */
 
 @media(min-width:700px){
 
   .profile{
-    height:150px;
+    height:116px;
   }
 
   .scroll-area{
-    height:calc(100dvh - 160px);
+    padding-top:116px;
   }
 
   .gallery{
-    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0,1fr)
+      );
+  }
+
+  .gallery-item img{
+    aspect-ratio:16/10;
   }
 }
 
-@media(orientation:landscape) and (min-width:700px){
+/* =========================================================
+   LANDSCAPE
+========================================================= */
+
+@media(
+  orientation:landscape
+) and (min-width:700px){
 
   .profile{
-    height:108px;
+    height:96px;
+
+    padding:
+      7px
+      14px
+      4px;
   }
 
   .profile-main{
-    top:5px;
-    transform:translateX(-50%) scale(.78);
+    gap:10px;
+
+    transform:scale(.76);
+  }
+
+  .profile.scrolled{
+    height:56px;
+  }
+
+  .profile.scrolled .profile-main{
+    transform:scale(.55);
+  }
+
+  .logo-wrap{
+    width:70px;
+    height:70px;
+    flex-basis:70px;
+  }
+
+  .profile-name{
+    font-size:32px;
+  }
+
+  .badge{
+    margin-top:5px;
+    padding:4px 11px;
+    font-size:8px;
+  }
+
+  .subtitle{
+    margin-top:5px;
+    font-size:10px;
   }
 
   .scroll-area{
-    height:calc(100dvh - 118px);
+    padding:
+      96px
+      10px
+      calc(
+        var(--dock-height) + 80px
+      );
   }
 
   .gallery{
-    grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(0,1fr)
+      );
+
     gap:8px;
   }
 
@@ -891,12 +1357,21 @@ footer{
   }
 
   .section-title{
-    margin:4px 0 7px;
+    margin:
+      4px
+      auto
+      7px;
+
     font-size:10px;
   }
 
   .bottom{
-    padding:7px 10px calc(6px + var(--safe));
+    padding:
+      6px
+      10px
+      calc(
+        5px + var(--safe-bottom)
+      );
   }
 
   .price-title{
@@ -917,12 +1392,12 @@ footer{
   }
 
   footer{
-    margin:4px 0;
-    font-size:9px;
+    margin:3px 0;
+    font-size:8px;
   }
 
   .action-button{
-    height:42px;
+    height:40px;
     font-size:9px;
   }
 
@@ -931,11 +1406,93 @@ footer{
   }
 }
 
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media(max-width:520px){
+
+  .profile{
+    height:126px;
+  }
+
+  .scroll-area{
+    padding-top:126px;
+  }
+
+  .profile-main{
+    gap:12px;
+  }
+
+  .logo-wrap{
+    width:70px;
+    height:70px;
+    flex-basis:70px;
+    border-radius:20px;
+  }
+
+  .profile-name{
+    font-size:
+      clamp(
+        23px,
+        7vw,
+        31px
+      );
+  }
+
+  .badge{
+    font-size:8px;
+    letter-spacing:1px;
+  }
+
+  .subtitle{
+    font-size:11px;
+  }
+
+  .gallery{
+    gap:8px;
+  }
+
+  .action-button{
+    height:46px;
+    font-size:10px;
+  }
+
+  .action-button span{
+    font-size:16px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
 @media(max-width:360px){
 
-  .page{
-    padding-left:9px;
-    padding-right:9px;
+  .profile{
+    height:118px;
+  }
+
+  .scroll-area{
+    padding-top:118px;
+  }
+
+  .profile-main{
+    gap:8px;
+  }
+
+  .logo-wrap{
+    width:62px;
+    height:62px;
+    flex-basis:62px;
+  }
+
+  .profile-name{
+    font-size:22px;
+  }
+
+  .subtitle{
+    font-size:10px;
   }
 
   .gallery{
@@ -950,6 +1507,14 @@ footer{
   .price-grid{
     gap:5px;
   }
+
+  .price .th{
+    font-size:10px;
+  }
+
+  .price .rp{
+    font-size:12px;
+  }
 }
 </style>
 </head>
@@ -958,15 +1523,21 @@ footer{
 
 <main class="page">
 
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
 <header class="profile" id="profile">
 
   <div class="profile-main">
 
     <div class="logo-wrap">
+      <!-- FILE: site/logo.png -->
       <img
         class="logo"
-        src="https://raw.githubusercontent.com/mujibsukaIT/mujib-base/main/logo.png"
+        src="./logo.png"
         alt="Logo Mujib S.Coc."
+        onerror="this.style.opacity='.12'"
       >
     </div>
 
@@ -991,6 +1562,10 @@ footer{
 </header>
 
 
+<!-- =======================================================
+     SCROLL CONTENT
+======================================================= -->
+
 <section
   class="scroll-area"
   id="scrollArea"
@@ -999,7 +1574,10 @@ footer{
 
   <div class="warning">
 
-    <div class="warning-icon">
+    <div
+      class="warning-icon"
+      aria-hidden="true"
+    >
       ⚠️
     </div>
 
@@ -1007,8 +1585,9 @@ footer{
 
       Jika tombol WhatsApp tidak ter-direct ke aplikasi,
       buka halaman ini melalui browser HP.
-      Tekan titik tiga di pojok kanan atas, lalu pilih browser,
-      atau chat manual di <b>085876832230</b>
+      Tekan titik tiga di pojok kanan atas,
+      lalu pilih browser, atau chat manual di
+      <b>085876832230</b>
 
     </div>
 
@@ -1024,17 +1603,17 @@ footer{
     class="gallery"
     id="gallery"
   >
-
     <div class="loading">
       Memuat base...
     </div>
-
   </div>
 
 </section>
 
 
-<!-- STICKY BOTTOM -->
+<!-- =======================================================
+     BOTTOM DOCK
+======================================================= -->
 
 <section
   class="bottom"
@@ -1104,7 +1683,7 @@ footer{
       class="action-button action-whatsapp"
       href="https://wa.me/6285876832230"
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
     >
       <span>💬</span>
       <b>ORDER VIA WHATSAPP</b>
@@ -1127,42 +1706,44 @@ footer{
 </main>
 
 
-<!-- CARA PESAN -->
+<!-- =======================================================
+     CARA PEMESANAN
+======================================================= -->
 
 <div
-  class="modal"
+  class="info-modal"
   id="orderModal"
   aria-hidden="true"
 >
 
   <div
-    class="backdrop"
-    data-close="orderModal"
+    class="info-modal-backdrop"
+    data-close-modal="orderModal"
   ></div>
 
 
-  <div class="panel">
+  <div class="info-panel">
 
     <button
-      class="close"
-      data-close="orderModal"
+      class="info-close"
       type="button"
+      data-close-modal="orderModal"
+      aria-label="Tutup"
     >
       ×
     </button>
 
 
-    <div class="info-title">
+    <div class="info-panel-title">
       Cara Pemesanan
     </div>
 
 
-    <div class="steps">
+    <div class="modal-order-list">
 
+      <article class="modal-order-card">
 
-      <article class="step">
-
-        <div class="num">
+        <div class="modal-number">
           1
         </div>
 
@@ -1182,9 +1763,9 @@ footer{
       </article>
 
 
-      <article class="step">
+      <article class="modal-order-card">
 
-        <div class="num">
+        <div class="modal-number">
           2
         </div>
 
@@ -1198,7 +1779,7 @@ footer{
             Tentukan pesanan.
             Metode pembayaran menggunakan
             <b>QRIS</b> yang akan diberikan
-            sebelum pembuatan.
+            sebelum proses pembuatan dimulai.
           </p>
 
         </div>
@@ -1206,9 +1787,9 @@ footer{
       </article>
 
 
-      <article class="step">
+      <article class="modal-order-card">
 
-        <div class="num">
+        <div class="modal-number">
           3
         </div>
 
@@ -1229,9 +1810,9 @@ footer{
       </article>
 
 
-      <article class="step">
+      <article class="modal-order-card">
 
-        <div class="num">
+        <div class="modal-number">
           4
         </div>
 
@@ -1242,9 +1823,9 @@ footer{
           </h3>
 
           <p>
-            Hasil dikirim melalui WhatsApp
-            dalam bentuk link base CoC
-            yang bisa langsung dibuka di game.
+            Hasil akan dikirim melalui WhatsApp
+            dalam bentuk link base CoC yang
+            bisa langsung dibuka di game.
           </p>
 
         </div>
@@ -1254,11 +1835,10 @@ footer{
     </div>
 
 
-    <div class="note">
-
-      🔒 <b>Tanpa login akun.</b>
+    <div class="modal-note">
+      🔒
+      <b>Tanpa login akun.</b>
       Pembuatan base hanya memakai link base CoC.
-
     </div>
 
   </div>
@@ -1266,62 +1846,83 @@ footer{
 </div>
 
 
-<!-- TESTIMONI -->
+<!-- =======================================================
+     TESTIMONI
+======================================================= -->
 
 <div
-  class="modal"
+  class="info-modal"
   id="testimonialModal"
   aria-hidden="true"
 >
 
   <div
-    class="backdrop"
-    data-close="testimonialModal"
+    class="info-modal-backdrop"
+    data-close-modal="testimonialModal"
   ></div>
 
 
-  <div class="panel">
+  <div class="info-panel testimonial-panel">
 
     <button
-      class="close"
-      data-close="testimonialModal"
+      class="info-close"
       type="button"
+      data-close-modal="testimonialModal"
+      aria-label="Tutup"
     >
       ×
     </button>
 
 
-    <div class="info-title">
+    <div class="info-panel-title">
       Testimoni Pelanggan
     </div>
 
 
-    <div
-      id="testimonialContent"
-      class="testimonial-empty"
-    >
+    <div class="testimonial-empty">
 
       <div class="icon">
         ⭐
       </div>
 
-      <strong>
+      <h3>
         Akan segera hadir
-      </strong>
+      </h3>
 
       <p>
-        Screenshot testimoni pelanggan
-        akan ditampilkan di sini.
+        Testimoni pelanggan akan ditampilkan
+        di halaman ini.
       </p>
 
     </div>
+
+    <!--
+      ======================================================
+      TEMPAT SCREENSHOT TESTIMONI
+
+      Nanti upload screenshot ke:
+
+      site/testimoni/
+
+      Contoh:
+
+      site/testimoni/001.jpg
+      site/testimoni/002.jpg
+      site/testimoni/003.jpg
+
+      Setelah screenshot tersedia,
+      bagian ini bisa diubah menjadi galeri otomatis.
+      ======================================================
+    -->
 
   </div>
 
 </div>
 
 
-<!-- IMAGE VIEWER -->
+<!-- =======================================================
+     IMAGE VIEWER
+======================================================= -->
 
 <div
   class="viewer"
@@ -1329,7 +1930,12 @@ footer{
   aria-hidden="true"
 >
 
-  <div class="viewer-box">
+  <div
+    class="viewer-box"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Preview base nama"
+  >
 
     <div class="viewer-top">
 
@@ -1337,6 +1943,7 @@ footer{
         class="close-button"
         id="closeViewer"
         type="button"
+        aria-label="Tutup"
       >
         ×
       </button>
@@ -1349,6 +1956,7 @@ footer{
       <img
         class="viewer-image"
         id="viewerImage"
+        src=""
         alt="Base nama"
       >
 
@@ -1360,6 +1968,7 @@ footer{
       <button
         id="prevButton"
         type="button"
+        aria-label="Gambar sebelumnya"
       >
         ‹
       </button>
@@ -1376,6 +1985,7 @@ footer{
       <button
         id="nextButton"
         type="button"
+        aria-label="Gambar berikutnya"
       >
         ›
       </button>
@@ -1385,7 +1995,8 @@ footer{
 
     <div class="viewer-tip">
 
-      💡 <b>Tips:</b>
+      💡
+      <b>Tips:</b>
       Tekan dan tahan gambar untuk menyimpan ke galeri.
 
     </div>
@@ -1397,231 +2008,294 @@ footer{
 
 <script>
 
-const OWNER="mujibsukaIT";
-const REPO="mujib-base";
-const BRANCH="main";
+/* =========================================================
+   GITHUB
+========================================================= */
 
-const API=
+const OWNER = "mujibsukaIT";
+const REPO = "mujib-base";
+const BRANCH = "main";
+
+const API =
   `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`;
 
-const RAW=
+const RAW =
   `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/`;
 
 
-const gallery=
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const gallery =
   document.getElementById("gallery");
 
-const scrollArea=
+const scrollArea =
   document.getElementById("scrollArea");
 
-const profile=
+const profile =
   document.getElementById("profile");
 
-const bottomDock=
+const bottomDock =
   document.getElementById("bottomDock");
 
 
-const viewer=
+const viewer =
   document.getElementById("viewer");
 
-const viewerImage=
+const viewerImage =
   document.getElementById("viewerImage");
 
-const counter=
-  document.getElementById("counter");
+const closeViewer =
+  document.getElementById("closeViewer");
 
-const prevButton=
+const prevButton =
   document.getElementById("prevButton");
 
-const nextButton=
+const nextButton =
   document.getElementById("nextButton");
 
-
-let images=[];
-let currentIndex=0;
-
-let lastScrollTop=0;
-
-let touchStartX=0;
-let touchStartY=0;
-let touchX=0;
-let touchY=0;
-
-let dragging=false;
-let locked=false;
+const counter =
+  document.getElementById("counter");
 
 
-/* ENCODE PATH */
+/* =========================================================
+   STATE
+========================================================= */
 
-function enc(path){
+let images = [];
+
+let currentIndex = 0;
+
+let lastScrollTop = 0;
+
+let scrollTicking = false;
+
+let swipeLocked = false;
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchCurrentX = 0;
+let touchCurrentY = 0;
+
+let isDraggingImage = false;
+
+
+/* =========================================================
+   PATH
+========================================================= */
+
+function encodePath(path){
 
   return path
     .split("/")
-    .map(encodeURIComponent)
+    .map(part => encodeURIComponent(part))
     .join("/");
 
 }
 
 
-/* GITHUB TREE */
-
-async function tree(){
-
-  const response=
-    await fetch(
-      API,
-      {
-        headers:{
-          Accept:"application/vnd.github+json"
-        },
-        cache:"no-store"
-      }
-    );
-
-  if(!response.ok){
-    throw Error(response.status);
-  }
-
-  return response.json();
-
-}
-
-
-/* LOAD GALLERY */
+/* =========================================================
+   LOAD GALLERY
+========================================================= */
 
 async function loadGallery(){
 
   try{
 
-    const data=
-      await tree();
+    const response =
+      await fetch(
+        API,
+        {
+          headers:{
+            Accept:
+              "application/vnd.github+json"
+          },
 
-
-    images=
-      (data.tree || [])
-
-      .filter(item=>
-        item.type==="blob" &&
-        /^gallery\//i.test(item.path) &&
-        /\.(webp|jpg|jpeg|png)$/i.test(item.path)
-      )
-
-      .map(item=>item.path)
-
-      .sort(
-        (a,b)=>
-          a.localeCompare(
-            b,
-            undefined,
-            {
-              numeric:true,
-              sensitivity:"base"
-            }
-          )
+          cache:"no-store"
+        }
       );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        `GitHub API ${response.status}`
+      );
+
+    }
+
+
+    const tree =
+      await response.json();
+
+
+    images =
+      (tree.tree || [])
+
+        .filter(item =>
+          item.type === "blob" &&
+          /^gallery\//i.test(item.path) &&
+          /\.(webp|jpg|jpeg|png)$/i.test(item.path)
+        )
+
+        .map(item => item.path)
+
+        .sort(
+          (a,b) =>
+            a.localeCompare(
+              b,
+              undefined,
+              {
+                numeric:true,
+                sensitivity:"base"
+              }
+            )
+        );
 
 
     if(!images.length){
 
-      gallery.innerHTML=
-        '<div class="loading">Belum ada base di gallery.</div>';
+      gallery.innerHTML =
+        `
+        <div class="loading">
+          Belum ada base di gallery.
+        </div>
+        `;
 
       return;
 
     }
 
 
-    gallery.innerHTML="";
-
-
-    images.forEach(
-      (path,index)=>{
-
-        const button=
-          document.createElement("button");
-
-        button.className=
-          "gallery-item";
-
-        button.type="button";
-
-        button.style.animationDelay=
-          Math.min(index*35,450)+"ms";
-
-
-        const image=
-          document.createElement("img");
-
-        image.loading=
-          index<6 ? "eager" : "lazy";
-
-        image.decoding="async";
-
-        image.src=
-          RAW + enc(path);
-
-        image.alt=
-          `Base nama ${index+1}`;
-
-
-        button.appendChild(image);
-
-
-        button.onclick=
-          ()=>openViewer(index);
-
-
-        gallery.appendChild(button);
-
-      }
-    );
-
+    renderGallery();
 
   }catch(error){
 
     console.error(error);
 
-    gallery.innerHTML=
-      '<div class="loading">Gagal memuat base. Coba refresh halaman.</div>';
+    gallery.innerHTML =
+      `
+      <div class="loading">
+        Gagal memuat base.
+        Coba refresh halaman.
+      </div>
+      `;
 
   }
 
 }
 
 
-/* SCROLL UI */
+/* =========================================================
+   RENDER GALLERY
+========================================================= */
 
-function scrollUI(){
+function renderGallery(){
 
-  const current=
+  gallery.innerHTML = "";
+
+
+  images.forEach(
+    (path,index) => {
+
+      const item =
+        document.createElement("button");
+
+
+      item.type = "button";
+
+      item.className =
+        "gallery-item";
+
+
+      item.style.animationDelay =
+        `${Math.min(index * 35,450)}ms`;
+
+
+      item.setAttribute(
+        "aria-label",
+        `Buka base ${index + 1}`
+      );
+
+
+      const image =
+        document.createElement("img");
+
+
+      image.loading =
+        index < 6
+          ? "eager"
+          : "lazy";
+
+
+      image.decoding =
+        "async";
+
+
+      image.alt =
+        `Base nama ${index + 1}`;
+
+
+      image.src =
+        RAW + encodePath(path);
+
+
+      item.appendChild(image);
+
+
+      item.addEventListener(
+        "click",
+        () => openViewer(index)
+      );
+
+
+      gallery.appendChild(item);
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   SCROLL UI
+========================================================= */
+
+function updateScrollUI(){
+
+  const current =
     scrollArea.scrollTop;
 
-  const delta=
-    current-lastScrollTop;
+
+  const delta =
+    current - lastScrollTop;
 
 
-  if(current>35){
+  if(current > 35){
+
     profile.classList.add("scrolled");
-  }
 
+  }else if(current < 8){
 
-  if(current<8){
     profile.classList.remove("scrolled");
+
   }
 
 
-  if(Math.abs(delta)>1){
+  if(Math.abs(delta) > 1){
 
     if(
-      delta>0 &&
-      current>18
+      delta > 0 &&
+      current > 18
     ){
 
       bottomDock.classList.add(
         "dock-hidden"
       );
 
-    }else if(delta<0){
+    }else if(delta < 0){
 
       bottomDock.classList.remove(
         "dock-hidden"
@@ -1632,7 +2306,7 @@ function scrollUI(){
   }
 
 
-  if(current<=4){
+  if(current <= 4){
 
     bottomDock.classList.remove(
       "dock-hidden"
@@ -1641,187 +2315,281 @@ function scrollUI(){
   }
 
 
-  lastScrollTop=current;
+  lastScrollTop =
+    current;
+
+  scrollTicking =
+    false;
 
 }
 
 
 scrollArea.addEventListener(
   "scroll",
-  ()=>requestAnimationFrame(scrollUI),
+  () => {
+
+    if(!scrollTicking){
+
+      requestAnimationFrame(
+        updateScrollUI
+      );
+
+      scrollTicking = true;
+
+    }
+
+  },
   {passive:true}
 );
 
 
-/* VIEWER */
+/* =========================================================
+   VIEWER
+========================================================= */
 
 function openViewer(index){
 
   if(!images.length)return;
 
-  currentIndex=index;
 
-  viewer.classList.add("active");
+  currentIndex =
+    index;
+
+
+  viewer.classList.add(
+    "active"
+  );
+
 
   viewer.setAttribute(
     "aria-hidden",
     "false"
   );
 
-  showImage();
 
-  document.body.style.overflow=
+  document.body.style.overflow =
     "hidden";
+
+
+  showImage();
 
 }
 
 
-function closeViewer(){
+function closeImageViewer(){
 
-  viewer.classList.remove("active");
+  viewer.classList.remove(
+    "active"
+  );
+
 
   viewer.setAttribute(
     "aria-hidden",
     "true"
   );
 
-  viewerImage.className=
-    "viewer-image";
 
-  viewerImage.style.transform="";
+  viewerImage.classList.remove(
+    "show",
+    "dragging"
+  );
 
-  document.body.style.overflow="";
+
+  viewerImage.style.transform =
+    "";
+
+
+  document.body.style.overflow =
+    "";
 
 }
 
 
 function showImage(){
 
-  viewerImage.className=
-    "viewer-image";
-
-  viewerImage.src=
-    RAW + enc(images[currentIndex]);
-
-  viewerImage.alt=
-    `Base nama ${currentIndex+1}`;
+  viewerImage.classList.remove(
+    "show",
+    "dragging"
+  );
 
 
-  counter.textContent=
-    `${currentIndex+1} / ${images.length}`;
+  viewerImage.style.transform =
+    "";
 
 
-  prevButton.disabled=
-    currentIndex===0;
+  const path =
+    images[currentIndex];
 
-  nextButton.disabled=
-    currentIndex===images.length-1;
+
+  viewerImage.src =
+    RAW + encodePath(path);
+
+
+  viewerImage.alt =
+    `Base nama ${currentIndex + 1}`;
+
+
+  counter.textContent =
+    `${currentIndex + 1} / ${images.length}`;
+
+
+  prevButton.disabled =
+    currentIndex === 0;
+
+
+  nextButton.disabled =
+    currentIndex === images.length - 1;
 
 
   requestAnimationFrame(
-    ()=>{
-      viewerImage.classList.add("show");
+    () => {
+
+      requestAnimationFrame(
+        () => {
+
+          viewerImage.classList.add(
+            "show"
+          );
+
+        }
+      );
+
     }
   );
 
 }
 
 
-function nav(direction){
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-  const next=
-    currentIndex+direction;
+function previousImage(){
 
+  if(currentIndex <= 0)return;
 
-  if(
-    next<0 ||
-    next>=images.length
-  ){
-
-    return;
-
-  }
-
-
-  currentIndex=next;
+  currentIndex--;
 
   showImage();
 
 }
 
 
-document.getElementById(
-  "closeViewer"
-).onclick=
-  closeViewer;
+function nextImage(){
+
+  if(
+    currentIndex >=
+    images.length - 1
+  )return;
+
+  currentIndex++;
+
+  showImage();
+
+}
 
 
-prevButton.onclick=
-  ()=>nav(-1);
-
-nextButton.onclick=
-  ()=>nav(1);
-
-
-viewer.onclick=
-  event=>{
-
-    if(event.target===viewer){
-      closeViewer();
-    }
-
-  };
+closeViewer.addEventListener(
+  "click",
+  closeImageViewer
+);
 
 
-document.addEventListener(
-  "keydown",
-  event=>{
+prevButton.addEventListener(
+  "click",
+  previousImage
+);
+
+
+nextButton.addEventListener(
+  "click",
+  nextImage
+);
+
+
+viewer.addEventListener(
+  "click",
+  event => {
 
     if(
-      !viewer.classList.contains("active")
+      event.target === viewer
     ){
 
-      return;
+      closeImageViewer();
 
-    }
-
-
-    if(event.key==="Escape"){
-      closeViewer();
-    }
-
-
-    if(event.key==="ArrowLeft"){
-      nav(-1);
-    }
-
-
-    if(event.key==="ArrowRight"){
-      nav(1);
     }
 
   }
 );
 
 
-/* SWIPE */
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      !viewer.classList.contains(
+        "active"
+      )
+    )return;
+
+
+    if(event.key === "Escape"){
+
+      closeImageViewer();
+
+    }
+
+
+    if(event.key === "ArrowLeft"){
+
+      previousImage();
+
+    }
+
+
+    if(event.key === "ArrowRight"){
+
+      nextImage();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   TOUCH SWIPE
+========================================================= */
 
 viewerImage.addEventListener(
   "touchstart",
-  event=>{
+  event => {
 
-    const touch=
+    if(swipeLocked)return;
+
+
+    const touch =
       event.touches[0];
 
-    touchStartX=
-      touchX=
+
+    touchStartX =
+      touchCurrentX =
       touch.clientX;
 
-    touchStartY=
-      touchY=
+
+    touchStartY =
+      touchCurrentY =
       touch.clientY;
 
-    dragging=true;
+
+    isDraggingImage =
+      true;
+
 
     viewerImage.classList.add(
       "dragging"
@@ -1834,59 +2602,81 @@ viewerImage.addEventListener(
 
 viewerImage.addEventListener(
   "touchmove",
-  event=>{
+  event => {
 
     if(
-      !dragging ||
-      locked
-    ){
-
-      return;
-
-    }
+      !isDraggingImage ||
+      swipeLocked
+    )return;
 
 
-    const touch=
+    const touch =
       event.touches[0];
 
 
-    touchX=
+    touchCurrentX =
       touch.clientX;
 
-    touchY=
+
+    touchCurrentY =
       touch.clientY;
 
 
-    const dx=
-      touchX-touchStartX;
+    const dx =
+      touchCurrentX -
+      touchStartX;
 
-    const dy=
-      touchY-touchStartY;
 
+    const dy =
+      touchCurrentY -
+      touchStartY;
+
+
+    /*
+      Kalau gerakan lebih dominan vertikal,
+      jangan geser gambar.
+    */
 
     if(
       Math.abs(dy) >
-      Math.abs(dx)*1.15
+      Math.abs(dx) * 1.15
     ){
+
+      viewerImage.style.transform =
+        "translate3d(0,0,0) scale(1)";
 
       return;
 
     }
 
 
-    const limit=
-      innerWidth*.55;
+    const width =
+      window.innerWidth;
 
 
-    const limited=
+    const maxDrag =
+      width * .42;
+
+
+    const limited =
       Math.max(
-        -limit,
-        Math.min(limit,dx)
+        -maxDrag,
+        Math.min(
+          maxDrag,
+          dx
+        )
       );
 
 
-    viewerImage.style.transform=
-      `translate3d(${limited*.82}px,0,0) scale(1)`;
+    viewerImage.style.transform =
+      `
+      translate3d(
+        ${limited}px,
+        0,
+        0
+      )
+      scale(1)
+      `;
 
   },
   {passive:true}
@@ -1895,12 +2685,40 @@ viewerImage.addEventListener(
 
 viewerImage.addEventListener(
   "touchend",
-  ()=>{
+  () => {
 
-    if(!dragging)return;
+    if(
+      !isDraggingImage ||
+      swipeLocked
+    )return;
 
 
-    dragging=false;
+    const dx =
+      touchCurrentX -
+      touchStartX;
+
+
+    const dy =
+      touchCurrentY -
+      touchStartY;
+
+
+    const distance =
+      Math.abs(dx);
+
+
+    const threshold =
+      Math.max(
+        55,
+        Math.min(
+          105,
+          window.innerWidth * .15
+        )
+      );
+
+
+    isDraggingImage =
+      false;
 
 
     viewerImage.classList.remove(
@@ -1908,79 +2726,229 @@ viewerImage.addEventListener(
     );
 
 
-    const dx=
-      touchX-touchStartX;
-
-    const dy=
-      touchY-touchStartY;
-
-
-    const threshold=
-      Math.max(
-        55,
-        innerWidth*.16
-      );
-
-
     if(
-      Math.abs(dx)>threshold &&
-      Math.abs(dx)>Math.abs(dy)
+      distance < threshold ||
+      Math.abs(dy) > Math.abs(dx)
     ){
 
-      if(
-        dx<0 &&
-        currentIndex<images.length-1
-      ){
+      viewerImage.style.transform =
+        "translate3d(0,0,0) scale(1)";
 
-        nav(1);
-
-      }else if(
-        dx>0 &&
-        currentIndex>0
-      ){
-
-        nav(-1);
-
-      }
+      return;
 
     }
 
 
-    viewerImage.style.transform="";
+    if(
+      dx < 0 &&
+      currentIndex <
+      images.length - 1
+    ){
+
+      swipeToNext();
+
+    }else if(
+      dx > 0 &&
+      currentIndex > 0
+    ){
+
+      swipeToPrevious();
+
+    }else{
+
+      viewerImage.style.transform =
+        "translate3d(0,0,0) scale(1)";
+
+    }
 
   },
   {passive:true}
 );
 
 
-/* MODALS */
+viewerImage.addEventListener(
+  "touchcancel",
+  () => {
 
-function openModal(id){
+    isDraggingImage =
+      false;
 
-  const modal=
+
+    viewerImage.classList.remove(
+      "dragging"
+    );
+
+
+    viewerImage.style.transform =
+      "translate3d(0,0,0) scale(1)";
+
+  },
+  {passive:true}
+);
+
+
+/* =========================================================
+   SWIPE ANIMATION
+========================================================= */
+
+function swipeToNext(){
+
+  if(
+    swipeLocked ||
+    currentIndex >=
+    images.length - 1
+  )return;
+
+
+  swipeLocked =
+    true;
+
+
+  viewerImage.style.transition =
+    `
+    transform .18s ease,
+    opacity .18s ease
+    `;
+
+
+  viewerImage.style.transform =
+    `
+    translate3d(-105%,0,0)
+    scale(.98)
+    `;
+
+
+  viewerImage.style.opacity =
+    "0";
+
+
+  setTimeout(
+    () => {
+
+      currentIndex++;
+
+
+      viewerImage.style.transition =
+        "";
+
+
+      viewerImage.style.opacity =
+        "";
+
+
+      showImage();
+
+
+      swipeLocked =
+        false;
+
+    },
+    180
+  );
+
+}
+
+
+function swipeToPrevious(){
+
+  if(
+    swipeLocked ||
+    currentIndex <= 0
+  )return;
+
+
+  swipeLocked =
+    true;
+
+
+  viewerImage.style.transition =
+    `
+    transform .18s ease,
+    opacity .18s ease
+    `;
+
+
+  viewerImage.style.transform =
+    `
+    translate3d(105%,0,0)
+    scale(.98)
+    `;
+
+
+  viewerImage.style.opacity =
+    "0";
+
+
+  setTimeout(
+    () => {
+
+      currentIndex--;
+
+
+      viewerImage.style.transition =
+        "";
+
+
+      viewerImage.style.opacity =
+        "";
+
+
+      showImage();
+
+
+      swipeLocked =
+        false;
+
+    },
+    180
+  );
+
+}
+
+
+/* =========================================================
+   INFO MODALS
+========================================================= */
+
+function openInfoModal(id){
+
+  const modal =
     document.getElementById(id);
 
 
-  modal.classList.add("active");
+  if(!modal)return;
+
+
+  modal.classList.add(
+    "active"
+  );
+
 
   modal.setAttribute(
     "aria-hidden",
     "false"
   );
 
-  document.body.style.overflow=
+
+  document.body.style.overflow =
     "hidden";
 
 }
 
 
-function closeModal(id){
+function closeInfoModal(id){
 
-  const modal=
+  const modal =
     document.getElementById(id);
 
 
-  modal.classList.remove("active");
+  if(!modal)return;
+
+
+  modal.classList.remove(
+    "active"
+  );
+
 
   modal.setAttribute(
     "aria-hidden",
@@ -1989,151 +2957,100 @@ function closeModal(id){
 
 
   if(
-    !document.querySelector(
-      ".modal.active"
-    ) &&
     !viewer.classList.contains(
       "active"
+    ) &&
+    !document.querySelector(
+      ".info-modal.active"
     )
   ){
 
-    document.body.style.overflow="";
+    document.body.style.overflow =
+      "";
 
   }
 
 }
 
 
-/* ORDER BUTTON */
-
-document.getElementById(
-  "orderInfoButton"
-).onclick=
-  ()=>openModal("orderModal");
-
-
-/* TESTIMONIAL BUTTON */
-
-document.getElementById(
-  "testimonialButton"
-).onclick=
-  async ()=>{
-
-    openModal(
-      "testimonialModal"
-    );
-
-    await loadTestimonials();
-
-  };
+document
+  .getElementById(
+    "orderInfoButton"
+  )
+  .addEventListener(
+    "click",
+    () =>
+      openInfoModal(
+        "orderModal"
+      )
+  );
 
 
-/* CLOSE MODALS */
+document
+  .getElementById(
+    "testimonialButton"
+  )
+  .addEventListener(
+    "click",
+    () =>
+      openInfoModal(
+        "testimonialModal"
+      )
+  );
 
-document.querySelectorAll(
-  "[data-close]"
-).forEach(
-  button=>{
 
-    button.onclick=
-      ()=>{
-        closeModal(
-          button.dataset.close
-        );
-      };
+document
+  .querySelectorAll(
+    "[data-close-modal]"
+  )
+  .forEach(
+    element => {
+
+      element.addEventListener(
+        "click",
+        () => {
+
+          closeInfoModal(
+            element.dataset.closeModal
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key !== "Escape"
+    )return;
+
+
+    document
+      .querySelectorAll(
+        ".info-modal.active"
+      )
+      .forEach(
+        modal => {
+
+          closeInfoModal(
+            modal.id
+          );
+
+        }
+      );
 
   }
 );
 
 
-/* TESTIMONIAL LOADER
-   Nanti tinggal masukkan screenshot
-   ke:
-
-   site/testimonials/
-
-   JPG / JPEG / PNG / WEBP
-
-   lalu otomatis muncul.
-*/
-
-async function loadTestimonials(){
-
-  const box=
-    document.getElementById(
-      "testimonialContent"
-    );
-
-
-  try{
-
-    const data=
-      await tree();
-
-
-    const files=
-      (data.tree || [])
-
-      .filter(item=>
-        item.type==="blob" &&
-        /^testimonials\//i.test(item.path) &&
-        /\.(jpg|jpeg|png|webp)$/i.test(item.path)
-      )
-
-      .map(item=>item.path)
-
-      .sort(
-        (a,b)=>
-          a.localeCompare(
-            b,
-            undefined,
-            {
-              numeric:true,
-              sensitivity:"base"
-            }
-          )
-      );
-
-
-    /* belum ada screenshot */
-
-    if(!files.length){
-
-      return;
-
-    }
-
-
-    /* screenshot sudah tersedia */
-
-    box.className=
-      "testimonial-grid";
-
-    box.innerHTML=
-      files
-      .map(
-        path=>
-          `
-          <img
-            loading="lazy"
-            src="${RAW+enc(path)}"
-            alt="Testimoni pelanggan"
-          >
-          `
-      )
-      .join("");
-
-
-  }catch(error){
-
-    console.error(error);
-
-  }
-
-}
-
-
-/* START */
+/* =========================================================
+   START
+========================================================= */
 
 loadGallery();
 
