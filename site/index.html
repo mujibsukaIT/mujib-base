@@ -2,10 +2,9 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08070d">
 <meta name="description" content="Mujib, S.Coc. — Custom Base Nama Clash of Clans">
-<meta name="application-name" content="Mujib, S.Coc. ART BASE">
 <title>Mujib, S.Coc. — ART BASE</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,19 +14,15 @@
 <style>
 :root{
   --bg:#08070d;
-  --panel:rgba(18,16,27,.92);
   --text:#f7f5fb;
   --muted:#a19bad;
   --purple:#9b5cff;
   --purple2:#c084fc;
   --green:#25d366;
-  --warning:#f59e0b;
-  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --safe:env(safe-area-inset-bottom,0px);
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
   margin:0;
@@ -45,25 +40,24 @@ button,a{
   -webkit-tap-highlight-color:transparent;
 }
 
-/* ================= PAGE ================= */
+/* PAGE */
 
 .page{
   position:relative;
   width:min(100%,1100px);
   height:100dvh;
   margin:auto;
-  padding:10px 14px calc(8px + var(--safe-bottom));
+  padding:10px 14px calc(8px + var(--safe));
   overflow:hidden;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 .profile{
   position:relative;
   z-index:20;
   height:185px;
-  transition:
-    height .42s cubic-bezier(.16,1,.3,1);
+  transition:height .42s cubic-bezier(.16,1,.3,1);
 }
 
 .profile-main{
@@ -72,14 +66,11 @@ button,a{
   top:6px;
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:14px;
   width:max-content;
   max-width:100%;
   transform:translateX(-50%);
-  transition:
-    transform .42s cubic-bezier(.16,1,.3,1);
-  transform-origin:center top;
+  transition:transform .42s cubic-bezier(.16,1,.3,1);
 }
 
 .logo-wrap{
@@ -102,8 +93,8 @@ button,a{
 }
 
 .profile-copy{
-  text-align:left;
   min-width:0;
+  text-align:left;
 }
 
 .profile-name{
@@ -156,19 +147,22 @@ button,a{
   overflow:hidden;
 }
 
-/* ================= SCROLL ================= */
+/* SCROLL */
 
 .scroll-area{
   height:calc(100dvh - 195px);
   overflow-y:auto;
   overflow-x:hidden;
-  padding:0 2px 300px;
+
+  /* ruang ekstra supaya katalog tetap bisa discroll sampai
+     melewati area sticky price list */
+  padding:0 2px 430px;
+
   overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;
+
   scrollbar-width:thin;
   scrollbar-color:#6d3fc4 transparent;
-  transition:
-    height .42s cubic-bezier(.16,1,.3,1);
 }
 
 .scroll-area::-webkit-scrollbar{
@@ -180,7 +174,7 @@ button,a{
   border-radius:20px;
 }
 
-/* ================= WARNING ================= */
+/* WARNING */
 
 .warning{
   display:flex;
@@ -201,14 +195,12 @@ button,a{
 }
 
 .warning-icon{
-  flex:0 0 auto;
   font-size:20px;
   line-height:1.45;
 }
 
 .warning-text{
   flex:1;
-  min-width:0;
   color:#ddd7e8;
   text-align:justify;
 }
@@ -217,11 +209,11 @@ button,a{
   color:#fff;
 }
 
-/* ================= SECTION TITLES ================= */
+/* TITLES */
 
 .section-title,
 .price-title,
-.section-heading{
+.info-title{
   display:flex;
   align-items:center;
   gap:9px;
@@ -240,9 +232,7 @@ button,a{
 .section-title:before,
 .section-title:after,
 .price-title:before,
-.price-title:after,
-.section-heading:before,
-.section-heading:after{
+.price-title:after{
   content:"";
   height:1px;
   flex:1;
@@ -255,8 +245,7 @@ button,a{
 }
 
 .section-title:after,
-.price-title:after,
-.section-heading:after{
+.price-title:after{
   background:
     linear-gradient(
       90deg,
@@ -265,7 +254,7 @@ button,a{
     );
 }
 
-/* ================= GALLERY ================= */
+/* GALLERY */
 
 .gallery{
   display:grid;
@@ -281,9 +270,12 @@ button,a{
   border-radius:15px;
   background:#12101b;
   cursor:pointer;
+
   opacity:0;
   transform:translateY(10px) scale(.985);
+
   animation:galleryIn .4s ease forwards;
+
   transition:
     transform .18s ease,
     border-color .18s ease;
@@ -313,7 +305,7 @@ button,a{
   font-size:13px;
 }
 
-/* ================= BOTTOM DOCK ================= */
+/* BOTTOM DOCK */
 
 .bottom{
   position:absolute;
@@ -321,19 +313,22 @@ button,a{
   left:0;
   right:0;
   bottom:0;
-  padding:10px 14px calc(9px + var(--safe-bottom));
+
+  padding:10px 14px calc(9px + var(--safe));
+
   background:
     linear-gradient(
       to top,
-      rgba(8,7,13,.99) 0%,
+      rgba(8,7,13,.99),
       rgba(8,7,13,.93) 64%,
-      rgba(8,7,13,0) 100%
+      rgba(8,7,13,0)
     );
+
   transform:translate3d(0,0,0);
+
   transition:
     transform .42s cubic-bezier(.16,1,.3,1),
     opacity .28s ease;
-  will-change:transform;
 }
 
 .bottom.dock-hidden{
@@ -356,8 +351,10 @@ button,a{
 .price{
   padding:8px 4px;
   text-align:center;
+
   border:1px solid rgba(155,92,255,.30);
   border-radius:13px;
+
   background:
     linear-gradient(
       145deg,
@@ -385,7 +382,7 @@ footer{
   font-size:11px;
 }
 
-/* ================= ACTION BUTTONS ================= */
+/* ACTION BUTTONS */
 
 .action-row{
   display:grid;
@@ -396,20 +393,24 @@ footer{
 .action-button{
   min-width:0;
   height:50px;
+
   display:flex;
   align-items:center;
   justify-content:center;
   gap:6px;
+
   padding:0 7px;
+
   border-radius:15px;
   border:1px solid rgba(255,255,255,.1);
+
   text-decoration:none;
   cursor:pointer;
+
   font-family:"Space Grotesk",sans-serif;
   font-size:11px;
-  transition:
-    transform .18s ease,
-    filter .18s ease;
+
+  transition:transform .18s ease;
 }
 
 .action-button:active{
@@ -424,6 +425,7 @@ footer{
       rgba(155,92,255,.17),
       rgba(18,16,27,.95)
     );
+
   border-color:rgba(155,92,255,.34);
   color:#dfd2ff;
 }
@@ -443,44 +445,53 @@ footer{
   white-space:nowrap;
 }
 
-/* ================= INFO MODALS ================= */
+/* MODAL */
 
-.info-modal{
+.modal{
   position:fixed;
   inset:0;
   z-index:3000;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding:16px;
+
   opacity:0;
   visibility:hidden;
+
   transition:
     opacity .22s ease,
     visibility .22s ease;
 }
 
-.info-modal.active{
+.modal.active{
   opacity:1;
   visibility:visible;
 }
 
-.info-modal-backdrop{
+.backdrop{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,.76);
   backdrop-filter:blur(7px);
 }
 
-.info-panel{
+.panel{
   position:relative;
   z-index:1;
-  width:min(94vw,620px);
-  max-height:min(82dvh,700px);
+
+  width:min(94vw,700px);
+  max-height:min(84dvh,720px);
+
   overflow:auto;
+
   padding:22px 18px 18px;
+
   border:1px solid rgba(155,92,255,.34);
   border-radius:22px;
+
   background:
     radial-gradient(
       circle at 50% 0,
@@ -488,53 +499,62 @@ footer{
       transparent 45%
     ),
     rgba(12,10,19,.97);
+
   box-shadow:
     0 25px 100px rgba(0,0,0,.7),
     0 0 40px rgba(139,92,246,.1);
+
   transform:translateY(16px) scale(.97);
+
   transition:
     transform .28s cubic-bezier(.16,1,.3,1);
 }
 
-.info-modal.active .info-panel{
+.modal.active .panel{
   transform:translateY(0) scale(1);
 }
 
-.info-close{
+.close{
   position:absolute;
   top:10px;
   right:10px;
+
   width:38px;
   height:38px;
+
   border:1px solid rgba(255,255,255,.12);
   border-radius:50%;
+
   background:rgba(20,16,30,.9);
   color:#fff;
+
   font-size:25px;
   cursor:pointer;
 }
 
-.info-panel-title{
+.info-title{
   padding:5px 42px 16px 2px;
-  font-family:"Orbitron",sans-serif;
   font-size:15px;
-  font-weight:800;
-  letter-spacing:1.1px;
-  text-transform:uppercase;
 }
 
-.modal-order-list{
+/* ORDER STEPS */
+
+.steps{
   display:grid;
+  grid-template-columns:repeat(2,1fr);
   gap:9px;
 }
 
-.modal-order-card{
+.step{
   display:flex;
   gap:11px;
   align-items:flex-start;
+
   padding:12px;
+
   border:1px solid rgba(155,92,255,.22);
   border-radius:15px;
+
   background:
     linear-gradient(
       145deg,
@@ -543,100 +563,120 @@ footer{
     );
 }
 
-.modal-number{
+.num{
   flex:0 0 30px;
+
   width:30px;
   height:30px;
+
   display:grid;
   place-items:center;
+
   border-radius:50%;
+
   background:rgba(155,92,255,.18);
   border:1px solid rgba(192,132,252,.35);
+
   color:#d3a7ff;
-  font-family:"Orbitron",sans-serif;
+
+  font-family:"Orbitron";
   font-weight:800;
   font-size:12px;
 }
 
-.modal-order-card h3{
+.step h3{
   margin:1px 0 4px;
   font-size:12px;
 }
 
-.modal-order-card p{
+.step p{
   margin:0;
   color:#bcb4c8;
   font-size:11px;
   line-height:1.5;
 }
 
-.modal-note{
+.note{
   margin-top:12px;
   padding:11px 12px;
+
   border:1px solid rgba(245,158,11,.22);
   border-radius:13px;
+
   color:#d9d2e1;
   background:rgba(245,158,11,.05);
+
   font-size:10.5px;
   line-height:1.5;
 }
 
-/* ================= TESTIMONIAL ================= */
+/* TESTIMONIAL */
 
-.testimonial-panel{
-  max-height:76dvh;
-}
+.testimonial-empty{
+  padding:38px 18px;
 
-.testimonial-placeholder{
-  padding:20px 15px;
-  margin-bottom:9px;
-  border:1px dashed rgba(192,132,252,.32);
+  border:1px dashed rgba(192,132,252,.35);
   border-radius:17px;
-  background:rgba(155,92,255,.055);
+
   text-align:center;
-}
-
-.placeholder-icon{
-  font-size:28px;
-}
-
-.testimonial-placeholder h3{
-  margin:8px 0 5px;
-  font-family:"Orbitron",sans-serif;
-  font-size:12px;
-}
-
-.testimonial-placeholder p{
-  margin:0;
   color:#c5bdcf;
+}
+
+.testimonial-empty .icon{
+  font-size:32px;
+}
+
+.testimonial-empty strong{
+  display:block;
+  margin-top:8px;
+
+  font-family:"Orbitron";
+  font-size:13px;
+  color:#fff;
+}
+
+.testimonial-empty p{
+  margin:7px 0 0;
   font-size:11px;
 }
 
-.testimonial-placeholder small{
-  display:block;
-  margin-top:6px;
-  color:#756d80;
-  font-size:9px;
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-/* ================= VIEWER ================= */
+.testimonial-grid img{
+  display:block;
+  width:100%;
+
+  border-radius:14px;
+  border:1px solid rgba(155,92,255,.25);
+}
+
+/* IMAGE VIEWER */
 
 .viewer{
   position:fixed;
   inset:0;
   z-index:2000;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding:10px;
+
   background:
     radial-gradient(
       circle at center,
       rgba(65,35,100,.28),
       rgba(0,0,0,.97) 68%
     );
+
   opacity:0;
   visibility:hidden;
+
   transition:
     opacity .25s ease,
     visibility .25s ease;
@@ -650,6 +690,7 @@ footer{
 .viewer-box{
   width:min(96vw,1100px);
   max-height:100%;
+
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -665,39 +706,51 @@ footer{
 .close-button{
   width:42px;
   height:42px;
+
   border:1px solid rgba(255,255,255,.14);
   border-radius:50%;
+
   background:rgba(15,12,24,.82);
   color:#fff;
+
   font-size:27px;
-  line-height:1;
   cursor:pointer;
 }
 
 .viewer-image-wrap{
   position:relative;
+
   width:min(100%,1040px);
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   overflow:hidden;
+
   padding:0 8px;
   border-radius:14px;
 }
 
 .viewer-image{
   display:block;
-  touch-action:pan-y;
+
+  touch-action:none;
   user-select:none;
   -webkit-user-drag:none;
-  will-change:transform,opacity;
+
   max-width:min(92vw,1040px);
   max-height:70vh;
+
   object-fit:contain;
+
   border-radius:12px;
+
   box-shadow:0 20px 70px rgba(0,0,0,.7);
+
   opacity:0;
   transform:scale(.94);
+
   transition:
     opacity .2s ease,
     transform .28s cubic-bezier(.2,.8,.2,1);
@@ -722,12 +775,14 @@ footer{
 .navigation button{
   width:46px;
   height:46px;
+
   border:1px solid rgba(155,92,255,.35);
   border-radius:50%;
+
   background:rgba(15,12,24,.9);
   color:#fff;
+
   font-size:30px;
-  line-height:1;
   cursor:pointer;
 }
 
@@ -738,6 +793,7 @@ footer{
 .counter{
   min-width:65px;
   text-align:center;
+
   font-family:"Orbitron";
   font-size:12px;
   font-weight:700;
@@ -745,21 +801,24 @@ footer{
 
 .viewer-tip{
   width:min(92vw,680px);
+
   padding:10px 14px;
+
   border:1px solid rgba(245,158,11,.24);
   border-radius:14px;
+
   background:rgba(18,16,27,.84);
   color:#ddd7e8;
+
   text-align:center;
   font-size:11px;
-  line-height:1.45;
 }
 
 .viewer-tip b{
   color:#f7c44f;
 }
 
-/* ================= ANIMATION ================= */
+/* ANIMATION */
 
 @keyframes galleryIn{
   to{
@@ -768,38 +827,25 @@ footer{
   }
 }
 
-@media (prefers-reduced-motion:reduce){
-  *,
-  *:before,
-  *:after{
-    animation:none!important;
-    transition:none!important;
+/* RESPONSIVE */
+
+@media(max-width:520px){
+
+  .steps{
+    grid-template-columns:1fr;
   }
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:520px){
 
   .action-button{
     font-size:10px;
-    height:46px;
+    height:48px;
   }
 
   .action-button span{
     font-size:16px;
   }
-
-  .order-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .trust{
-    grid-template-columns:1fr;
-  }
 }
 
-@media (min-width:700px){
+@media(min-width:700px){
 
   .profile{
     height:150px;
@@ -814,22 +860,15 @@ footer{
   }
 }
 
-/* ================= LANDSCAPE ================= */
-
-@media (orientation:landscape) and (min-width:700px){
+@media(orientation:landscape) and (min-width:700px){
 
   .profile{
     height:108px;
   }
 
-  /*
-    Logo + judul tetap SEJAJAR.
-    Tidak ada logo di atas judul.
-  */
   .profile-main{
     top:5px;
     transform:translateX(-50%) scale(.78);
-    transform-origin:center top;
   }
 
   .scroll-area{
@@ -857,7 +896,7 @@ footer{
   }
 
   .bottom{
-    padding:7px 10px calc(6px + var(--safe-bottom));
+    padding:7px 10px calc(6px + var(--safe));
   }
 
   .price-title{
@@ -892,7 +931,7 @@ footer{
   }
 }
 
-@media (max-width:360px){
+@media(max-width:360px){
 
   .page{
     padding-left:9px;
@@ -911,14 +950,6 @@ footer{
   .price-grid{
     gap:5px;
   }
-
-  .price .th{
-    font-size:10px;
-  }
-
-  .price .rp{
-    font-size:12px;
-  }
 }
 </style>
 </head>
@@ -934,14 +965,16 @@ footer{
     <div class="logo-wrap">
       <img
         class="logo"
-        src="logo.png"
+        src="https://raw.githubusercontent.com/mujibsukaIT/mujib-base/main/logo.png"
         alt="Logo Mujib S.Coc."
-        onerror="this.style.opacity='.15'"
       >
     </div>
 
     <div class="profile-copy">
-      <h1 class="profile-name">Mujib, S.Coc.</h1>
+
+      <h1 class="profile-name">
+        Mujib, S.Coc.
+      </h1>
 
       <div class="badge">
         ART BASE CREATOR
@@ -950,6 +983,7 @@ footer{
       <p class="subtitle">
         Custom Base Nama • Clash of Clans
       </p>
+
     </div>
 
   </div>
@@ -965,16 +999,17 @@ footer{
 
   <div class="warning">
 
-    <div class="warning-icon" aria-hidden="true">
+    <div class="warning-icon">
       ⚠️
     </div>
 
     <div class="warning-text">
+
       Jika tombol WhatsApp tidak ter-direct ke aplikasi,
       buka halaman ini melalui browser HP.
-      Tekan titik tiga di pojok kanan atas,
-      lalu pilih browser, atau chat manual di
-      <b>085876832230</b>
+      Tekan titik tiga di pojok kanan atas, lalu pilih browser,
+      atau chat manual di <b>085876832230</b>
+
     </div>
 
   </div>
@@ -985,7 +1020,10 @@ footer{
   </div>
 
 
-  <div class="gallery" id="gallery">
+  <div
+    class="gallery"
+    id="gallery"
+  >
 
     <div class="loading">
       Memuat base...
@@ -996,9 +1034,12 @@ footer{
 </section>
 
 
-<!-- ================= BOTTOM ================= -->
+<!-- STICKY BOTTOM -->
 
-<section class="bottom" id="bottomDock">
+<section
+  class="bottom"
+  id="bottomDock"
+>
 
   <div class="price-title">
     Price List
@@ -1063,7 +1104,7 @@ footer{
       class="action-button action-whatsapp"
       href="https://wa.me/6285876832230"
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener"
     >
       <span>💬</span>
       <b>ORDER VIA WHATSAPP</b>
@@ -1086,43 +1127,42 @@ footer{
 </main>
 
 
-<!-- ================= CARA PESAN ================= -->
+<!-- CARA PESAN -->
 
 <div
-  class="info-modal"
+  class="modal"
   id="orderModal"
   aria-hidden="true"
 >
 
   <div
-    class="info-modal-backdrop"
-    data-close-modal="orderModal"
+    class="backdrop"
+    data-close="orderModal"
   ></div>
 
 
-  <div class="info-panel">
+  <div class="panel">
 
     <button
-      class="info-close"
+      class="close"
+      data-close="orderModal"
       type="button"
-      data-close-modal="orderModal"
-      aria-label="Tutup"
     >
       ×
     </button>
 
 
-    <div class="info-panel-title">
+    <div class="info-title">
       Cara Pemesanan
     </div>
 
 
-    <div class="modal-order-list">
+    <div class="steps">
 
 
-      <article class="modal-order-card">
+      <article class="step">
 
-        <div class="modal-number">
+        <div class="num">
           1
         </div>
 
@@ -1142,9 +1182,9 @@ footer{
       </article>
 
 
-      <article class="modal-order-card">
+      <article class="step">
 
-        <div class="modal-number">
+        <div class="num">
           2
         </div>
 
@@ -1156,8 +1196,9 @@ footer{
 
           <p>
             Tentukan pesanan.
-            Pembayaran dilakukan sebelum
-            proses pembuatan dimulai.
+            Metode pembayaran menggunakan
+            <b>QRIS</b> yang akan diberikan
+            sebelum pembuatan.
           </p>
 
         </div>
@@ -1165,21 +1206,21 @@ footer{
       </article>
 
 
-      <article class="modal-order-card">
+      <article class="step">
 
-        <div class="modal-number">
+        <div class="num">
           3
         </div>
 
         <div>
 
           <h3>
-            Kirim Nama / Referensi
+            Kirim Nama & Referensi model base
           </h3>
 
           <p>
             Kirim nama yang ingin dibuat
-            atau pilih model base dari contoh
+            dan pilih model base dari contoh
             yang tersedia.
           </p>
 
@@ -1188,9 +1229,9 @@ footer{
       </article>
 
 
-      <article class="modal-order-card">
+      <article class="step">
 
-        <div class="modal-number">
+        <div class="num">
           4
         </div>
 
@@ -1210,11 +1251,10 @@ footer{
 
       </article>
 
-
     </div>
 
 
-    <div class="modal-note">
+    <div class="note">
 
       🔒 <b>Tanpa login akun.</b>
       Pembuatan base hanya memakai link base CoC.
@@ -1226,77 +1266,53 @@ footer{
 </div>
 
 
-<!-- ================= TESTIMONI ================= -->
+<!-- TESTIMONI -->
 
 <div
-  class="info-modal"
+  class="modal"
   id="testimonialModal"
   aria-hidden="true"
 >
 
   <div
-    class="info-modal-backdrop"
-    data-close-modal="testimonialModal"
+    class="backdrop"
+    data-close="testimonialModal"
   ></div>
 
 
-  <div class="info-panel testimonial-panel">
+  <div class="panel">
 
     <button
-      class="info-close"
+      class="close"
+      data-close="testimonialModal"
       type="button"
-      data-close-modal="testimonialModal"
-      aria-label="Tutup"
     >
       ×
     </button>
 
 
-    <div class="info-panel-title">
+    <div class="info-title">
       Testimoni Pelanggan
     </div>
 
 
-    <div class="testimonial-placeholder">
+    <div
+      id="testimonialContent"
+      class="testimonial-empty"
+    >
 
-      <div class="placeholder-icon">
+      <div class="icon">
         ⭐
       </div>
 
-      <h3>
-        Testimoni Pelanggan
-      </h3>
+      <strong>
+        Akan segera hadir
+      </strong>
 
       <p>
         Screenshot testimoni pelanggan
         akan ditampilkan di sini.
       </p>
-
-      <small>
-        Nanti tinggal tambahkan screenshot asli.
-      </small>
-
-    </div>
-
-
-    <div class="testimonial-placeholder">
-
-      <div class="placeholder-icon">
-        💬
-      </div>
-
-      <h3>
-        Review Pelanggan
-      </h3>
-
-      <p>
-        Tempat untuk screenshot chat
-        atau feedback pelanggan.
-      </p>
-
-      <small>
-        Bisa dikembangkan menjadi slider.
-      </small>
 
     </div>
 
@@ -1305,7 +1321,7 @@ footer{
 </div>
 
 
-<!-- ================= IMAGE VIEWER ================= -->
+<!-- IMAGE VIEWER -->
 
 <div
   class="viewer"
@@ -1313,12 +1329,7 @@ footer{
   aria-hidden="true"
 >
 
-  <div
-    class="viewer-box"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Preview base nama"
-  >
+  <div class="viewer-box">
 
     <div class="viewer-top">
 
@@ -1326,7 +1337,6 @@ footer{
         class="close-button"
         id="closeViewer"
         type="button"
-        aria-label="Tutup"
       >
         ×
       </button>
@@ -1339,7 +1349,6 @@ footer{
       <img
         class="viewer-image"
         id="viewerImage"
-        src=""
         alt="Base nama"
       >
 
@@ -1351,7 +1360,6 @@ footer{
       <button
         id="prevButton"
         type="button"
-        aria-label="Gambar sebelumnya"
       >
         ‹
       </button>
@@ -1368,7 +1376,6 @@ footer{
       <button
         id="nextButton"
         type="button"
-        aria-label="Gambar berikutnya"
       >
         ›
       </button>
@@ -1390,141 +1397,119 @@ footer{
 
 <script>
 
-/* =========================================================
-   CONFIG
-========================================================= */
+const OWNER="mujibsukaIT";
+const REPO="mujib-base";
+const BRANCH="main";
 
-const OWNER = "mujibsukaIT";
-const REPO = "mujib-base";
-const BRANCH = "main";
-
-const API =
+const API=
   `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`;
 
-const RAW =
+const RAW=
   `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/`;
 
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const gallery =
+const gallery=
   document.getElementById("gallery");
 
-const scrollArea =
+const scrollArea=
   document.getElementById("scrollArea");
 
-const profile =
+const profile=
   document.getElementById("profile");
 
-const bottomDock =
+const bottomDock=
   document.getElementById("bottomDock");
 
 
-const viewer =
+const viewer=
   document.getElementById("viewer");
 
-const viewerImage =
+const viewerImage=
   document.getElementById("viewerImage");
 
-const closeViewer =
-  document.getElementById("closeViewer");
-
-const prevButton =
-  document.getElementById("prevButton");
-
-const nextButton =
-  document.getElementById("nextButton");
-
-const counter =
+const counter=
   document.getElementById("counter");
 
+const prevButton=
+  document.getElementById("prevButton");
 
-/* =========================================================
-   STATE
-========================================================= */
-
-let images = [];
-
-let currentIndex = 0;
-
-let lastScrollTop = 0;
-
-let scrollTicking = false;
-
-let swipeLocked = false;
-
-let touchStartX = 0;
-let touchStartY = 0;
-
-let touchCurrentX = 0;
-let touchCurrentY = 0;
-
-let isDraggingImage = false;
+const nextButton=
+  document.getElementById("nextButton");
 
 
-/* =========================================================
-   PATH
-========================================================= */
+let images=[];
+let currentIndex=0;
 
-function encodePath(path){
+let lastScrollTop=0;
+
+let touchStartX=0;
+let touchStartY=0;
+let touchX=0;
+let touchY=0;
+
+let dragging=false;
+let locked=false;
+
+
+/* ENCODE PATH */
+
+function enc(path){
 
   return path
     .split("/")
-    .map(part => encodeURIComponent(part))
+    .map(encodeURIComponent)
     .join("/");
 
 }
 
 
-/* =========================================================
-   LOAD GALLERY
-========================================================= */
+/* GITHUB TREE */
+
+async function tree(){
+
+  const response=
+    await fetch(
+      API,
+      {
+        headers:{
+          Accept:"application/vnd.github+json"
+        },
+        cache:"no-store"
+      }
+    );
+
+  if(!response.ok){
+    throw Error(response.status);
+  }
+
+  return response.json();
+
+}
+
+
+/* LOAD GALLERY */
 
 async function loadGallery(){
 
   try{
 
-    const response =
-      await fetch(API,{
-        headers:{
-          Accept:"application/vnd.github+json"
-        },
-        cache:"no-store"
-      });
+    const data=
+      await tree();
 
 
-    if(!response.ok){
+    images=
+      (data.tree || [])
 
-      throw new Error(
-        `GitHub API ${response.status}`
-      );
-
-    }
-
-
-    const tree =
-      await response.json();
-
-
-    images =
-      (tree.tree || [])
-
-      .filter(item =>
-
-        item.type === "blob" &&
-
+      .filter(item=>
+        item.type==="blob" &&
         /^gallery\//i.test(item.path) &&
-
         /\.(webp|jpg|jpeg|png)$/i.test(item.path)
-
       )
 
-      .map(item => item.path)
+      .map(item=>item.path)
 
       .sort(
-        (a,b) =>
+        (a,b)=>
           a.localeCompare(
             b,
             undefined,
@@ -1538,7 +1523,7 @@ async function loadGallery(){
 
     if(!images.length){
 
-      gallery.innerHTML =
+      gallery.innerHTML=
         '<div class="loading">Belum ada base di gallery.</div>';
 
       return;
@@ -1546,13 +1531,57 @@ async function loadGallery(){
     }
 
 
-    renderGallery();
+    gallery.innerHTML="";
+
+
+    images.forEach(
+      (path,index)=>{
+
+        const button=
+          document.createElement("button");
+
+        button.className=
+          "gallery-item";
+
+        button.type="button";
+
+        button.style.animationDelay=
+          Math.min(index*35,450)+"ms";
+
+
+        const image=
+          document.createElement("img");
+
+        image.loading=
+          index<6 ? "eager" : "lazy";
+
+        image.decoding="async";
+
+        image.src=
+          RAW + enc(path);
+
+        image.alt=
+          `Base nama ${index+1}`;
+
+
+        button.appendChild(image);
+
+
+        button.onclick=
+          ()=>openViewer(index);
+
+
+        gallery.appendChild(button);
+
+      }
+    );
+
 
   }catch(error){
 
     console.error(error);
 
-    gallery.innerHTML =
+    gallery.innerHTML=
       '<div class="loading">Gagal memuat base. Coba refresh halaman.</div>';
 
   }
@@ -1560,102 +1589,39 @@ async function loadGallery(){
 }
 
 
-/* =========================================================
-   RENDER GALLERY
-========================================================= */
+/* SCROLL UI */
 
-function renderGallery(){
+function scrollUI(){
 
-  gallery.innerHTML = "";
-
-
-  images.forEach((path,index) => {
-
-    const item =
-      document.createElement("button");
-
-
-    item.type = "button";
-
-    item.className = "gallery-item";
-
-    item.style.animationDelay =
-      `${Math.min(index * 35,450)}ms`;
-
-    item.setAttribute(
-      "aria-label",
-      `Buka base ${index + 1}`
-    );
-
-
-    const image =
-      document.createElement("img");
-
-
-    image.loading =
-      index < 6 ? "eager" : "lazy";
-
-    image.decoding = "async";
-
-    image.alt =
-      `Base nama ${index + 1}`;
-
-    image.src =
-      RAW + encodePath(path);
-
-
-    item.appendChild(image);
-
-
-    item.addEventListener(
-      "click",
-      () => openViewer(index)
-    );
-
-
-    gallery.appendChild(item);
-
-  });
-
-}
-
-
-/* =========================================================
-   SCROLL UI
-========================================================= */
-
-function updateScrollUI(){
-
-  const current =
+  const current=
     scrollArea.scrollTop;
 
-  const delta =
-    current - lastScrollTop;
+  const delta=
+    current-lastScrollTop;
 
 
-  if(current > 35){
-
+  if(current>35){
     profile.classList.add("scrolled");
-
   }
 
 
-  if(current < 8){
-
+  if(current<8){
     profile.classList.remove("scrolled");
-
   }
 
 
-  if(Math.abs(delta) > 1){
+  if(Math.abs(delta)>1){
 
-    if(delta > 0 && current > 18){
+    if(
+      delta>0 &&
+      current>18
+    ){
 
       bottomDock.classList.add(
         "dock-hidden"
       );
 
-    }else if(delta < 0){
+    }else if(delta<0){
 
       bottomDock.classList.remove(
         "dock-hidden"
@@ -1666,7 +1632,7 @@ function updateScrollUI(){
   }
 
 
-  if(current <= 4){
+  if(current<=4){
 
     bottomDock.classList.remove(
       "dock-hidden"
@@ -1675,226 +1641,144 @@ function updateScrollUI(){
   }
 
 
-  lastScrollTop =
-    current;
-
-  scrollTicking =
-    false;
+  lastScrollTop=current;
 
 }
 
 
 scrollArea.addEventListener(
   "scroll",
-  () => {
-
-    if(!scrollTicking){
-
-      requestAnimationFrame(
-        updateScrollUI
-      );
-
-      scrollTicking = true;
-
-    }
-
-  },
+  ()=>requestAnimationFrame(scrollUI),
   {passive:true}
 );
 
 
-/* =========================================================
-   VIEWER
-========================================================= */
+/* VIEWER */
 
 function openViewer(index){
 
-  if(!images.length)
-    return;
+  if(!images.length)return;
 
+  currentIndex=index;
 
-  currentIndex =
-    index;
-
-
-  viewer.classList.add(
-    "active"
-  );
+  viewer.classList.add("active");
 
   viewer.setAttribute(
     "aria-hidden",
     "false"
   );
 
-
-  document.body.style.overflow =
-    "hidden";
-
-  document.documentElement.style.overflow =
-    "hidden";
-
-
   showImage();
+
+  document.body.style.overflow=
+    "hidden";
 
 }
 
 
-function closeImageViewer(){
+function closeViewer(){
 
-  viewer.classList.remove(
-    "active"
-  );
+  viewer.classList.remove("active");
 
   viewer.setAttribute(
     "aria-hidden",
     "true"
   );
 
+  viewerImage.className=
+    "viewer-image";
 
-  viewerImage.classList.remove(
-    "show",
-    "dragging"
-  );
+  viewerImage.style.transform="";
 
-  viewerImage.style.transform =
-    "";
-
-  viewerImage.style.opacity =
-    "";
-
-
-  document.body.style.overflow =
-    "";
-
-  document.documentElement.style.overflow =
-    "";
+  document.body.style.overflow="";
 
 }
 
 
 function showImage(){
 
-  viewerImage.classList.remove(
-    "show",
-    "dragging"
+  viewerImage.className=
+    "viewer-image";
+
+  viewerImage.src=
+    RAW + enc(images[currentIndex]);
+
+  viewerImage.alt=
+    `Base nama ${currentIndex+1}`;
+
+
+  counter.textContent=
+    `${currentIndex+1} / ${images.length}`;
+
+
+  prevButton.disabled=
+    currentIndex===0;
+
+  nextButton.disabled=
+    currentIndex===images.length-1;
+
+
+  requestAnimationFrame(
+    ()=>{
+      viewerImage.classList.add("show");
+    }
   );
 
-
-  viewerImage.style.transform =
-    "";
-
-
-  viewerImage.style.opacity =
-    "";
-
-
-  const path =
-    images[currentIndex];
-
-
-  viewerImage.src =
-    RAW + encodePath(path);
-
-
-  viewerImage.alt =
-    `Base nama ${currentIndex + 1}`;
-
-
-  counter.textContent =
-    `${currentIndex + 1} / ${images.length}`;
-
-
-  prevButton.disabled =
-    currentIndex === 0;
-
-
-  nextButton.disabled =
-    currentIndex === images.length - 1;
-
-
-  requestAnimationFrame(() => {
-
-    requestAnimationFrame(() => {
-
-      viewerImage.classList.add(
-        "show"
-      );
-
-    });
-
-  });
-
 }
 
 
-function previousImage(){
+function nav(direction){
 
-  if(currentIndex <= 0)
+  const next=
+    currentIndex+direction;
+
+
+  if(
+    next<0 ||
+    next>=images.length
+  ){
+
     return;
-
-  currentIndex--;
-
-  showImage();
-
-}
-
-
-function nextImage(){
-
-  if(currentIndex >= images.length - 1)
-    return;
-
-  currentIndex++;
-
-  showImage();
-
-}
-
-
-closeViewer.addEventListener(
-  "click",
-  closeImageViewer
-);
-
-
-prevButton.addEventListener(
-  "click",
-  previousImage
-);
-
-
-nextButton.addEventListener(
-  "click",
-  nextImage
-);
-
-
-viewer.addEventListener(
-  "click",
-  event => {
-
-    if(event.target === viewer){
-
-      closeImageViewer();
-
-    }
 
   }
-);
 
 
-/* =========================================================
-   KEYBOARD
-========================================================= */
+  currentIndex=next;
+
+  showImage();
+
+}
+
+
+document.getElementById(
+  "closeViewer"
+).onclick=
+  closeViewer;
+
+
+prevButton.onclick=
+  ()=>nav(-1);
+
+nextButton.onclick=
+  ()=>nav(1);
+
+
+viewer.onclick=
+  event=>{
+
+    if(event.target===viewer){
+      closeViewer();
+    }
+
+  };
+
 
 document.addEventListener(
   "keydown",
-  event => {
+  event=>{
 
     if(
-      !viewer.classList.contains(
-        "active"
-      )
+      !viewer.classList.contains("active")
     ){
 
       return;
@@ -1902,59 +1786,42 @@ document.addEventListener(
     }
 
 
-    if(event.key === "Escape"){
-
-      closeImageViewer();
-
+    if(event.key==="Escape"){
+      closeViewer();
     }
 
 
-    if(event.key === "ArrowLeft"){
-
-      previousImage();
-
+    if(event.key==="ArrowLeft"){
+      nav(-1);
     }
 
 
-    if(event.key === "ArrowRight"){
-
-      nextImage();
-
+    if(event.key==="ArrowRight"){
+      nav(1);
     }
 
   }
 );
 
 
-/* =========================================================
-   TOUCH SWIPE
-========================================================= */
+/* SWIPE */
 
 viewerImage.addEventListener(
   "touchstart",
-  event => {
+  event=>{
 
-    if(swipeLocked)
-      return;
-
-
-    const touch =
+    const touch=
       event.touches[0];
 
-
-    touchStartX =
-      touchCurrentX =
+    touchStartX=
+      touchX=
       touch.clientX;
 
-
-    touchStartY =
-      touchCurrentY =
+    touchStartY=
+      touchY=
       touch.clientY;
 
-
-    isDraggingImage =
-      true;
-
+    dragging=true;
 
     viewerImage.classList.add(
       "dragging"
@@ -1967,11 +1834,11 @@ viewerImage.addEventListener(
 
 viewerImage.addEventListener(
   "touchmove",
-  event => {
+  event=>{
 
     if(
-      !isDraggingImage ||
-      swipeLocked
+      !dragging ||
+      locked
     ){
 
       return;
@@ -1979,74 +1846,47 @@ viewerImage.addEventListener(
     }
 
 
-    const touch =
+    const touch=
       event.touches[0];
 
 
-    const dx =
-      touch.clientX -
-      touchStartX;
-
-
-    const dy =
-      touch.clientY -
-      touchStartY;
-
-
-    touchCurrentX =
+    touchX=
       touch.clientX;
 
-
-    touchCurrentY =
+    touchY=
       touch.clientY;
+
+
+    const dx=
+      touchX-touchStartX;
+
+    const dy=
+      touchY-touchStartY;
 
 
     if(
       Math.abs(dy) >
-      Math.abs(dx) * 1.15
+      Math.abs(dx)*1.15
     ){
-
-      viewerImage.style.transform =
-        "translate3d(0,0,0) scale(1)";
 
       return;
 
     }
 
 
-    const limit =
-      window.innerWidth * .55;
+    const limit=
+      innerWidth*.55;
 
 
-    const limited =
+    const limited=
       Math.max(
         -limit,
         Math.min(limit,dx)
       );
 
 
-    /*
-      EDGE RESISTANCE:
-      Kalau sudah gambar pertama /
-      terakhir, gerakannya ditahan.
-      Tidak lagi terasa seperti gambar
-      nempel/ketahan aneh di pinggir.
-    */
-
-    let resistance = 0.82;
-
-    if(
-      (dx > 0 && currentIndex === 0) ||
-      (dx < 0 && currentIndex === images.length - 1)
-    ){
-
-      resistance = 0.22;
-
-    }
-
-
-    viewerImage.style.transform =
-      `translate3d(${limited * resistance}px,0,0) scale(1)`;
+    viewerImage.style.transform=
+      `translate3d(${limited*.82}px,0,0) scale(1)`;
 
   },
   {passive:true}
@@ -2055,249 +1895,92 @@ viewerImage.addEventListener(
 
 viewerImage.addEventListener(
   "touchend",
-  () => {
+  ()=>{
 
-    if(
-      !isDraggingImage ||
-      swipeLocked
-    ){
-
-      return;
-
-    }
+    if(!dragging)return;
 
 
-    const dx =
-      touchCurrentX -
-      touchStartX;
+    dragging=false;
 
 
-    const dy =
-      touchCurrentY -
-      touchStartY;
+    viewerImage.classList.remove(
+      "dragging"
+    );
 
 
-    const distance =
-      Math.abs(dx);
+    const dx=
+      touchX-touchStartX;
+
+    const dy=
+      touchY-touchStartY;
 
 
-    const threshold =
+    const threshold=
       Math.max(
         55,
-        Math.min(
-          110,
-          window.innerWidth * .16
-        )
+        innerWidth*.16
       );
 
 
-    isDraggingImage =
-      false;
-
-
-    viewerImage.classList.remove(
-      "dragging"
-    );
-
-
     if(
-      distance < threshold ||
-      Math.abs(dy) > Math.abs(dx)
+      Math.abs(dx)>threshold &&
+      Math.abs(dx)>Math.abs(dy)
     ){
 
-      viewerImage.style.transform =
-        "translate3d(0,0,0) scale(1)";
+      if(
+        dx<0 &&
+        currentIndex<images.length-1
+      ){
 
-      return;
+        nav(1);
+
+      }else if(
+        dx>0 &&
+        currentIndex>0
+      ){
+
+        nav(-1);
+
+      }
 
     }
 
 
-    if(
-      dx < 0 &&
-      currentIndex < images.length - 1
-    ){
-
-      swipeToNext();
-
-    }else if(
-      dx > 0 &&
-      currentIndex > 0
-    ){
-
-      swipeToPrevious();
-
-    }else{
-
-      viewerImage.style.transform =
-        "translate3d(0,0,0) scale(1)";
-
-    }
+    viewerImage.style.transform="";
 
   },
   {passive:true}
 );
 
 
-viewerImage.addEventListener(
-  "touchcancel",
-  () => {
+/* MODALS */
 
-    isDraggingImage = false;
+function openModal(id){
 
-    viewerImage.classList.remove(
-      "dragging"
-    );
-
-    viewerImage.style.transform =
-      "translate3d(0,0,0) scale(1)";
-
-  },
-  {passive:true}
-);
-
-
-/* =========================================================
-   SWIPE TRANSITIONS
-========================================================= */
-
-function swipeToNext(){
-
-  if(
-    swipeLocked ||
-    currentIndex >= images.length - 1
-  ){
-
-    return;
-
-  }
-
-
-  swipeLocked = true;
-
-
-  viewerImage.style.transition =
-    "transform .18s ease,opacity .18s ease";
-
-
-  viewerImage.style.transform =
-    "translate3d(-105%,0,0) scale(.98)";
-
-
-  viewerImage.style.opacity =
-    "0";
-
-
-  setTimeout(() => {
-
-    currentIndex++;
-
-    viewerImage.style.transition =
-      "";
-
-    viewerImage.style.opacity =
-      "";
-
-    showImage();
-
-    swipeLocked = false;
-
-  },180);
-
-}
-
-
-function swipeToPrevious(){
-
-  if(
-    swipeLocked ||
-    currentIndex <= 0
-  ){
-
-    return;
-
-  }
-
-
-  swipeLocked = true;
-
-
-  viewerImage.style.transition =
-    "transform .18s ease,opacity .18s ease";
-
-
-  viewerImage.style.transform =
-    "translate3d(105%,0,0) scale(.98)";
-
-
-  viewerImage.style.opacity =
-    "0";
-
-
-  setTimeout(() => {
-
-    currentIndex--;
-
-    viewerImage.style.transition =
-      "";
-
-    viewerImage.style.opacity =
-      "";
-
-    showImage();
-
-    swipeLocked = false;
-
-  },180);
-
-}
-
-
-/* =========================================================
-   INFO MODALS
-========================================================= */
-
-function openInfoModal(id){
-
-  const modal =
+  const modal=
     document.getElementById(id);
 
 
-  if(!modal)
-    return;
-
-
-  modal.classList.add(
-    "active"
-  );
-
+  modal.classList.add("active");
 
   modal.setAttribute(
     "aria-hidden",
     "false"
   );
 
-
-  document.body.style.overflow =
+  document.body.style.overflow=
     "hidden";
 
 }
 
 
-function closeInfoModal(id){
+function closeModal(id){
 
-  const modal =
+  const modal=
     document.getElementById(id);
 
 
-  if(!modal)
-    return;
-
-
-  modal.classList.remove(
-    "active"
-  );
-
+  modal.classList.remove("active");
 
   modal.setAttribute(
     "aria-hidden",
@@ -2306,90 +1989,151 @@ function closeInfoModal(id){
 
 
   if(
-    !viewer.classList.contains("active") &&
     !document.querySelector(
-      ".info-modal.active"
+      ".modal.active"
+    ) &&
+    !viewer.classList.contains(
+      "active"
     )
   ){
 
-    document.body.style.overflow =
-      "";
+    document.body.style.overflow="";
 
   }
 
 }
 
 
-/* =========================================================
-   MODAL BUTTONS
-========================================================= */
+/* ORDER BUTTON */
 
-document
-  .getElementById("orderInfoButton")
-  .addEventListener(
-    "click",
-    () => openInfoModal("orderModal")
-  );
+document.getElementById(
+  "orderInfoButton"
+).onclick=
+  ()=>openModal("orderModal");
 
 
-document
-  .getElementById("testimonialButton")
-  .addEventListener(
-    "click",
-    () =>
-      openInfoModal(
-        "testimonialModal"
-      )
-  );
+/* TESTIMONIAL BUTTON */
 
+document.getElementById(
+  "testimonialButton"
+).onclick=
+  async ()=>{
 
-document
-  .querySelectorAll(
-    "[data-close-modal]"
-  )
-  .forEach(el => {
-
-    el.addEventListener(
-      "click",
-      () => {
-
-        closeInfoModal(
-          el.dataset.closeModal
-        );
-
-      }
+    openModal(
+      "testimonialModal"
     );
 
-  });
+    await loadTestimonials();
+
+  };
 
 
-document.addEventListener(
-  "keydown",
-  event => {
+/* CLOSE MODALS */
 
-    if(event.key !== "Escape")
-      return;
+document.querySelectorAll(
+  "[data-close]"
+).forEach(
+  button=>{
 
-
-    document
-      .querySelectorAll(
-        ".info-modal.active"
-      )
-      .forEach(modal => {
-
-        closeInfoModal(
-          modal.id
+    button.onclick=
+      ()=>{
+        closeModal(
+          button.dataset.close
         );
-
-      });
+      };
 
   }
 );
 
 
-/* =========================================================
-   START
-========================================================= */
+/* TESTIMONIAL LOADER
+   Nanti tinggal masukkan screenshot
+   ke:
+
+   site/testimonials/
+
+   JPG / JPEG / PNG / WEBP
+
+   lalu otomatis muncul.
+*/
+
+async function loadTestimonials(){
+
+  const box=
+    document.getElementById(
+      "testimonialContent"
+    );
+
+
+  try{
+
+    const data=
+      await tree();
+
+
+    const files=
+      (data.tree || [])
+
+      .filter(item=>
+        item.type==="blob" &&
+        /^testimonials\//i.test(item.path) &&
+        /\.(jpg|jpeg|png|webp)$/i.test(item.path)
+      )
+
+      .map(item=>item.path)
+
+      .sort(
+        (a,b)=>
+          a.localeCompare(
+            b,
+            undefined,
+            {
+              numeric:true,
+              sensitivity:"base"
+            }
+          )
+      );
+
+
+    /* belum ada screenshot */
+
+    if(!files.length){
+
+      return;
+
+    }
+
+
+    /* screenshot sudah tersedia */
+
+    box.className=
+      "testimonial-grid";
+
+    box.innerHTML=
+      files
+      .map(
+        path=>
+          `
+          <img
+            loading="lazy"
+            src="${RAW+enc(path)}"
+            alt="Testimoni pelanggan"
+          >
+          `
+      )
+      .join("");
+
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* START */
 
 loadGallery();
 
