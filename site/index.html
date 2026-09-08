@@ -13,7 +13,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
@@ -23,7 +26,7 @@
 
 :root{
   --bg:#08070d;
-  --panel:rgba(18,16,27,.94);
+  --panel:rgba(18,16,27,.92);
 
   --text:#f7f5fb;
   --muted:#a19bad;
@@ -35,12 +38,6 @@
   --warning:#f59e0b;
 
   --safe-bottom:env(safe-area-inset-bottom,0px);
-
-  /*
-   * Tinggi area bawah yang menampung
-   * Price List + tombol.
-   */
-  --dock-space:255px;
 }
 
 *{
@@ -106,7 +103,12 @@ a{
 
   z-index:20;
 
-  height:185px;
+  /*
+   * Sebelumnya 185px.
+   * Ini diperkecil supaya warning tidak terlalu jauh
+   * dari logo + nama.
+   */
+  height:115px;
 
   transition:
     height .42s cubic-bezier(.16,1,.3,1);
@@ -128,8 +130,14 @@ a{
 
   transform:translateX(-50%);
 
+  /*
+   * Sedikit transparan seperti sebelumnya.
+   */
+  opacity:.84;
+
   transition:
-    transform .42s cubic-bezier(.16,1,.3,1);
+    transform .42s cubic-bezier(.16,1,.3,1),
+    opacity .35s ease;
 
   transform-origin:center top;
 }
@@ -220,7 +228,9 @@ a{
 }
 
 
-/* HEADER SCROLLED */
+/* =========================================================
+   HEADER SCROLLED
+========================================================= */
 
 .profile.scrolled{
   height:58px;
@@ -232,6 +242,8 @@ a{
   transform:
     translateX(-50%)
     scale(.64);
+
+  opacity:.72;
 }
 
 .profile.scrolled .badge,
@@ -253,19 +265,20 @@ a{
 ========================================================= */
 
 .scroll-area{
-  height:calc(100dvh - 195px);
+  /*
+   * HEADER NORMAL = 115px
+   *
+   * Jadi area scroll mulai tepat setelah header.
+   */
+  height:calc(100dvh - 125px);
 
   overflow-y:auto;
   overflow-x:hidden;
 
-  /*
-   * Extra ruang agar konten terakhir
-   * tetap bisa dinaikkan melewati bottom dock.
-   */
   padding:
     0
     2px
-    var(--dock-space);
+    300px;
 
   overscroll-behavior:contain;
 
@@ -288,6 +301,17 @@ a{
 .scroll-area::-webkit-scrollbar-thumb{
   background:#6d3fc4;
   border-radius:20px;
+}
+
+
+/*
+ * INI FIX UTAMA BUG BAR HITAM.
+ *
+ * Ketika header mengecil saat scroll,
+ * scroll-area ikut diperbesar.
+ */
+.profile.scrolled + .scroll-area{
+  height:calc(100dvh - 68px);
 }
 
 
@@ -795,20 +819,20 @@ a{
     calc(9px + var(--safe-bottom));
 
   /*
-   * Lebih opaque supaya card di belakang
-   * tidak kelihatan menembus Price List.
+   * Semi-transparent.
+   * Gallery tetap bisa samar terlihat di belakang.
    */
   background:
     linear-gradient(
       to top,
-      rgba(8,7,13,1) 0%,
-      rgba(8,7,13,.99) 45%,
-      rgba(8,7,13,.96) 75%,
-      rgba(8,7,13,.88) 100%
+      rgba(8,7,13,.94) 0%,
+      rgba(8,7,13,.86) 55%,
+      rgba(8,7,13,.30) 100%
     );
 
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(7px);
+
+  -webkit-backdrop-filter:blur(7px);
 
   transform:
     translate3d(0,0,0);
@@ -842,6 +866,11 @@ a{
   margin:0 0 7px;
 
   font-size:12px;
+
+  /*
+   * Sedikit transparan.
+   */
+  opacity:.82;
 }
 
 .price-grid{
@@ -863,18 +892,27 @@ a{
 
   border-radius:13px;
 
+  /*
+   * Transparan, bukan panel solid.
+   */
   background:
     linear-gradient(
       145deg,
-      rgba(155,92,255,.10),
-      rgba(18,16,27,.98)
+      rgba(155,92,255,.08),
+      rgba(18,16,27,.72)
     );
+
+  backdrop-filter:blur(4px);
+
+  -webkit-backdrop-filter:blur(4px);
 }
 
 .price .th{
   font-size:11px;
 
   font-weight:800;
+
+  opacity:.88;
 }
 
 .price .rp{
@@ -885,6 +923,8 @@ a{
   font-size:13px;
 
   font-weight:900;
+
+  opacity:.9;
 }
 
 footer{
@@ -895,6 +935,8 @@ footer{
   color:#625b6d;
 
   font-size:11px;
+
+  opacity:.78;
 }
 
 
@@ -958,7 +1000,7 @@ footer{
     linear-gradient(
       145deg,
       rgba(155,92,255,.17),
-      rgba(18,16,27,.98)
+      rgba(18,16,27,.78)
     );
 
   border-color:
@@ -1473,7 +1515,7 @@ footer{
   border-radius:14px;
 
   background:
-    rgba(18,16,27,.92);
+    rgba(18,16,27,.84);
 
   color:#ddd7e8;
 
@@ -1549,16 +1591,16 @@ footer{
 
 @media (min-width:700px){
 
-  :root{
-    --dock-space:220px;
-  }
-
   .profile{
-    height:150px;
+    height:115px;
   }
 
   .scroll-area{
-    height:calc(100dvh - 160px);
+    height:calc(100dvh - 125px);
+  }
+
+  .profile.scrolled + .scroll-area{
+    height:calc(100dvh - 68px);
   }
 
   .gallery{
@@ -1576,12 +1618,8 @@ footer{
 
 @media (orientation:landscape) and (min-width:700px){
 
-  :root{
-    --dock-space:170px;
-  }
-
   .profile{
-    height:108px;
+    height:90px;
   }
 
   .profile-main{
@@ -1592,8 +1630,16 @@ footer{
       scale(.78);
   }
 
+  .profile.scrolled{
+    height:58px;
+  }
+
   .scroll-area{
-    height:calc(100dvh - 118px);
+    height:calc(100dvh - 100px);
+  }
+
+  .profile.scrolled + .scroll-area{
+    height:calc(100dvh - 68px);
   }
 
   .gallery{
@@ -1674,10 +1720,6 @@ footer{
 
 
 @media (max-width:360px){
-
-  :root{
-    --dock-space:270px;
-  }
 
   .page{
     padding-left:9px;
@@ -2400,8 +2442,6 @@ const RAW =
 
 /* =========================================================
    FREE BASE DATA
-   PENTING:
-   FILE ADA LANGSUNG DI DALAM /site/
 ========================================================= */
 
 const FREE_BASES = [
@@ -2741,16 +2781,6 @@ function renderFreeGallery(){
       image.className =
         "free-image";
 
-
-      /*
-       * base.file sekarang berisi:
-       *
-       * site/John Cena (TH 13).jpg
-       *
-       * sehingga RAW otomatis menjadi:
-       *
-       * .../main/site/John Cena...
-       */
 
       image.src =
         RAW +
@@ -3411,7 +3441,7 @@ viewerImage.addEventListener(
       Math.abs(dx) * 1.15
     ){
 
-      viewerImage.style.transform =
+            viewerImage.style.transform =
         "translate3d(0,0,0) scale(1)";
 
       return;
@@ -3442,6 +3472,10 @@ viewerImage.addEventListener(
   }
 );
 
+
+/* =========================================================
+   TOUCH END
+========================================================= */
 
 viewerImage.addEventListener(
   "touchend",
@@ -3529,6 +3563,10 @@ viewerImage.addEventListener(
   }
 );
 
+
+/* =========================================================
+   TOUCH CANCEL
+========================================================= */
 
 viewerImage.addEventListener(
   "touchcancel",
@@ -3659,7 +3697,7 @@ function swipeToPrevious(){
 
 
 /* =========================================================
-   MODALS
+   INFO MODALS
 ========================================================= */
 
 function openInfoModal(id){
@@ -3779,6 +3817,10 @@ document
   );
 
 
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
 document.addEventListener(
   "keydown",
   event => {
@@ -3787,6 +3829,19 @@ document.addEventListener(
       event.key !== "Escape"
     )
       return;
+
+
+    if(
+      viewer.classList.contains(
+        "active"
+      )
+    ){
+
+      closeImageViewer();
+
+      return;
+
+    }
 
 
     document
