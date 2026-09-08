@@ -17,16 +17,30 @@
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
   --bg:#08070d;
-  --panel:rgba(18,16,27,.92);
+  --panel:rgba(18,16,27,.94);
+
   --text:#f7f5fb;
   --muted:#a19bad;
+
   --purple:#9b5cff;
   --purple2:#c084fc;
+
   --green:#25d366;
   --warning:#f59e0b;
+
   --safe-bottom:env(safe-area-inset-bottom,0px);
+
+  /*
+   * Tinggi area bawah yang menampung
+   * Price List + tombol.
+   */
+  --dock-space:255px;
 }
 
 *{
@@ -39,6 +53,7 @@ body{
   width:100%;
   height:100%;
   overflow:hidden;
+
   background:
     radial-gradient(
       circle at 50% -12%,
@@ -46,8 +61,13 @@ body{
       transparent 38%
     ),
     var(--bg);
+
   color:var(--text);
-  font-family:"Space Grotesk",system-ui,sans-serif;
+
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    sans-serif;
 }
 
 button,
@@ -62,13 +82,17 @@ a{
 
 .page{
   position:relative;
+
   width:min(100%,1100px);
   height:100dvh;
+
   margin:auto;
+
   padding:
     10px
     14px
     calc(8px + var(--safe-bottom));
+
   overflow:hidden;
 }
 
@@ -79,34 +103,49 @@ a{
 
 .profile{
   position:relative;
+
   z-index:20;
+
   height:185px;
+
   transition:
     height .42s cubic-bezier(.16,1,.3,1);
+
   will-change:height;
 }
 
 .profile-main{
   position:absolute;
+
   left:50%;
   top:6px;
+
   display:flex;
+
   align-items:center;
+
   gap:14px;
+
   transform:translateX(-50%);
+
   transition:
-    transform .42s cubic-bezier(.16,1,.3,1),
-    scale .42s cubic-bezier(.16,1,.3,1);
+    transform .42s cubic-bezier(.16,1,.3,1);
+
   transform-origin:center top;
 }
 
 .logo-wrap{
   width:78px;
   height:78px;
+
   flex:0 0 78px;
+
   border-radius:23px;
+
   overflow:hidden;
+
   background:#050509;
+
   box-shadow:
     0 0 0 1px rgba(255,255,255,.08),
     0 10px 32px rgba(139,92,246,.25);
@@ -115,7 +154,9 @@ a{
 .logo{
   width:100%;
   height:100%;
+
   display:block;
+
   object-fit:contain;
 }
 
@@ -125,36 +166,61 @@ a{
 
 .profile-name{
   margin:0;
+
   font-family:"Orbitron",sans-serif;
+
   font-size:clamp(25px,6vw,42px);
+
   line-height:1.02;
+
   font-weight:800;
+
   letter-spacing:-1px;
+
   white-space:nowrap;
+
   text-shadow:
     0 0 24px rgba(192,132,252,.14);
 }
 
 .badge{
   display:inline-block;
+
   margin-top:9px;
+
   padding:6px 13px;
-  border:1px solid rgba(155,92,255,.4);
+
+  border:
+    1px solid rgba(155,92,255,.4);
+
   border-radius:999px;
-  background:rgba(139,92,246,.08);
+
+  background:
+    rgba(139,92,246,.08);
+
   color:#cbb8ff;
+
   font-family:"Orbitron",sans-serif;
+
   font-size:10px;
+
   font-weight:700;
+
   letter-spacing:1.25px;
 }
 
 .subtitle{
   margin:9px 0 0;
+
   color:var(--muted);
+
   font-size:13px;
+
   white-space:nowrap;
 }
+
+
+/* HEADER SCROLLED */
 
 .profile.scrolled{
   height:58px;
@@ -162,18 +228,22 @@ a{
 
 .profile.scrolled .profile-main{
   top:2px;
+
   transform:
     translateX(-50%)
     scale(.64);
-  transform-origin:center top;
 }
 
 .profile.scrolled .badge,
 .profile.scrolled .subtitle{
   opacity:0;
+
   pointer-events:none;
+
   height:0;
+
   margin:0;
+
   overflow:hidden;
 }
 
@@ -184,16 +254,29 @@ a{
 
 .scroll-area{
   height:calc(100dvh - 195px);
+
   overflow-y:auto;
   overflow-x:hidden;
+
+  /*
+   * Extra ruang agar konten terakhir
+   * tetap bisa dinaikkan melewati bottom dock.
+   */
   padding:
     0
     2px
-    300px;
+    var(--dock-space);
+
   overscroll-behavior:contain;
+
   -webkit-overflow-scrolling:touch;
+
   scrollbar-width:thin;
-  scrollbar-color:#6d3fc4 transparent;
+
+  scrollbar-color:
+    #6d3fc4
+    transparent;
+
   transition:
     height .42s cubic-bezier(.16,1,.3,1);
 }
@@ -214,32 +297,47 @@ a{
 
 .warning{
   display:flex;
+
   align-items:flex-start;
+
   gap:10px;
+
   margin:0 0 14px;
+
   padding:11px 13px;
-  border:1px solid rgba(245,158,11,.28);
+
+  border:
+    1px solid rgba(245,158,11,.28);
+
   border-radius:15px;
+
   background:
     linear-gradient(
       135deg,
       rgba(245,158,11,.08),
       rgba(139,92,246,.05)
     );
+
   font-size:11.5px;
+
   line-height:1.55;
 }
 
 .warning-icon{
   flex:0 0 auto;
+
   font-size:20px;
+
   line-height:1.45;
 }
 
 .warning-text{
   flex:1;
+
   min-width:0;
+
   color:#ddd7e8;
+
   text-align:justify;
 }
 
@@ -256,17 +354,25 @@ a{
 .price-title,
 .section-heading{
   display:flex;
+
   align-items:center;
+
   gap:9px;
+
   white-space:nowrap;
+
   font-family:"Orbitron",sans-serif;
+
   font-weight:800;
+
   letter-spacing:1.4px;
+
   text-transform:uppercase;
 }
 
 .section-title{
   margin:5px 0 11px;
+
   font-size:12px;
 }
 
@@ -277,8 +383,11 @@ a{
 .section-heading:before,
 .section-heading:after{
   content:"";
+
   height:1px;
+
   flex:1;
+
   background:
     linear-gradient(
       90deg,
@@ -300,30 +409,43 @@ a{
 
 
 /* =========================================================
-   GALLERY
+   PAID GALLERY
 ========================================================= */
 
 .gallery{
   display:grid;
+
   grid-template-columns:
     repeat(2,minmax(0,1fr));
+
   gap:10px;
 }
 
 .gallery-item{
   position:relative;
+
   overflow:hidden;
+
   padding:0;
-  border:1px solid rgba(255,255,255,.08);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
   border-radius:15px;
+
   background:#12101b;
+
   cursor:pointer;
+
   opacity:0;
+
   transform:
     translateY(10px)
     scale(.985);
+
   animation:
     galleryIn .4s ease forwards;
+
   transition:
     transform .18s ease,
     border-color .18s ease;
@@ -340,17 +462,25 @@ a{
 
 .gallery-item img{
   display:block;
+
   width:100%;
+
   aspect-ratio:16/10;
+
   object-fit:cover;
+
   background:#0d0b13;
 }
 
 .loading{
   grid-column:1/-1;
+
   padding:50px 10px;
+
   text-align:center;
+
   color:var(--muted);
+
   font-size:13px;
 }
 
@@ -361,23 +491,38 @@ a{
 
 .free-section{
   margin-top:28px;
+
   padding-top:4px;
 }
 
 .free-intro{
-  margin:-2px 0 14px;
-  padding:11px 13px;
-  border:1px solid rgba(155,92,255,.22);
+  margin:
+    -2px
+    0
+    14px;
+
+  padding:
+    11px
+    13px;
+
+  border:
+    1px solid rgba(155,92,255,.22);
+
   border-radius:14px;
+
   background:
     linear-gradient(
       135deg,
       rgba(155,92,255,.08),
       rgba(18,16,27,.85)
     );
+
   color:#cfc7dc;
+
   text-align:center;
+
   font-size:11px;
+
   line-height:1.5;
 }
 
@@ -387,37 +532,53 @@ a{
 
 .free-grid{
   display:grid;
+
   grid-template-columns:
     repeat(2,minmax(0,1fr));
+
   gap:10px;
 }
 
 .free-card{
   position:relative;
+
   overflow:hidden;
-  border:1px solid rgba(155,92,255,.25);
+
+  border:
+    1px solid rgba(155,92,255,.25);
+
   border-radius:16px;
+
   background:
     linear-gradient(
       145deg,
       rgba(155,92,255,.09),
       rgba(18,16,27,.95)
     );
+
   box-shadow:
     0 8px 30px rgba(0,0,0,.22);
+
   opacity:0;
+
   transform:
     translateY(10px);
+
   animation:
     galleryIn .4s ease forwards;
 }
 
 .free-image{
   display:block;
+
   width:100%;
+
   aspect-ratio:16/10;
+
   object-fit:cover;
+
   background:#0d0b13;
+
   cursor:pointer;
 }
 
@@ -427,48 +588,81 @@ a{
 
 .free-name{
   margin:0;
+
   color:#f5efff;
+
   font-family:"Orbitron",sans-serif;
+
   font-size:11px;
+
   font-weight:800;
+
   letter-spacing:.3px;
 }
 
 .free-label{
   display:inline-block;
+
   margin-top:5px;
+
   padding:3px 7px;
+
   border-radius:999px;
-  background:rgba(37,211,102,.12);
-  border:1px solid rgba(37,211,102,.25);
+
+  background:
+    rgba(37,211,102,.12);
+
+  border:
+    1px solid rgba(37,211,102,.25);
+
   color:#63e991;
+
   font-size:8px;
+
   font-weight:800;
+
   letter-spacing:.7px;
 }
 
 .free-button{
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   gap:6px;
+
   width:100%;
+
   height:38px;
+
   margin-top:9px;
-  border:1px solid rgba(155,92,255,.35);
+
+  border:
+    1px solid rgba(155,92,255,.35);
+
   border-radius:11px;
-  background:rgba(155,92,255,.12);
+
+  background:
+    rgba(155,92,255,.12);
+
   color:#d9c7ff;
+
   text-decoration:none;
+
   font-size:10px;
+
   font-weight:800;
+
   transition:
     transform .18s ease,
     background .18s ease;
 }
 
 .free-button:hover{
-  background:rgba(155,92,255,.2);
+  background:
+    rgba(155,92,255,.2);
 }
 
 .free-button:active{
@@ -477,11 +671,18 @@ a{
 
 .free-empty{
   grid-column:1/-1;
+
   padding:28px 15px;
-  border:1px dashed rgba(192,132,252,.25);
+
+  border:
+    1px dashed rgba(192,132,252,.25);
+
   border-radius:16px;
+
   text-align:center;
+
   color:#746d7f;
+
   font-size:11px;
 }
 
@@ -492,59 +693,85 @@ a{
 
 .info-section{
   margin-top:22px;
+
   padding:20px 0 10px;
 }
 
 .section-heading{
   margin:0 0 13px;
+
   font-size:12px;
 }
 
 .order-grid{
   display:grid;
+
   grid-template-columns:
     repeat(4,minmax(0,1fr));
+
   gap:8px;
 }
 
 .order-card{
   padding:14px 10px;
-  border:1px solid rgba(155,92,255,.28);
+
+  border:
+    1px solid rgba(155,92,255,.28);
+
   border-radius:15px;
+
   background:
     linear-gradient(
       145deg,
       rgba(155,92,255,.1),
       rgba(18,16,27,.94)
     );
+
   text-align:center;
 }
 
 .order-number{
   width:28px;
   height:28px;
+
   margin:0 auto 8px;
+
   display:grid;
+
   place-items:center;
+
   border-radius:50%;
-  background:rgba(155,92,255,.18);
-  border:1px solid rgba(192,132,252,.35);
+
+  background:
+    rgba(155,92,255,.18);
+
+  border:
+    1px solid rgba(192,132,252,.35);
+
   color:#d3a7ff;
+
   font-family:"Orbitron";
+
   font-weight:800;
 }
 
 .order-card h3{
   margin:0 0 6px;
+
   font-size:12px;
+
   font-family:"Orbitron";
+
   letter-spacing:.3px;
 }
 
 .order-card p{
   margin:0;
+
   color:#bcb4c8;
+
   font-size:10.5px;
+
   line-height:1.5;
 }
 
@@ -555,25 +782,41 @@ a{
 
 .bottom{
   position:absolute;
+
   z-index:30;
+
   left:0;
   right:0;
   bottom:0;
+
   padding:
     10px
     14px
     calc(9px + var(--safe-bottom));
+
+  /*
+   * Lebih opaque supaya card di belakang
+   * tidak kelihatan menembus Price List.
+   */
   background:
     linear-gradient(
       to top,
-      rgba(8,7,13,.99) 0%,
-      rgba(8,7,13,.93) 64%,
-      rgba(8,7,13,0) 100%
+      rgba(8,7,13,1) 0%,
+      rgba(8,7,13,.99) 45%,
+      rgba(8,7,13,.96) 75%,
+      rgba(8,7,13,.88) 100%
     );
-  transform:translate3d(0,0,0);
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  transform:
+    translate3d(0,0,0);
+
   transition:
     transform .42s cubic-bezier(.16,1,.3,1),
     opacity .28s ease;
+
   will-change:transform;
 }
 
@@ -584,7 +827,9 @@ a{
       calc(100% + 18px),
       0
     );
+
   opacity:.98;
+
   pointer-events:none;
 }
 
@@ -595,45 +840,60 @@ a{
 
 .price-title{
   margin:0 0 7px;
+
   font-size:12px;
 }
 
 .price-grid{
   display:grid;
+
   grid-template-columns:
     repeat(3,minmax(0,1fr));
+
   gap:7px;
 }
 
 .price{
   padding:8px 4px;
+
   text-align:center;
-  border:1px solid rgba(155,92,255,.30);
+
+  border:
+    1px solid rgba(155,92,255,.30);
+
   border-radius:13px;
+
   background:
     linear-gradient(
       145deg,
       rgba(155,92,255,.10),
-      rgba(18,16,27,.94)
+      rgba(18,16,27,.98)
     );
 }
 
 .price .th{
   font-size:11px;
+
   font-weight:800;
 }
 
 .price .rp{
   margin-top:4px;
+
   color:#bd79ff;
+
   font-size:13px;
+
   font-weight:900;
 }
 
 footer{
   margin:7px 0;
+
   text-align:center;
+
   color:#625b6d;
+
   font-size:11px;
 }
 
@@ -644,27 +904,45 @@ footer{
 
 .action-row{
   display:grid;
+
   grid-template-columns:
     1fr
     1.35fr
     1fr;
+
   gap:7px;
 }
 
 .action-button{
   min-width:0;
+
   height:48px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   gap:6px;
+
   padding:0 7px;
+
   border-radius:15px;
-  border:1px solid rgba(255,255,255,.1);
+
+  border:
+    1px solid rgba(255,255,255,.1);
+
   text-decoration:none;
+
   cursor:pointer;
-  font-family:"Space Grotesk",sans-serif;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
   font-size:11px;
+
   transition:
     transform .18s ease,
     filter .18s ease;
@@ -680,16 +958,20 @@ footer{
     linear-gradient(
       145deg,
       rgba(155,92,255,.17),
-      rgba(18,16,27,.95)
+      rgba(18,16,27,.98)
     );
+
   border-color:
     rgba(155,92,255,.34);
+
   color:#dfd2ff;
 }
 
 .action-whatsapp{
   background:var(--green);
+
   color:#06140a;
+
   box-shadow:
     0 7px 25px rgba(37,211,102,.18);
 }
@@ -700,24 +982,34 @@ footer{
 
 .action-button b{
   font-weight:900;
+
   white-space:nowrap;
 }
 
 
 /* =========================================================
-   MODALS
+   INFO MODALS
 ========================================================= */
 
 .info-modal{
   position:fixed;
+
   inset:0;
+
   z-index:3000;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   padding:16px;
+
   opacity:0;
+
   visibility:hidden;
+
   transition:
     opacity .22s ease,
     visibility .22s ease;
@@ -725,28 +1017,41 @@ footer{
 
 .info-modal.active{
   opacity:1;
+
   visibility:visible;
 }
 
 .info-modal-backdrop{
   position:absolute;
+
   inset:0;
+
   background:rgba(0,0,0,.76);
+
   backdrop-filter:blur(7px);
 }
 
 .info-panel{
   position:relative;
+
   z-index:1;
+
   width:min(94vw,620px);
+
   max-height:min(82dvh,700px);
+
   overflow:auto;
+
   padding:
     22px
     18px
     18px;
-  border:1px solid rgba(155,92,255,.34);
+
+  border:
+    1px solid rgba(155,92,255,.34);
+
   border-radius:22px;
+
   background:
     radial-gradient(
       circle at 50% 0,
@@ -754,12 +1059,15 @@ footer{
       transparent 45%
     ),
     rgba(12,10,19,.97);
+
   box-shadow:
     0 25px 100px rgba(0,0,0,.7),
     0 0 40px rgba(139,92,246,.1);
+
   transform:
     translateY(16px)
     scale(.97);
+
   transition:
     transform .28s cubic-bezier(.16,1,.3,1);
 }
@@ -772,15 +1080,25 @@ footer{
 
 .info-close{
   position:absolute;
+
   top:10px;
   right:10px;
+
   width:38px;
   height:38px;
-  border:1px solid rgba(255,255,255,.12);
+
+  border:
+    1px solid rgba(255,255,255,.12);
+
   border-radius:50%;
-  background:rgba(20,16,30,.9);
+
+  background:
+    rgba(20,16,30,.9);
+
   color:#fff;
+
   font-size:25px;
+
   cursor:pointer;
 }
 
@@ -790,25 +1108,38 @@ footer{
     42px
     16px
     2px;
+
   font-family:"Orbitron",sans-serif;
+
   font-size:15px;
+
   font-weight:800;
+
   letter-spacing:1.1px;
+
   text-transform:uppercase;
 }
 
 .modal-order-list{
   display:grid;
+
   gap:9px;
 }
 
 .modal-order-card{
   display:flex;
+
   gap:11px;
+
   align-items:flex-start;
+
   padding:12px;
-  border:1px solid rgba(155,92,255,.22);
+
+  border:
+    1px solid rgba(155,92,255,.22);
+
   border-radius:15px;
+
   background:
     linear-gradient(
       145deg,
@@ -819,39 +1150,64 @@ footer{
 
 .modal-number{
   flex:0 0 30px;
+
   width:30px;
   height:30px;
+
   display:grid;
+
   place-items:center;
+
   border-radius:50%;
-  background:rgba(155,92,255,.18);
-  border:1px solid rgba(192,132,252,.35);
+
+  background:
+    rgba(155,92,255,.18);
+
+  border:
+    1px solid rgba(192,132,252,.35);
+
   color:#d3a7ff;
+
   font-family:"Orbitron",sans-serif;
+
   font-weight:800;
+
   font-size:12px;
 }
 
 .modal-order-card h3{
   margin:1px 0 4px;
+
   font-size:12px;
 }
 
 .modal-order-card p{
   margin:0;
+
   color:#bcb4c8;
+
   font-size:11px;
+
   line-height:1.5;
 }
 
 .modal-note{
   margin-top:12px;
+
   padding:11px 12px;
-  border:1px solid rgba(245,158,11,.22);
+
+  border:
+    1px solid rgba(245,158,11,.22);
+
   border-radius:13px;
+
   color:#d9d2e1;
-  background:rgba(245,158,11,.05);
+
+  background:
+    rgba(245,158,11,.05);
+
   font-size:10.5px;
+
   line-height:1.5;
 }
 
@@ -866,10 +1222,17 @@ footer{
 
 .testimonial-placeholder{
   padding:20px 15px;
+
   margin-bottom:9px;
-  border:1px dashed rgba(192,132,252,.32);
+
+  border:
+    1px dashed rgba(192,132,252,.32);
+
   border-radius:17px;
-  background:rgba(155,92,255,.055);
+
+  background:
+    rgba(155,92,255,.055);
+
   text-align:center;
 }
 
@@ -879,20 +1242,27 @@ footer{
 
 .testimonial-placeholder h3{
   margin:8px 0 5px;
+
   font-family:"Orbitron",sans-serif;
+
   font-size:12px;
 }
 
 .testimonial-placeholder p{
   margin:0;
+
   color:#c5bdcf;
+
   font-size:11px;
 }
 
 .testimonial-placeholder small{
   display:block;
+
   margin-top:6px;
+
   color:#756d80;
+
   font-size:9px;
 }
 
@@ -903,20 +1273,30 @@ footer{
 
 .viewer{
   position:fixed;
+
   inset:0;
-  z-index:2000;
+
+  z-index:4000;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   padding:10px;
+
   background:
     radial-gradient(
       circle at center,
       rgba(65,35,100,.28),
-      rgba(0,0,0,.97) 68%
+      rgba(0,0,0,.985) 68%
     );
+
   opacity:0;
+
   visibility:hidden;
+
   transition:
     opacity .25s ease,
     visibility .25s ease;
@@ -924,64 +1304,100 @@ footer{
 
 .viewer.active{
   opacity:1;
+
   visibility:visible;
 }
 
 .viewer-box{
   width:min(96vw,1100px);
+
   max-height:100%;
+
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
+
   gap:8px;
 }
 
 .viewer-top{
   width:100%;
+
   display:flex;
+
   justify-content:flex-end;
 }
 
 .close-button{
   width:42px;
   height:42px;
-  border:1px solid rgba(255,255,255,.14);
+
+  border:
+    1px solid rgba(255,255,255,.14);
+
   border-radius:50%;
-  background:rgba(15,12,24,.82);
+
+  background:
+    rgba(15,12,24,.82);
+
   color:#fff;
+
   font-size:27px;
+
   line-height:1;
+
   cursor:pointer;
 }
 
 .viewer-image-wrap{
   position:relative;
+
   width:min(100%,1040px);
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   overflow:hidden;
+
   padding:0 8px;
+
   border-radius:14px;
 }
 
 .viewer-image{
   display:block;
+
   touch-action:none;
+
   user-select:none;
+
   -webkit-user-drag:none;
+
   will-change:
     transform,
     opacity;
+
   max-width:min(92vw,1040px);
+
   max-height:70vh;
+
   object-fit:contain;
+
   border-radius:12px;
+
   box-shadow:
     0 20px 70px rgba(0,0,0,.7);
+
   opacity:0;
+
   transform:
     scale(.94);
+
   transition:
     opacity .2s ease,
     transform .28s cubic-bezier(.2,.8,.2,1);
@@ -989,6 +1405,7 @@ footer{
 
 .viewer-image.show{
   opacity:1;
+
   transform:
     translate3d(0,0,0)
     scale(1);
@@ -1000,20 +1417,32 @@ footer{
 
 .navigation{
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   gap:24px;
 }
 
 .navigation button{
   width:46px;
   height:46px;
-  border:1px solid rgba(155,92,255,.35);
+
+  border:
+    1px solid rgba(155,92,255,.35);
+
   border-radius:50%;
-  background:rgba(15,12,24,.9);
+
+  background:
+    rgba(15,12,24,.9);
+
   color:#fff;
+
   font-size:30px;
+
   line-height:1;
+
   cursor:pointer;
 }
 
@@ -1023,21 +1452,35 @@ footer{
 
 .counter{
   min-width:65px;
+
   text-align:center;
+
   font-family:"Orbitron";
+
   font-size:12px;
+
   font-weight:700;
 }
 
 .viewer-tip{
   width:min(92vw,680px);
+
   padding:10px 14px;
-  border:1px solid rgba(245,158,11,.24);
+
+  border:
+    1px solid rgba(245,158,11,.24);
+
   border-radius:14px;
-  background:rgba(18,16,27,.84);
+
+  background:
+    rgba(18,16,27,.92);
+
   color:#ddd7e8;
+
   text-align:center;
+
   font-size:11px;
+
   line-height:1.45;
 }
 
@@ -1051,21 +1494,27 @@ footer{
 ========================================================= */
 
 @keyframes galleryIn{
+
   to{
     opacity:1;
+
     transform:
       translateY(0)
       scale(1);
   }
+
 }
 
 @media (prefers-reduced-motion:reduce){
+
   *,
   *:before,
   *:after{
     animation:none!important;
+
     transition:none!important;
   }
+
 }
 
 
@@ -1077,6 +1526,7 @@ footer{
 
   .action-button{
     font-size:10px;
+
     height:46px;
   }
 
@@ -1098,6 +1548,10 @@ footer{
 
 
 @media (min-width:700px){
+
+  :root{
+    --dock-space:220px;
+  }
 
   .profile{
     height:150px;
@@ -1122,12 +1576,17 @@ footer{
 
 @media (orientation:landscape) and (min-width:700px){
 
+  :root{
+    --dock-space:170px;
+  }
+
   .profile{
     height:108px;
   }
 
   .profile-main{
     top:5px;
+
     transform:
       translateX(-50%)
       scale(.78);
@@ -1140,12 +1599,14 @@ footer{
   .gallery{
     grid-template-columns:
       repeat(4,minmax(0,1fr));
+
     gap:8px;
   }
 
   .free-grid{
     grid-template-columns:
       repeat(4,minmax(0,1fr));
+
     gap:8px;
   }
 
@@ -1156,12 +1617,15 @@ footer{
 
   .warning{
     font-size:10px;
+
     padding:8px 11px;
+
     margin-bottom:8px;
   }
 
   .section-title{
     margin:4px 0 7px;
+
     font-size:10px;
   }
 
@@ -1174,6 +1638,7 @@ footer{
 
   .price-title{
     margin-bottom:4px;
+
     font-size:10px;
   }
 
@@ -1191,11 +1656,13 @@ footer{
 
   footer{
     margin:4px 0;
+
     font-size:9px;
   }
 
   .action-button{
     height:42px;
+
     font-size:9px;
   }
 
@@ -1208,8 +1675,13 @@ footer{
 
 @media (max-width:360px){
 
+  :root{
+    --dock-space:270px;
+  }
+
   .page{
     padding-left:9px;
+
     padding-right:9px;
   }
 
@@ -1219,6 +1691,7 @@ footer{
 
   .warning{
     padding:10px;
+
     font-size:11px;
   }
 
@@ -1913,7 +2386,9 @@ footer{
 ========================================================= */
 
 const OWNER = "mujibsukaIT";
+
 const REPO = "mujib-base";
+
 const BRANCH = "main";
 
 const API =
@@ -1925,20 +2400,25 @@ const RAW =
 
 /* =========================================================
    FREE BASE DATA
-   GAMBAR BERADA LANGSUNG DI DALAM /site/
+   PENTING:
+   FILE ADA LANGSUNG DI DALAM /site/
 ========================================================= */
 
 const FREE_BASES = [
 
   {
-    file:"John Cena (TH 13).jpg",
+    file:"site/John Cena (TH 13).jpg",
+
     name:"John Cena — TH 13",
+
     link:"https://link.clashofclans.com/en?action=OpenLayout&id=TH13%3AHV%3AAAAAXAAAAAHgDBRZjV-taqygtyJvksiK"
   },
 
   {
-    file:"John Cena (TH 14).jpg",
+    file:"site/John Cena (TH 14).jpg",
+
     name:"John Cena — TH 14",
+
     link:"https://link.clashofclans.com/en?action=OpenLayout&id=TH14%3AHV%3AAAAAKgAAAAKg-3NiX9FBrECvkHNUh3KN"
   }
 
@@ -1988,14 +2468,21 @@ const counter =
 ========================================================= */
 
 let images = [];
+
 let currentIndex = 0;
+
 let lastScrollTop = 0;
+
 let scrollTicking = false;
+
 let swipeLocked = false;
 
 let touchStartX = 0;
+
 let touchStartY = 0;
+
 let touchCurrentX = 0;
+
 let touchCurrentY = 0;
 
 let isDraggingImage = false;
@@ -2010,7 +2497,8 @@ function encodePath(path){
   return path
     .split("/")
     .map(
-      part => encodeURIComponent(part)
+      part =>
+        encodeURIComponent(part)
     )
     .join("/");
 
@@ -2033,9 +2521,11 @@ async function loadGallery(){
             Accept:
               "application/vnd.github+json"
           },
+
           cache:"no-store"
         }
       );
+
 
     if(!response.ok){
 
@@ -2045,8 +2535,10 @@ async function loadGallery(){
 
     }
 
+
     const tree =
       await response.json();
+
 
     images =
       (tree.tree || [])
@@ -2056,14 +2548,17 @@ async function loadGallery(){
 
           item.type === "blob" &&
 
-          /^gallery\//i.test(item.path) &&
+          /^gallery\//i.test(
+            item.path
+          ) &&
 
           /\.(webp|jpg|jpeg|png)$/i
             .test(item.path)
       )
 
       .map(
-        item => item.path
+        item =>
+          item.path
       )
 
       .sort(
@@ -2091,7 +2586,9 @@ async function loadGallery(){
       return;
     }
 
+
     renderGallery();
+
 
   }catch(error){
 
@@ -2118,50 +2615,73 @@ function renderGallery(){
 
   gallery.innerHTML = "";
 
+
   images.forEach(
     (path,index) => {
 
       const item =
-        document.createElement("button");
+        document.createElement(
+          "button"
+        );
 
-      item.type = "button";
+
+      item.type =
+        "button";
 
       item.className =
         "gallery-item";
 
+
       item.style.animationDelay =
         `${Math.min(index * 35,450)}ms`;
+
 
       item.setAttribute(
         "aria-label",
         `Buka base ${index + 1}`
       );
 
+
       const image =
-        document.createElement("img");
+        document.createElement(
+          "img"
+        );
+
 
       image.loading =
         index < 8
           ? "eager"
           : "lazy";
 
+
       image.decoding =
         "async";
+
 
       image.alt =
         `Base nama ${index + 1}`;
 
-      image.src =
-        RAW + encodePath(path);
 
-      item.appendChild(image);
+      image.src =
+        RAW +
+        encodePath(path);
+
+
+      item.appendChild(
+        image
+      );
+
 
       item.addEventListener(
         "click",
-        () => openViewer(index)
+        () =>
+          openViewer(index)
       );
 
-      gallery.appendChild(item);
+
+      gallery.appendChild(
+        item
+      );
 
     }
   );
@@ -2176,6 +2696,7 @@ function renderGallery(){
 function renderFreeGallery(){
 
   freeGallery.innerHTML = "";
+
 
   if(!FREE_BASES.length){
 
@@ -2198,38 +2719,56 @@ function renderFreeGallery(){
     (base,index) => {
 
       const card =
-        document.createElement("article");
+        document.createElement(
+          "article"
+        );
+
 
       card.className =
         "free-card";
+
 
       card.style.animationDelay =
         `${Math.min(index * 45,500)}ms`;
 
 
       const image =
-        document.createElement("img");
+        document.createElement(
+          "img"
+        );
+
 
       image.className =
         "free-image";
 
+
       /*
-       * Karena file berada langsung
-       * di folder /site/, gunakan RAW
-       * + nama file tanpa "free/".
+       * base.file sekarang berisi:
+       *
+       * site/John Cena (TH 13).jpg
+       *
+       * sehingga RAW otomatis menjadi:
+       *
+       * .../main/site/John Cena...
        */
 
       image.src =
-        RAW + encodePath(base.file);
+        RAW +
+        encodePath(
+          base.file
+        );
+
 
       image.alt =
         base.name ||
         `Free Base ${index + 1}`;
 
+
       image.loading =
         index < 4
           ? "eager"
           : "lazy";
+
 
       image.decoding =
         "async";
@@ -2237,25 +2776,33 @@ function renderFreeGallery(){
 
       image.addEventListener(
         "click",
-        () => openFreeViewer(
-          base.file,
-          base.name
-        )
+        () =>
+          openFreeViewer(
+            base.file,
+            base.name
+          )
       );
 
 
       const content =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       content.className =
         "free-content";
 
 
       const name =
-        document.createElement("h3");
+        document.createElement(
+          "h3"
+        );
+
 
       name.className =
         "free-name";
+
 
       name.textContent =
         base.name ||
@@ -2263,29 +2810,40 @@ function renderFreeGallery(){
 
 
       const label =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       label.className =
         "free-label";
+
 
       label.textContent =
         "FREE BASE";
 
 
       const button =
-        document.createElement("a");
+        document.createElement(
+          "a"
+        );
+
 
       button.className =
         "free-button";
 
+
       button.href =
         base.link || "#";
+
 
       button.target =
         "_blank";
 
+
       button.rel =
         "noopener noreferrer";
+
 
       button.innerHTML =
         `
@@ -2312,14 +2870,31 @@ function renderFreeGallery(){
       }
 
 
-      content.appendChild(name);
-      content.appendChild(label);
-      content.appendChild(button);
+      content.appendChild(
+        name
+      );
 
-      card.appendChild(image);
-      card.appendChild(content);
+      content.appendChild(
+        label
+      );
 
-      freeGallery.appendChild(card);
+      content.appendChild(
+        button
+      );
+
+
+      card.appendChild(
+        image
+      );
+
+      card.appendChild(
+        content
+      );
+
+
+      freeGallery.appendChild(
+        card
+      );
 
     }
   );
@@ -2335,6 +2910,7 @@ function updateScrollUI(){
 
   const current =
     scrollArea.scrollTop;
+
 
   const delta =
     current - lastScrollTop;
@@ -2369,7 +2945,9 @@ function updateScrollUI(){
         "dock-hidden"
       );
 
-    }else if(delta < 0){
+    }else if(
+      delta < 0
+    ){
 
       bottomDock.classList.remove(
         "dock-hidden"
@@ -2391,6 +2969,7 @@ function updateScrollUI(){
 
   lastScrollTop =
     current;
+
 
   scrollTicking =
     false;
@@ -2428,23 +3007,29 @@ function openViewer(index){
   if(!images.length)
     return;
 
+
   currentIndex =
     index;
+
 
   viewer.classList.add(
     "active"
   );
+
 
   viewer.setAttribute(
     "aria-hidden",
     "false"
   );
 
+
   document.body.style.overflow =
     "hidden";
 
+
   document.documentElement.style.overflow =
     "hidden";
+
 
   showImage();
 
@@ -2464,39 +3049,52 @@ function openFreeViewer(
     "active"
   );
 
+
   viewer.setAttribute(
     "aria-hidden",
     "false"
   );
 
+
   document.body.style.overflow =
     "hidden";
 
+
   document.documentElement.style.overflow =
     "hidden";
+
 
   viewerImage.classList.remove(
     "show",
     "dragging"
   );
 
+
   viewerImage.style.transform =
     "";
 
+
   viewerImage.src =
-    RAW + encodePath(file);
+    RAW +
+    encodePath(file);
+
 
   viewerImage.alt =
-    name || "Free Base";
+    name ||
+    "Free Base";
+
 
   counter.textContent =
     "FREE";
 
+
   prevButton.disabled =
     true;
 
+
   nextButton.disabled =
     true;
+
 
   requestAnimationFrame(
     () => {
@@ -2527,21 +3125,26 @@ function closeImageViewer(){
     "active"
   );
 
+
   viewer.setAttribute(
     "aria-hidden",
     "true"
   );
+
 
   viewerImage.classList.remove(
     "show",
     "dragging"
   );
 
+
   viewerImage.style.transform =
     "";
 
+
   document.body.style.overflow =
     "";
+
 
   document.documentElement.style.overflow =
     "";
@@ -2560,26 +3163,36 @@ function showImage(){
     "dragging"
   );
 
+
   viewerImage.style.transform =
     "";
+
 
   const path =
     images[currentIndex];
 
+
   viewerImage.src =
-    RAW + encodePath(path);
+    RAW +
+    encodePath(path);
+
 
   viewerImage.alt =
     `Base nama ${currentIndex + 1}`;
 
+
   counter.textContent =
     `${currentIndex + 1} / ${images.length}`;
+
 
   prevButton.disabled =
     currentIndex === 0;
 
+
   nextButton.disabled =
-    currentIndex === images.length - 1;
+    currentIndex ===
+    images.length - 1;
+
 
   requestAnimationFrame(
     () => {
@@ -2609,6 +3222,7 @@ function previousImage(){
   if(currentIndex <= 0)
     return;
 
+
   currentIndex--;
 
   showImage();
@@ -2623,6 +3237,7 @@ function nextImage(){
     images.length - 1
   )
     return;
+
 
   currentIndex++;
 
@@ -2640,15 +3255,18 @@ closeViewer.addEventListener(
   closeImageViewer
 );
 
+
 prevButton.addEventListener(
   "click",
   previousImage
 );
 
+
 nextButton.addEventListener(
   "click",
   nextImage
 );
+
 
 viewer.addEventListener(
   "click",
@@ -2681,6 +3299,7 @@ document.addEventListener(
     )
       return;
 
+
     if(
       event.key === "Escape"
     ){
@@ -2688,6 +3307,7 @@ document.addEventListener(
       closeImageViewer();
 
     }
+
 
     if(
       event.key === "ArrowLeft" &&
@@ -2697,6 +3317,7 @@ document.addEventListener(
       previousImage();
 
     }
+
 
     if(
       event.key === "ArrowRight" &&
@@ -2722,19 +3343,24 @@ viewerImage.addEventListener(
     if(swipeLocked)
       return;
 
+
     const t =
       event.touches[0];
+
 
     touchStartX =
       touchCurrentX =
       t.clientX;
 
+
     touchStartY =
       touchCurrentY =
       t.clientY;
 
+
     isDraggingImage =
       true;
+
 
     viewerImage.classList.add(
       "dragging"
@@ -2757,17 +3383,24 @@ viewerImage.addEventListener(
     )
       return;
 
+
     const t =
       event.touches[0];
 
+
     const dx =
-      t.clientX - touchStartX;
+      t.clientX -
+      touchStartX;
+
 
     const dy =
-      t.clientY - touchStartY;
+      t.clientY -
+      touchStartY;
+
 
     touchCurrentX =
       t.clientX;
+
 
     touchCurrentY =
       t.clientY;
@@ -2789,6 +3422,7 @@ viewerImage.addEventListener(
     const limit =
       window.innerWidth * .55;
 
+
     const limited =
       Math.max(
         -limit,
@@ -2797,6 +3431,7 @@ viewerImage.addEventListener(
           dx
         )
       );
+
 
     viewerImage.style.transform =
       `translate3d(${limited * .82}px,0,0) scale(1)`;
@@ -2818,14 +3453,20 @@ viewerImage.addEventListener(
     )
       return;
 
+
     const dx =
-      touchCurrentX - touchStartX;
+      touchCurrentX -
+      touchStartX;
+
 
     const dy =
-      touchCurrentY - touchStartY;
+      touchCurrentY -
+      touchStartY;
+
 
     const distance =
       Math.abs(dx);
+
 
     const threshold =
       Math.max(
@@ -2836,8 +3477,10 @@ viewerImage.addEventListener(
         )
       );
 
+
     isDraggingImage =
       false;
+
 
     viewerImage.classList.remove(
       "dragging"
@@ -2846,7 +3489,8 @@ viewerImage.addEventListener(
 
     if(
       distance < threshold ||
-      Math.abs(dy) > Math.abs(dx)
+      Math.abs(dy) >
+        Math.abs(dx)
     ){
 
       viewerImage.style.transform =
@@ -2860,7 +3504,7 @@ viewerImage.addEventListener(
     if(
       dx < 0 &&
       currentIndex <
-      images.length - 1
+        images.length - 1
     ){
 
       swipeToNext();
@@ -2893,9 +3537,11 @@ viewerImage.addEventListener(
     isDraggingImage =
       false;
 
+
     viewerImage.classList.remove(
       "dragging"
     );
+
 
     viewerImage.style.transform =
       "translate3d(0,0,0) scale(1)";
@@ -2916,33 +3562,42 @@ function swipeToNext(){
   if(
     swipeLocked ||
     currentIndex >=
-    images.length - 1
+      images.length - 1
   )
     return;
 
+
   swipeLocked = true;
+
 
   viewerImage.style.transition =
     "transform .18s ease, opacity .18s ease";
 
+
   viewerImage.style.transform =
     "translate3d(-105%,0,0) scale(.98)";
 
+
   viewerImage.style.opacity =
     "0";
+
 
   setTimeout(
     () => {
 
       currentIndex++;
 
+
       viewerImage.style.transition =
         "";
+
 
       viewerImage.style.opacity =
         "";
 
+
       showImage();
+
 
       swipeLocked = false;
 
@@ -2961,29 +3616,38 @@ function swipeToPrevious(){
   )
     return;
 
+
   swipeLocked = true;
+
 
   viewerImage.style.transition =
     "transform .18s ease, opacity .18s ease";
 
+
   viewerImage.style.transform =
     "translate3d(105%,0,0) scale(.98)";
 
+
   viewerImage.style.opacity =
     "0";
+
 
   setTimeout(
     () => {
 
       currentIndex--;
 
+
       viewerImage.style.transition =
         "";
+
 
       viewerImage.style.opacity =
         "";
 
+
       showImage();
+
 
       swipeLocked = false;
 
@@ -3003,17 +3667,21 @@ function openInfoModal(id){
   const modal =
     document.getElementById(id);
 
+
   if(!modal)
     return;
+
 
   modal.classList.add(
     "active"
   );
 
+
   modal.setAttribute(
     "aria-hidden",
     "false"
   );
+
 
   document.body.style.overflow =
     "hidden";
@@ -3026,12 +3694,15 @@ function closeInfoModal(id){
   const modal =
     document.getElementById(id);
 
+
   if(!modal)
     return;
+
 
   modal.classList.remove(
     "active"
   );
+
 
   modal.setAttribute(
     "aria-hidden",
@@ -3116,6 +3787,7 @@ document.addEventListener(
       event.key !== "Escape"
     )
       return;
+
 
     document
       .querySelectorAll(
