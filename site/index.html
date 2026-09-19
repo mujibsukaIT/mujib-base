@@ -66,7 +66,7 @@ body.locked{overflow:hidden}
 .hero{padding:0 0 26px}
 .hero-grid{display:block}
 .hero-copy{
-  position:relative;overflow:hidden;min-height:590px;
+  position:relative;overflow:hidden;min-height:450px;
   padding:42px 22px 34px;border-bottom:1px solid rgba(155,92,255,.14);
   display:flex;flex-direction:column;justify-content:flex-end;
   background:#0c0914;border-radius:0 0 28px 28px;
@@ -309,7 +309,7 @@ section.block{padding:25px 0}
 <section class="block" id="testi">
 <div class="container">
   <div class="section-head"><div><h2>Testimoni</h2><p>Feedback pelanggan.</p></div></div>
-  <div class="empty">⭐ Akan segera hadir<br><small>Testimoni pelanggan akan ditampilkan di sini.</small></div>
+  <div class="empty">Segera hadir</div>
 </div>
 </section>
 
@@ -453,7 +453,8 @@ const drawer=$("#drawer"),back=$("#drawerBackdrop");
 function openDrawer(){drawer.classList.add("open");back.classList.add("open");document.body.classList.add("locked")}
 function closeDrawer(){drawer.classList.remove("open");back.classList.remove("open");document.body.classList.remove("locked")}
 $("#menuBtn").onclick=openDrawer;
-$("#ctaMenu").onclick=openDrawer;
+const ctaMenu=$("#ctaMenu");
+if(ctaMenu) ctaMenu.onclick=openDrawer;
 $("#closeMenu").onclick=closeDrawer;
 back.onclick=(event)=>{
   if(event.target===back) closeDrawer();
