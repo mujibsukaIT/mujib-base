@@ -47,9 +47,9 @@ body.locked{overflow:hidden}
 /* DRAWER */
 .drawer-backdrop{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.68);opacity:0;visibility:hidden;transition:.25s}
 .drawer{
-  position:fixed;z-index:2001;left:0;top:0;bottom:0;width:min(82vw,330px);
-  padding:18px 14px calc(18px + var(--safe));background:rgba(14,11,23,.98);
-  border-right:1px solid rgba(155,92,255,.2);transform:translateX(-105%);transition:transform .3s cubic-bezier(.16,1,.3,1)
+  position:fixed;z-index:2001;right:0;top:0;bottom:0;width:min(82vw,330px);
+  padding:18px 14px calc(18px + var(--safe));background:rgba(10,8,17,.97);
+  border-left:1px solid rgba(155,92,255,.2);transform:translateX(105%);transition:transform .3s cubic-bezier(.16,1,.3,1)
 }
 .drawer.open{transform:translateX(0)}
 .drawer-backdrop.open{opacity:1;visibility:visible}
@@ -213,15 +213,15 @@ section.block{padding:25px 0}
     <button class="close-menu" id="closeMenu">×</button>
   </div>
   <div class="drawer-links">
-    <button data-go="home"><i>🏠</i>Beranda</button>
-    <button data-go="catalog"><i>🏰</i>Katalog Base</button>
-    <button data-go="free"><i>🆓</i>Free Base</button>
-    <button data-go="price"><i>💰</i>Price List</button>
-    <button data-go="how"><i>📖</i>Cara Pesan</button>
-    <button data-go="testi"><i>⭐</i>Testimoni</button>
-    <button data-go="faq"><i>❓</i>FAQ</button>
+    <button data-go="home"><i>⌂</i>Beranda</button>
+    <button data-go="catalog"><i>⌁</i>Katalog Base</button>
+    <button data-go="free"><i>F</i>Free Base</button>
+    <button data-go="price"><i>Rp</i>Price List</button>
+    <button data-go="how"><i>≡</i>Cara Pesan</button>
+    <button data-go="testi"><i>★</i>Testimoni</button>
+    <button data-go="faq"><i>?</i>FAQ</button>
   </div>
-  <a class="drawer-order" href="https://wa.me/6285876832230" target="_blank" rel="noopener">💬 ORDER VIA WHATSAPP</a>
+  <a class="drawer-order" href="https://wa.me/6285876832230" target="_blank" rel="noopener">ORDER VIA WHATSAPP</a>
 </aside>
 
 <main>
@@ -233,15 +233,15 @@ section.block{padding:25px 0}
         <h1>Mujib, <span style="color:#b35cff">S.Coc.</span></h1>
         <p>Custom Base Nama Clash of Clans<br>Base dibuat sesuai nama dan referensi model yang kamu pilih.</p>
         <div class="hero-actions">
-          <button class="btn btn-primary" data-go="catalog">🏰 LIHAT KATALOG</button>
-          <a class="btn btn-ghost" href="https://wa.me/6285876832230" target="_blank" rel="noopener">💬 ORDER SEKARANG</a>
+          <button class="btn btn-primary" data-go="catalog">LIHAT KATALOG</button>
+          <a class="btn btn-ghost" href="https://wa.me/6285876832230" target="_blank" rel="noopener">ORDER SEKARANG</a>
         </div>
       </div>
       <div class="feature-strip">
-        <div class="feature"><i>🛡️</i><b>Aman</b><small>Tanpa login akun</small></div>
-        <div class="feature"><i>⚡</i><b>Proses Cepat</b><small>Sesuai antrean</small></div>
-        <div class="feature"><i>✦</i><b>Desain Custom</b><small>Nama pilihanmu</small></div>
-        <div class="feature"><i>💬</i><b>Layanan</b><small>Via WhatsApp</small></div>
+        <div class="feature"><i>◈</i><b>Aman</b><small>Tanpa login akun</small></div>
+        <div class="feature"><i>↯</i><b>Proses Cepat</b><small>Sesuai antrean</small></div>
+        <div class="feature"><i>◇</i><b>Desain Custom</b><small>Nama pilihanmu</small></div>
+        <div class="feature"><i>○</i><b>Layanan</b><small>Via WhatsApp</small></div>
       </div>
     </div>
   </div>
@@ -256,7 +256,7 @@ section.block{padding:25px 0}
 
 <section class="block" id="catalog">
 <div class="container">
-  <div class="notice"><span class="notice-icon">⚠️</span><div>Jika tombol WhatsApp tidak ter-direct ke aplikasi, buka halaman ini melalui browser HP. Tekan titik tiga di pojok kanan atas, lalu pilih browser, atau chat manual di <b>085876832230</b></div></div>
+  <div class="notice"><span class="notice-icon">!</span><div>Jika tombol WhatsApp tidak ter-direct ke aplikasi, buka halaman ini melalui browser HP. Tekan titik tiga di pojok kanan atas, lalu pilih browser, atau chat manual di <b>085876832230</b></div></div>
   <div class="section-head"><div><h2>Katalog Base Nama</h2><p>Pilih Town Hall untuk melihat contoh.</p></div></div>
   <div class="filters" id="filters">
     <button class="filter active" data-filter="all">SEMUA</button><button class="filter" data-filter="8-10">TH 8–10</button>
@@ -271,7 +271,7 @@ section.block{padding:25px 0}
 <div class="container">
   <div class="promo-inner">
     <div><b>FREE BASE</b><span>Coba beberapa base gratis yang bisa langsung kamu gunakan.</span></div>
-    <button class="btn btn-primary" data-go="free">🎁 LIHAT FREE BASE →</button>
+    <button class="btn btn-primary" data-go="free">LIHAT FREE BASE →</button>
   </div>
 </div>
 </section>
@@ -344,7 +344,7 @@ section.block{padding:25px 0}
   <div class="viewer-top"><button class="viewer-x" id="viewerClose">×</button></div>
   <div class="viewer-img-wrap"><img id="viewerImg" alt="Base"></div>
   <div class="viewer-nav"><button id="prev">‹</button><span id="count">0 / 0</span><button id="next">›</button></div>
-  <div class="viewer-tip">💡 <b>Tips:</b> Tekan dan tahan gambar untuk menyimpan ke galeri.</div>
+  <div class="viewer-tip"><b>Tips:</b> Tekan dan tahan gambar untuk menyimpan ke galeri.</div>
 </div>
 
 <script>
@@ -434,7 +434,7 @@ function renderFree(){
     const c=document.createElement("article");c.className="free-card";
     const im=document.createElement("img");im.src=RAW+enc(b.file);im.alt=b.name;im.loading=i?"lazy":"eager";im.onclick=()=>openFree(b);
     const body=document.createElement("div");body.className="free-body";
-    body.innerHTML=`<b>${b.name}</b><small>FREE BASE</small><a href="${b.link}" target="_blank" rel="noopener">🔗 BUKA FREE BASE</a>`;
+    body.innerHTML=`<b>${b.name}</b><small>FREE BASE</small><a href="${b.link}" target="_blank" rel="noopener">BUKA FREE BASE</a>`;
     c.append(im,body);box.append(c);
   });
 }
