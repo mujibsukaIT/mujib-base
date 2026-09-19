@@ -45,7 +45,7 @@ body.locked{overflow:hidden}
 .desktop-nav button:hover{background:rgba(155,92,255,.1);color:#fff}
 
 /* DRAWER */
-.drawer-backdrop{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.68);opacity:0;visibility:hidden;transition:.25s}
+.drawer-backdrop{position:fixed;inset:0;z-index:1999;cursor:pointer;background:rgba(0,0,0,.68);opacity:0;visibility:hidden;transition:.25s}
 .drawer{
   position:fixed;z-index:2001;right:0;top:0;bottom:0;width:min(82vw,330px);
   padding:18px 14px calc(18px + var(--safe));background:rgba(10,8,17,.97);
@@ -440,19 +440,40 @@ function renderFree(){
 }
 
 /* navigation */
-function go(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"});closeDrawer()}
+function go(id){
+  const target=document.getElementById(id);
+  if(!target)return;
+  closeDrawer();
+  setTimeout(()=>{
+    target.scrollIntoView({behavior:"smooth",block:"start"});
+  },80);
+}
 $$("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
 const drawer=$("#drawer"),back=$("#drawerBackdrop");
 function openDrawer(){drawer.classList.add("open");back.classList.add("open");document.body.classList.add("locked")}
 function closeDrawer(){drawer.classList.remove("open");back.classList.remove("open");document.body.classList.remove("locked")}
-$("#menuBtn").onclick=openDrawer;$("#ctaMenu").onclick=openDrawer;$("#closeMenu").onclick=closeDrawer;back.onclick=closeDrawer;
+$("#menuBtn").onclick=openDrawer;
+$("#ctaMenu").onclick=openDrawer;
+$("#closeMenu").onclick=closeDrawer;
+back.onclick=(event)=>{
+  if(event.target===back) closeDrawer();
+};
 
 /* filters */
 filters.onclick=e=>{const b=e.target.closest(".filter");if(b)applyFilter(b.dataset.filter)}
 loadMore.onclick=()=>render(false);
 
 /* faq */
-$$(".faq-q").forEach(q=>q.onclick=()=>q.parentElement.classList.toggle("open"));
+$$(".faq-q").forEach(q=>{
+  q.setAttribute("aria-expanded","false");
+  q.onclick=()=>{
+    const item=q.parentElement;
+    const open=item.classList.toggle("open");
+    q.setAttribute("aria-expanded",String(open));
+    const mark=q.querySelector("span");
+    if(mark) mark.textContent=open?"−":"＋";
+  };
+});
 
 /* viewer */
 const viewer=$("#viewer"),vimg=$("#viewerImg"),count=$("#count"),prev=$("#prev"),next=$("#next");
