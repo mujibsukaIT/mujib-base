@@ -66,7 +66,7 @@ body.locked{overflow:hidden}
 .hero{padding:0 0 26px}
 .hero-grid{display:block}
 .hero-copy{
-  position:relative;overflow:hidden;min-height:450px;
+  position:relative;overflow:hidden;min-height:440px;
   padding:42px 22px 34px;border-bottom:1px solid rgba(155,92,255,.14);
   display:flex;flex-direction:column;justify-content:flex-end;
   background:#0c0914;border-radius:0 0 28px 28px;
@@ -74,8 +74,8 @@ body.locked{overflow:hidden}
 .hero-copy:before{
   content:"";position:absolute;inset:0;
   background-image:var(--hero-image);
-  background-size:cover;background-position:center;
-  opacity:.5;filter:saturate(1.08);
+  background-size:cover;background-position:center 38%;
+  opacity:.56;filter:saturate(1.08);
 }
 .hero-copy:after{
   content:"";position:absolute;inset:0;
@@ -176,7 +176,7 @@ section.block{padding:25px 0}
 @keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(min-width:720px){
   .container{padding:0 22px}.desktop-nav{display:flex}.menu-btn{display:none}
-  .hero{padding:0 0 35px}.hero-copy{min-height:610px;padding:60px 55px 55px}.hero h1{font-size:58px}.hero p{font-size:15px}.feature-strip{gap:9px}
+  .hero{padding:0 0 35px}.hero-copy{min-height:530px;padding:60px 55px 55px}.hero h1{font-size:58px}.hero p{font-size:15px}.feature-strip{gap:9px}
   .newest-card{flex-basis:31%}
   .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}.free-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
   .info-grid{grid-template-columns:repeat(4,1fr)}
@@ -259,8 +259,7 @@ section.block{padding:25px 0}
   <div class="notice"><span class="notice-icon">!</span><div>Jika tombol WhatsApp tidak ter-direct ke aplikasi, buka halaman ini melalui browser HP. Tekan titik tiga di pojok kanan atas, lalu pilih browser, atau chat manual di <b>085876832230</b></div></div>
   <div class="section-head"><div><h2>Katalog Base Nama</h2><p>Pilih Town Hall untuk melihat contoh.</p></div></div>
   <div class="filters" id="filters">
-    <button class="filter active" data-filter="all">SEMUA</button><button class="filter" data-filter="8-10">TH 8–10</button>
-    <button class="filter" data-filter="11-13">TH 11–13</button><button class="filter" data-filter="14-18">TH 14–18</button>
+    <button class="filter active" data-filter="all">SEMUA</button>
   </div>
   <div class="gallery" id="gallery"><div class="empty">Memuat katalog…</div></div>
   <button class="load-more" id="loadMore" hidden>MUAT BASE BERIKUTNYA</button>
@@ -362,11 +361,25 @@ const gallery=$("#gallery"),loadMore=$("#loadMore"),filters=$("#filters"),heroPr
 let allImages=[],filtered=[],shown=0,current=0,freeMode=false,drag=false,startX=0,moveX=0;
 
 function enc(p){return p.split("/").map(encodeURIComponent).join("/")}
-function group(path){
-  const m=path.match(/TH\s*([0-9]{1,2})/i);
-  const n=m?+m[1]:0;
-  if(n>=8&&n<=10)return"8-10"; if(n>=11&&n<=13)return"11-13"; if(n>=14&&n<=18)return"14-18";
-  return"all";
+function parseMeta(path){
+  const file=path.split("/").pop().replace(/\.[^.]+$/,"");
+  const clean=file.replace(/[._-]+/g," ").replace(/\s+/g," ").trim();
+  const m=clean.match(/^(.*?)\s*TH\s*(8|9|10|11|12|13|14|15|16|17|18)\b/i);
+  if(!m)return{name:"Base Nama",th:null};
+  const name=m[1].trim().replace(/[-_]+$/,"").trim();
+  return{name:name||"Base Nama",th:+m[2]};
+}
+function displayMeta(path){return parseMeta(path)}
+function renderFilters(){
+  const current=$(".filter.active")?.dataset.filter||"all";
+  filters.innerHTML="";
+  const all=document.createElement("button");
+  all.className="filter";all.dataset.filter="all";all.textContent="SEMUA";filters.append(all);
+  for(let n=8;n<=18;n++){
+    const b=document.createElement("button");
+    b.className="filter";b.dataset.filter=String(n);b.textContent=`TH ${n}`;filters.append(b);
+  }
+  $$(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter===current));
 }
 function render(reset=true){
   if(reset){gallery.innerHTML="";shown=0}
@@ -377,8 +390,9 @@ function render(reset=true){
     const img=document.createElement("img");img.src=RAW+enc(path);img.alt="Base nama";img.loading="lazy";img.decoding="async";
     btn.append(img);btn.onclick=()=>openViewer(filtered.indexOf(path));
     const meta=document.createElement("div");meta.className="card-meta";
-    const b=document.createElement("b");b.textContent=path.split("/").pop().replace(/\.[^.]+$/,"");
-    const s=document.createElement("span");s.textContent="Base Nama • Clash of Clans";
+    const info=displayMeta(path);
+    const b=document.createElement("b");b.textContent=info.name;
+    const s=document.createElement("span");s.textContent=info.th?`TH ${info.th} • Clash of Clans`:"Belum dikategorikan";
     meta.append(b,s);card.append(btn,meta);gallery.append(card);
   });
   shown+=next.length;
@@ -386,8 +400,9 @@ function render(reset=true){
   if(!filtered.length)gallery.innerHTML='<div class="empty">Belum ada base untuk kategori ini.</div>';
 }
 function applyFilter(f){
+  renderFilters();
   $$(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter===f));
-  filtered=f==="all"?allImages:[...allImages].filter(group).filter(x=>group(x)===f);
+  filtered=f==="all"?allImages:[...allImages].filter(x=>displayMeta(x).th===Number(f));
   render(true);
 }
 function cacheSave(){try{localStorage.setItem(CACHE_KEY,JSON.stringify({at:Date.now(),items:allImages}))}catch{}}
@@ -423,7 +438,9 @@ function buildHero(){
     allImages.slice(0,6).forEach((p,i)=>{
       const c=document.createElement("article");c.className="newest-card";
       const im=document.createElement("img");im.src=RAW+enc(p);im.loading=i<2?"eager":"lazy";im.alt="Base terbaru";
-      const b=document.createElement("b");b.textContent=p.split("/").pop().replace(/\.[^.]+$/,"");
+      const info=displayMeta(p);
+      const b=document.createElement("b");
+      b.textContent=info.th?`${info.name} • TH ${info.th}`:info.name;
       c.append(im,b);c.onclick=()=>openViewer(i);row.append(c);
     });
   }
@@ -453,8 +470,6 @@ const drawer=$("#drawer"),back=$("#drawerBackdrop");
 function openDrawer(){drawer.classList.add("open");back.classList.add("open");document.body.classList.add("locked")}
 function closeDrawer(){drawer.classList.remove("open");back.classList.remove("open");document.body.classList.remove("locked")}
 $("#menuBtn").onclick=openDrawer;
-const ctaMenu=$("#ctaMenu");
-if(ctaMenu) ctaMenu.onclick=openDrawer;
 $("#closeMenu").onclick=closeDrawer;
 back.onclick=(event)=>{
   if(event.target===back) closeDrawer();
@@ -497,6 +512,7 @@ vimg.addEventListener("touchmove",e=>{if(!drag||freeMode)return;moveX=e.touches[
 vimg.addEventListener("touchend",()=>{if(!drag||freeMode)return;const dx=moveX-startX;drag=false;vimg.classList.remove("drag");if(Math.abs(dx)>70){if(dx<0&&!next.disabled)next.click();else if(dx>0&&!prev.disabled)prev.click();else vimg.style.transform=""}else vimg.style.transform=""},{passive:true});
 
 /* initial */
+renderFilters();
 renderFree();
 const cached=cacheLoad();
 if(cached){allImages=cached;applyFilter("all");buildHero()}
