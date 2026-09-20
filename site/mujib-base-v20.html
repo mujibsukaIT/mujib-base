@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<!-- SOCIAL SHARE PREVIEW -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mujib, S.Coc. — ART BASE">
+<meta property="og:description" content="Custom Base Nama Keren Sesuai Style Yang Dipilih.">
+<meta property="og:url" content="https://mujib-syarif.basenama.workers.dev/">
+<meta property="og:image" content="https://raw.githubusercontent.com/mujibsukaIT/mujib-base/main/site/og-thumbnail.png">
+<meta property="og:image:alt" content="Mujib, S.Coc. — Custom Base Nama Clash of Clans">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1536">
+<meta property="og:image:height" content="1024">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mujib, S.Coc. — ART BASE">
+<meta name="twitter:description" content="Custom Base Nama Keren Sesuai Style Yang Dipilih.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mujibsukaIT/mujib-base/main/site/og-thumbnail.png">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09070f">
+<meta name="description" content="Mujib, S.Coc. — Custom Base Nama Clash of Clans">
+<title>Mujib, S.Coc. — ART BASE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#09070f;--panel:#12101b;--panel2:#171323;--text:#f8f5ff;
+  --muted:#9f98ad;--purple:#9b5cff;--purple2:#c084fc;--green:#25d366;
+  --line:rgba(255,255,255,.09);--safe:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:radial-gradient(circle at 50% -15%,rgba(139,92,246,.28),transparent 36%),var(--bg);color:var(--text);font-family:"Space Grotesk",system-ui,sans-serif}
+button,a{font:inherit;-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+body.locked{overflow:hidden}
+.app{min-height:100dvh}
+.container{width:min(1120px,100%);margin:auto;padding:0 14px}
+
+.btn-order{background:var(--green);border-color:transparent;color:#06140a!important;box-shadow:0 8px 24px rgba(37,211,102,.18)}
+/* TOP BAR */
+.topbar{
+  position:sticky;top:0;z-index:1000;height:64px;
+  background:rgba(9,7,15,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.topbar-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand-mini{display:flex;align-items:center;gap:9px;min-width:0}
+.brand-mini img{width:38px;height:38px;border-radius:11px;object-fit:contain;background:#050509}
+.brand-mini strong{font:800 12px "Orbitron";white-space:nowrap}
+.brand-mini small{display:block;color:var(--muted);font-size:9px;margin-top:2px}
+.menu-btn,.close-menu{
+  width:42px;height:42px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.05);color:#fff;
+  display:grid;place-items:center;font-size:21px
+}
+.desktop-nav{display:none;gap:5px}
+.desktop-nav button{border:0;background:transparent;color:#bdb6c9;padding:9px 10px;border-radius:10px;font-size:11px}
+.desktop-nav button:hover{background:rgba(155,92,255,.1);color:#fff}
+
+/* DRAWER */
+.drawer-backdrop{position:fixed;inset:0;z-index:1999;cursor:pointer;background:rgba(0,0,0,.68);opacity:0;visibility:hidden;transition:.25s}
+.drawer{
+  position:fixed;z-index:2001;right:0;top:0;bottom:0;width:min(82vw,330px);
+  padding:18px 14px calc(18px + var(--safe));background:rgba(10,8,17,.97);
+  border-left:1px solid rgba(155,92,255,.2);transform:translateX(105%);transition:transform .3s cubic-bezier(.16,1,.3,1)
+}
+.drawer.open{transform:translateX(0)}
+.drawer-backdrop.open{opacity:1;visibility:visible}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.drawer-brand{display:flex;gap:10px;align-items:center}.drawer-brand img{width:44px;height:44px;border-radius:12px}
+.drawer-brand b{font:800 13px "Orbitron"}.drawer-brand span{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.drawer-links{display:grid;gap:6px}
+.drawer-links button{display:flex;align-items:center;gap:13px;width:100%;padding:13px 12px;border:0;border-radius:13px;background:transparent;color:#d5cedf;text-align:left;font-size:12px}
+.drawer-links button:hover,.drawer-links button.active{background:rgba(155,92,255,.12);color:#fff}
+.drawer-links i{width:25px;text-align:center;font-style:normal;font-size:17px}
+.drawer-order{margin-top:20px;display:block;padding:13px;border-radius:13px;background:var(--green);color:#06140a;text-align:center;text-decoration:none;font-weight:900;font-size:11px}
+
+/* HERO */
+.hero{padding:0 0 26px}
+.hero-grid{display:block}
+.hero-copy{
+  position:relative;overflow:hidden;min-height:440px;
+  padding:18px 22px 18px;border-bottom:1px solid rgba(155,92,255,.14);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  background:#0c0914;border-radius:0 0 28px 28px;
+}
+.hero-copy:before{
+  content:"";position:absolute;inset:0;
+  background-image:var(--hero-image);
+  background-size:cover;background-position:center 42%;
+  opacity:.56;filter:saturate(1.08);
+}
+.hero-copy:after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(9,7,15,.96) 0%,rgba(9,7,15,.78) 38%,rgba(9,7,15,.22) 72%,rgba(9,7,15,.62) 100%),
+    linear-gradient(to top,rgba(9,7,15,.98) 0%,rgba(9,7,15,.35) 55%,transparent 100%);
+}
+.hero-copy>*{position:relative;z-index:1}
+.hero-logo{display:none}
+.kicker{display:inline-block;width:max-content;padding:6px 11px;border:1px solid rgba(155,92,255,.5);border-radius:999px;background:rgba(12,8,22,.48);color:#d3baff;font:700 9px "Orbitron";letter-spacing:1.2px}
+.hero h1{margin:8px 0 5px;font:800 clamp(25px,7vw,58px)/1 "Orbitron";letter-spacing:-1.5px;text-shadow:0 8px 35px rgba(0,0,0,.5)}
+.hero p{margin:0;color:#c0b8ca;font-size:11px;max-width:520px;line-height:1.4}
+.hero-actions{display:flex;justify-content:flex-start;gap:8px;margin-top:11px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);border-radius:12px;padding:9px 13px;text-decoration:none;font-size:11px;font-weight:800}
+.btn-primary{background:linear-gradient(135deg,#a45cff,#7d38e8);color:#fff;border-color:transparent;box-shadow:0 10px 30px rgba(155,92,255,.2)}
+.btn-ghost{background:rgba(8,7,13,.55);color:#eee8f5;border-color:rgba(255,255,255,.18)}
+.hero-preview{display:none}
+.feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:-1px 0 0;padding:13px 0 4px}
+.feature{padding:10px 6px;text-align:center;border:1px solid rgba(155,92,255,.14);background:rgba(18,16,27,.55);border-radius:13px}
+.feature i{display:block;font-style:normal;font-size:17px;margin-bottom:5px}
+.feature b{display:block;font-size:9px}.feature small{display:block;color:#777080;font-size:8px;margin-top:2px}
+
+
+
+.newest-block{padding-top:6px}
+.newest-row{display:flex;gap:10px;overflow-x:auto;padding:2px 1px 8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.newest-row::-webkit-scrollbar{display:none}
+.newest-card{flex:0 0 72%;scroll-snap-align:start;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#12101b}
+.newest-card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.newest-card b{display:block;padding:8px 9px;font-size:10px}
+.free-promo{padding-top:0}
+.promo-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 16px;border:1px solid rgba(155,92,255,.28);border-radius:18px;background:linear-gradient(110deg,rgba(155,92,255,.12),rgba(18,16,27,.72))}
+.promo-inner b{display:block;color:#c084fc;font:800 14px "Orbitron";letter-spacing:1px}
+.promo-inner span{display:block;color:#aaa2b2;font-size:10px;line-height:1.5;margin-top:4px}
+.promo-inner .btn{white-space:nowrap}
+
+/* SECTIONS */
+section.block{padding:25px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:13px}
+.section-head h2{margin:0;font:800 14px "Orbitron";letter-spacing:1px;text-transform:uppercase}
+.section-head p{margin:4px 0 0;color:var(--muted);font-size:10px}
+.section-link{border:0;background:none;color:#bd8cff;font-size:10px;font-weight:800}
+
+/* NOTICE */
+.notice{display:flex;gap:10px;padding:12px 13px;border:1px solid rgba(245,158,11,.25);border-radius:14px;background:rgba(245,158,11,.055);color:#dcd5e5;font-size:10.5px;line-height:1.55;margin-bottom:16px}
+.notice b{color:#fff}.notice-icon{font-size:19px}
+
+/* FILTER + GALLERY */
+.filters{display:flex;gap:6px;overflow:auto;padding:2px 0 9px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter{white-space:nowrap;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#aaa2b2;border-radius:999px;padding:8px 12px;font-size:10px;font-weight:800}
+.filter.active{background:rgba(155,92,255,.17);border-color:rgba(155,92,255,.4);color:#e7dbff}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+#catalog .gallery{content-visibility:auto}
+.card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#12101b;animation:up .3s ease both}
+.card button{display:block;width:100%;padding:0;border:0;background:none}
+.card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#0e0b15}.card{content-visibility:auto;contain-intrinsic-size:0 220px}
+.card-meta{padding:8px 9px}.card-meta b{font-size:10px}.card-meta span{display:block;color:#81798c;font-size:9px;margin-top:3px}
+.load-more{display:block;margin:14px auto 0;border:1px solid rgba(155,92,255,.3);background:rgba(155,92,255,.09);color:#d8c6ff;border-radius:12px;padding:10px 15px;font-size:10px;font-weight:900}
+.empty{grid-column:1/-1;text-align:center;padding:30px;color:var(--muted);font-size:11px;border:1px dashed var(--line);border-radius:14px}
+
+/* FREE */
+.free-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.free-card{overflow:hidden;border:1px solid rgba(155,92,255,.25);border-radius:15px;background:linear-gradient(145deg,rgba(155,92,255,.08),rgba(18,16,27,.95))}
+.free-card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;cursor:pointer}.free-body{padding:9px}
+.free-body b{font:800 10px "Orbitron"}.free-body small{display:block;color:#64e995;font-size:8px;font-weight:800;margin:5px 0}
+.free-body a{display:block;text-align:center;padding:9px;border-radius:10px;background:rgba(155,92,255,.12);border:1px solid rgba(155,92,255,.3);color:#d9c8ff;text-decoration:none;font-size:9px;font-weight:900}
+
+.testi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.testi-card{overflow:hidden;border:1px solid rgba(155,92,255,.22);border-radius:15px;background:rgba(18,16,27,.7)}.testi-card img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#0e0b15}.testi-grid .empty{min-height:120px;display:grid;place-items:center}
+/* PRICE */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.price{padding:13px 5px;text-align:center;border:1px solid rgba(155,92,255,.25);border-radius:14px;background:rgba(18,16,27,.65);backdrop-filter:blur(8px)}
+.price b{font-size:10px}.price strong{display:block;color:#bd79ff;font:800 13px "Orbitron";margin-top:5px}
+
+/* INFO */
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.info-card{padding:14px 11px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
+.info-card .num{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(155,92,255,.14);color:#d1a8ff;font:800 11px "Orbitron";margin-bottom:8px}
+.info-card h3{margin:0 0 5px;font-size:11px}.info-card p{margin:0;color:#aaa2b2;font-size:10px;line-height:1.5}
+
+/* FAQ */
+.faq{display:grid;gap:7px}.faq-item{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:rgba(255,255,255,.025)}
+.faq-q{width:100%;padding:12px;border:0;background:none;color:#eee8f5;text-align:left;font-size:11px;font-weight:800;display:flex;justify-content:space-between}
+.faq-a{display:none;padding:0 12px 12px;color:#aaa2b2;font-size:10px;line-height:1.55}.faq-item.open .faq-a{display:block}
+
+/* FOOTER / CTA */
+.footer{padding:25px 0 115px;text-align:center;color:#70687c;font-size:10px}.footer a{color:#b98cff;text-decoration:none;font-weight:800}
+.mobile-cta{position:fixed;z-index:900;left:0;right:0;bottom:0;padding:8px 12px calc(8px + var(--safe));background:linear-gradient(to top,rgba(9,7,15,.97),rgba(9,7,15,.72),transparent);backdrop-filter:blur(9px)}
+.cta-inner{width:min(700px,100%);margin:auto;display:grid;grid-template-columns:1fr 1.3fr;gap:7px}.cta{height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;font-size:10px;font-weight:900;border:1px solid var(--line)}.cta-menu{background:rgba(255,255,255,.06);color:#ddd5e8}.cta-wa{background:var(--green);color:#06140a;border-color:transparent}
+
+
+/* BASE DETAIL */
+.detail-modal{position:fixed;inset:0;z-index:3500;display:flex;align-items:center;justify-content:center;padding:14px;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:.2s}
+.detail-modal.open{opacity:1;visibility:visible}
+.detail-panel{width:min(94vw,560px);max-height:92dvh;overflow:auto;border:1px solid rgba(155,92,255,.35);border-radius:22px;background:#100d18;box-shadow:0 20px 70px rgba(0,0,0,.55);transform:translateY(12px) scale(.97);transition:.25s}
+.detail-modal.open .detail-panel{transform:none}
+.detail-image-wrap{position:relative;background:#08070c}
+.detail-image{display:block;width:100%;max-height:54dvh;object-fit:contain;aspect-ratio:16/10}
+.detail-close{position:absolute;right:10px;top:10px;width:38px;height:38px;border:1px solid rgba(255,255,255,.14);border-radius:50%;background:rgba(5,4,8,.72);color:#fff;font-size:23px;z-index:2}
+.detail-body{padding:16px}
+.detail-kicker{display:inline-block;color:#c59aff;font:800 9px "Orbitron";letter-spacing:1px;text-transform:uppercase}
+.detail-title{margin:6px 0 2px;font:800 21px "Orbitron"}
+.detail-sub{color:#aaa2b2;font-size:11px}
+.detail-price{margin-top:12px;color:#c084fc;font:800 16px "Orbitron"}
+.detail-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:14px}
+.detail-actions button,.detail-actions a{min-height:42px;border:1px solid rgba(155,92,255,.3);border-radius:12px;background:rgba(155,92,255,.08);color:#eee8f5;text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}
+.detail-actions .detail-primary{background:linear-gradient(135deg,#a45cff,#7d38e8);border-color:transparent;color:#fff}
+.detail-actions .detail-wa{background:var(--green);border-color:transparent;color:#06140a}
+.card{position:relative}
+.card-fav{position:absolute;right:7px;top:7px;width:30px;height:30px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(5,4,8,.68);color:#fff;font-size:17px;z-index:3}
+.card-fav.active{color:#c084fc}
+.card-detail{display:block;width:calc(100% - 18px);margin:0 9px 9px;padding:8px 10px;border:1px solid rgba(155,92,255,.25);border-radius:10px;background:rgba(155,92,255,.08);color:#d9c8ff;font-size:9px;font-weight:900}
+.share-toast{position:fixed;left:50%;bottom:24px;z-index:5000;transform:translate(-50%,12px);padding:10px 14px;border:1px solid rgba(155,92,255,.3);border-radius:999px;background:#15111f;color:#eee8f5;font-size:10px;font-weight:800;opacity:0;pointer-events:none;transition:.2s}
+.share-toast.show{opacity:1;transform:translate(-50%,0)}
+.fav-empty{grid-column:1/-1}
+
+/* MODAL / VIEWER */
+.modal{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:15px;background:rgba(0,0,0,.76);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:.2s}
+.modal.open{opacity:1;visibility:visible}.panel{width:min(94vw,600px);max-height:82dvh;overflow:auto;border:1px solid rgba(155,92,255,.3);border-radius:20px;background:#100d18;padding:20px;transform:translateY(12px) scale(.97);transition:.25s}.modal.open .panel{transform:none}
+.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}.panel h2{margin:0;font:800 14px "Orbitron";letter-spacing:1px}.x{width:35px;height:35px;border-radius:50%;border:1px solid var(--line);background:#191421;color:#fff;font-size:21px}
+.steps{display:grid;gap:8px}.step{display:flex;gap:10px;padding:11px;border:1px solid rgba(155,92,255,.2);border-radius:13px;background:rgba(155,92,255,.05)}.step-num{flex:0 0 28px;height:28px;display:grid;place-items:center;border-radius:50%;background:rgba(155,92,255,.16);color:#d2aaff;font:800 10px "Orbitron"}.step h3{margin:0 0 4px;font-size:11px}.step p{margin:0;color:#aaa2b2;font-size:10px;line-height:1.5}
+.viewer{position:fixed;inset:0;z-index:4000;background:rgba(0,0,0,.985);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;opacity:0;visibility:hidden;transition:.2s}.viewer.open{opacity:1;visibility:visible}.viewer-top{width:min(100%,1100px);display:flex;justify-content:flex-end;align-items:center;gap:7px}.viewer-x{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:#111;color:#fff;font-size:24px}.viewer-img-wrap{width:min(100%,1050px);display:flex;justify-content:center;overflow:hidden}.viewer img{max-width:96vw;max-height:72vh;object-fit:contain;border-radius:10px;user-select:none;-webkit-user-drag:none;touch-action:none;transform:translate3d(0,0,0);will-change:transform;opacity:0;transition:opacity .18s}.viewer img.show{opacity:1}.viewer img.drag{transition:none}.viewer-nav{display:flex;align-items:center;gap:18px;margin-top:8px}.viewer-nav button{width:42px;height:42px;border-radius:50%;border:1px solid rgba(155,92,255,.3);background:#13101b;color:#fff;font-size:27px}.viewer-nav span{min-width:65px;text-align:center;font:700 10px "Orbitron"}.viewer-tip{margin-top:8px;color:#aaa2b2;font-size:10px;text-align:center}.viewer-tip b{color:#f4c84e}
+
+/* ANIM */
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(min-width:720px){
+  .container{padding:0 22px}.desktop-nav{display:flex}.menu-btn{display:none}
+  .hero{padding:0 0 35px}.hero-copy{min-height:0;height:min(34vw,520px);padding:48px 55px 45px}.hero h1{font-size:58px}.hero p{font-size:15px}.feature-strip{gap:9px}
+  .newest-card{flex-basis:31%}
+  .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}.free-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .info-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:380px){.container{padding:0 10px}.hero-copy{height:56vw;min-height:190px;max-height:215px;padding:15px 18px 15px}.hero h1{font-size:25px}.hero p{font-size:10px}.hero-actions{margin-top:9px}.btn{padding:8px 11px}.gallery,.free-grid{gap:7px}.price strong{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand-mini">
+      <img src="https://raw.githubusercontent.com/mujibsukaIT/mujib-base/main/site/Picsart_26-02-06_20-30-07-527.png" alt="">
+      <div><strong>MUJIB, S.Coc.</strong><small>ART BASE CREATOR</small></div>
+    </div>
+    <nav class="desktop-nav" id="desktopNav">
+      <button data-go="home">Beranda</button><button data-go="catalog">Katalog</button><button data-go="free">Free Base</button>
+      <button data-go="price">Harga</button><button data-go="how">Cara Pesan</button><button data-go="faq">FAQ</button>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-brand">
+      <img src="https://raw.githubusercontent.com/mujibsukaIT/mujib-base/main/site/Picsart_26-02-06_20-30-07-527.png" alt="">
+      <div><b>Mujib, S.Coc.</b><span>Custom Base Nama</span></div>
+    </div>
+    <button class="close-menu" id="closeMenu">×</button>
+  </div>
+  <div class="drawer-links">
+    <button data-go="home"><i>⌂</i>Beranda</button>
+    <button data-go="catalog"><i>⌁</i>Katalog Base</button>
+    <button data-go="free"><i>F</i>Free Base</button>
+    <button data-go="price"><i>Rp</i>Price List</button>
+    <button data-go="how"><i>≡</i>Cara Pesan</button>
+    <button data-go="testi"><i>★</i>Testimoni</button>
+    <button data-go="faq"><i>?</i>FAQ</button>
+  </div>
+  <a class="drawer-order" href="https://wa.me/6285876832230" target="_blank" rel="noopener">ORDER VIA WHATSAPP</a>
+</aside>
+
+<main>
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy" id="heroCopy">
+        <div class="kicker">CUSTOM BASE NAMA</div>
+        <h1>Mujib, <span style="color:#b35cff">S.Coc.</span></h1>
+        <p>Custom Base Nama Clash of Clans<br>Dibuat sesuai nama dan referensi model yang Anda pilih.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-go="catalog">LIHAT KATALOG</button>
+          <a class="btn btn-order" href="https://wa.me/6285876832230" target="_blank" rel="noopener">ORDER SEKARANG</a>
+        </div>
+      </div>
+      <div class="feature-strip">
+        <div class="feature"><i>◈</i><b>Aman</b><small>Tanpa login akun</small></div>
+        <div class="feature"><i>↯</i><b>Proses Cepat</b><small>Sesuai antrean</small></div>
+        <div class="feature"><i>◇</i><b>Desain Custom</b><small>Nama pilihanmu</small></div>
+        <div class="feature"><i>○</i><b>Layanan</b><small>Via WhatsApp</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block newest-block">
+<div class="container">
+  <div class="section-head"><div><h2>Base Terbaru</h2><p>Beberapa hasil base nama terbaru.</p></div><button class="section-link" data-go="catalog">Lihat Semua →</button></div>
+  <div class="newest-row" id="newestRow"></div>
+</div>
+</section>
+
+<section class="block" id="catalog">
+<div class="container">
+  <div class="notice"><span class="notice-icon">!</span><div>Jika tombol WhatsApp tidak ter-direct ke aplikasi, buka halaman ini melalui browser HP. Tekan titik tiga di pojok kanan atas, lalu pilih browser, atau chat manual di <b>085876832230</b></div></div>
+  <div class="section-head"><div><h2>Katalog Base Nama</h2><p>Pilih Town Hall untuk melihat contoh.</p></div></div>
+  <div class="filters" id="filters">
+    <button class="filter active" data-filter="all">SEMUA</button>
+  </div>
+  <div class="gallery" id="gallery"><div class="empty">Memuat katalog…</div></div>
+  <button class="load-more" id="loadMore" hidden>MUAT BASE BERIKUTNYA</button>
+</div>
+</section>
+
+
+
+
+<section class="block" id="free">
+<div class="container">
+  <div class="section-head"><div><h2>Free Base</h2><p>Coba desain yang tersedia secara gratis.</p></div></div>
+  <div class="free-grid" id="freeGallery"></div>
+</div>
+</section>
+
+<section class="block" id="price">
+<div class="container">
+  <div class="section-head"><div><h2>Price List</h2><p>Harga berdasarkan Town Hall.</p></div></div>
+  <div class="price-grid">
+    <div class="price"><b>TH 8 – 10</b><strong>Rp. 15.000</strong></div>
+    <div class="price"><b>TH 11 – 13</b><strong>Rp. 20.000</strong></div>
+    <div class="price"><b>TH 14 – 18</b><strong>Rp. 25.000</strong></div>
+  </div>
+</div>
+</section>
+
+<section class="block" id="how">
+<div class="container">
+  <div class="section-head"><div><h2>Cara Pesan</h2><p>Empat langkah simpel.</p></div></div>
+  <div class="info-grid">
+    <article class="info-card"><div class="num">1</div><h3>Chat WhatsApp</h3><p>Hubungi WhatsApp untuk menanyakan jadwal pembuatan dan slot yang tersedia.</p></article>
+    <article class="info-card"><div class="num">2</div><h3>Order & Pembayaran</h3><p>Tentukan pesanan. Pembayaran menggunakan QRIS yang diberikan sebelum proses pembuatan dimulai.</p></article>
+    <article class="info-card"><div class="num">3</div><h3>Kirim Nama & Referensi</h3><p>Kirim nama yang ingin dibuat dan pilih referensi model base.</p></article>
+    <article class="info-card"><div class="num">4</div><h3>Base Jadi</h3><p>Hasil dikirim melalui WhatsApp dalam bentuk link base CoC.</p></article>
+  </div>
+</div>
+</section>
+
+<section class="block" id="testi">
+<div class="container">
+  <div class="section-head"><div><h2>Testimoni</h2><p>Screenshot pengalaman pelanggan.</p></div></div>
+  <div class="testi-grid" id="testiGallery"><div class="empty">Segera hadir</div></div>
+</div>
+</section>
+
+<section class="block" id="faq">
+<div class="container">
+  <div class="section-head"><div><h2>FAQ</h2><p>Pertanyaan yang sering ditanyakan.</p></div></div>
+  <div class="faq">
+    <div class="faq-item"><button class="faq-q">Apakah perlu login akun CoC? <span>＋</span></button><div class="faq-a">Tidak. Pembuatan base tidak membutuhkan login akun. Hasil dikirim sebagai link base CoC.</div></div>
+    <div class="faq-item"><button class="faq-q">Pembayarannya bagaimana? <span>＋</span></button><div class="faq-a">Pembayaran menggunakan QRIS yang diberikan sebelum proses pembuatan dimulai.</div></div>
+    <div class="faq-item"><button class="faq-q">Bisa pilih model base? <span>＋</span></button><div class="faq-a">Bisa. Kirim nama yang ingin dibuat dan pilih referensi model base yang tersedia.</div></div>
+    <div class="faq-item"><button class="faq-q">Hasil dikirim lewat apa? <span>＋</span></button><div class="faq-a">Hasil dikirim melalui WhatsApp dalam bentuk link base Clash of Clans.</div></div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer class="footer">© <a href="https://www.tiktok.com/@mujib_syarif" target="_blank" rel="noopener">mujib_syarif</a></footer>
+
+<div class="modal" id="orderModal">
+  <div class="panel">
+    <div class="panel-head"><h2>CARA PEMESANAN</h2><button class="x" data-close>×</button></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div><h3>Chat WhatsApp</h3><p>Hubungi WhatsApp untuk menanyakan jadwal pembuatan dan slot yang tersedia.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div><h3>Order & Pembayaran</h3><p>Tentukan pesanan. Metode pembayaran menggunakan <b>QRIS</b> yang akan diberikan <b>sebelum</b> proses pembuatan dimulai.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div><h3>Kirim Nama & Referensi model base</h3><p>Kirim nama yang ingin dibuat dan pilih referensi model base yang tersedia.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div><h3>Base Jadi</h3><p>Hasil dikirim melalui WhatsApp dalam bentuk link base CoC yang bisa langsung dibuka di game.</p></div></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="detail-modal" id="detailModal">
+  <div class="detail-panel">
+    <div class="detail-image-wrap">
+      <button class="detail-close" id="detailClose" aria-label="Tutup">×</button>
+      
+      <img class="detail-image" id="detailImage" alt="Base">
+    </div>
+    <div class="detail-body">
+      <span class="detail-kicker">CUSTOM BASE NAMA</span>
+      <h2 class="detail-title" id="detailTitle">Base Nama</h2>
+      <div class="detail-sub" id="detailSub">Clash of Clans</div>
+      <div class="detail-price" id="detailPrice"></div>
+      <div class="detail-actions">
+        <button id="detailFullscreen">LIHAT FULLSCREEN</button>
+        <button id="detailShare">BAGIKAN</button>
+        <button id="detailCopy">SALIN LINK</button>
+        <a class="detail-wa" id="detailOrder" target="_blank" rel="noopener">PESAN BASE INI</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="share-toast" id="shareToast">Link base disalin.</div>
+
+<div class="viewer" id="viewer">
+  <div class="viewer-top"><button class="viewer-x" id="viewerClose">×</button></div>
+  <div class="viewer-img-wrap"><img id="viewerImg" alt="Base"></div>
+  <div class="viewer-nav"><button id="prev">‹</button><span id="count">0 / 0</span><button id="next">›</button></div>
+  <div class="viewer-tip"><b>Tips:</b> Tekan dan tahan gambar untuk menyimpan ke galeri.</div>
+</div>
+
+<script>
+const OWNER="mujibsukaIT",REPO="mujib-base",BRANCH="main";
+const API=`https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`;
+const RAW=`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/`;
+const CACHE_KEY="mujib-base-gallery-v4";
+const FREE_BASES=[
+ {file:"site/John Cena (TH 13).jpg",name:"John Cena — TH 13",link:"https://link.clashofclans.com/en?action=OpenLayout&id=TH13%3AHV%3AAAAAXAAAAAHgDBRZjV-taqygtyJvksiK"},
+ {file:"site/John Cena (TH 14).jpg",name:"John Cena — TH 14",link:"https://link.clashofclans.com/en?action=OpenLayout&id=TH14%3AHV%3AAAAAKgAAAAKg-3NiX9FBrECvkHNUh3KN"}
+];
+
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const gallery=$("#gallery"),loadMore=$("#loadMore"),filters=$("#filters"),heroPreview=$("#heroPreview");
+let allImages=[],filtered=[],shown=0,current=0,freeMode=false,drag=false,startX=0,moveX=0,detailPath=null;
+
+function enc(p){return p.split("/").map(encodeURIComponent).join("/")}
+function slugPath(path){
+  return encodeURIComponent(path);
+}
+function baseFromHash(){
+  const m=location.hash.match(/^#base=(.+)$/);
+  if(!m)return null;
+  try{return decodeURIComponent(m[1])}catch{return null}
+}
+function priceForTH(th){
+  if(!th)return "";
+  if(th>=8&&th<=10)return "Rp. 15.000";
+  if(th>=11&&th<=13)return "Rp. 20.000";
+  if(th>=14&&th<=18)return "Rp. 25.000";
+  return "";
+}
+function showToast(text="Link base disalin."){
+  const t=$("#shareToast");if(!t)return;
+  t.textContent=text;t.classList.add("show");
+  clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.remove("show"),1800);
+}
+function baseUrl(path){
+  return `${location.origin}${location.pathname}#base=${slugPath(path)}`;
+}
+async function shareBase(path){
+  const info=displayMeta(path),url=baseUrl(path);
+  const text=`${info.name}${info.th?` — TH ${info.th}`:""} | Mujib, S.Coc.`;
+  try{
+    if(navigator.share){
+      await navigator.share({title:text,text:`Lihat base ${text}`,url});
+      return;
+    }
+  }catch(e){
+    if(e?.name==="AbortError")return;
+  }
+  try{await navigator.clipboard.writeText(url);showToast("Link base disalin.")}catch{showToast("Salin link: "+url)}
+}
+function openDetail(path,push=true){
+  if(!path)return;
+  detailPath=path;
+  const info=displayMeta(path);
+  $("#detailImage").src=RAW+enc(path);
+  $("#detailImage").alt=info.name;
+  $("#detailTitle").textContent=info.name;
+  $("#detailSub").textContent=info.th?`TH ${info.th} • Base Nama Clash of Clans`:"Base Nama • Belum dikategorikan";
+  $("#detailPrice").textContent=priceForTH(info.th);
+  $("#detailOrder").href=`https://wa.me/6285876832230?text=${encodeURIComponent(`Halo Mujib, saya mau pesan base ${info.name}${info.th?` TH ${info.th}`:""}.` )}`;
+  $("#detailModal").classList.add("open");
+  document.body.classList.add("locked");
+  if(push)history.pushState({base:path},"",`#base=${slugPath(path)}`);
+}
+function closeDetail(clearHash=true){
+  $("#detailModal").classList.remove("open");
+  if(!$("#viewer").classList.contains("open"))document.body.classList.remove("locked");
+  detailPath=null;
+  if(clearHash&&location.hash)history.pushState({}, "", location.pathname+location.search);
+}
+function openHashBase(){
+  const path=baseFromHash();
+  if(path&&allImages.includes(path))openDetail(path,false);
+}
+function appendCard(box,path){
+  const info=displayMeta(path);
+  const card=document.createElement("article");card.className="card";
+  const btn=document.createElement("button");
+  const img=document.createElement("img");img.src=RAW+enc(path);img.alt=info.name;img.loading="lazy";img.decoding="async";
+  btn.append(img);btn.onclick=()=>openDetail(path);
+  const meta=document.createElement("div");meta.className="card-meta";
+  const b=document.createElement("b");b.textContent=info.name;
+  const s=document.createElement("span");s.textContent=info.th?`TH ${info.th} • Clash of Clans`:"Belum dikategorikan";
+  meta.append(b,s);
+  const detail=document.createElement("button");detail.className="card-detail";detail.type="button";detail.textContent="LIHAT DETAIL";
+  detail.onclick=()=>openDetail(path);
+  card.append(btn,meta,detail);box.append(card);
+}
+
+function parseMeta(path){
+  const file=path.split("/").pop().replace(/\.[^.]+$/,"");
+  const clean=file.replace(/[._-]+/g," ").replace(/\s+/g," ").trim();
+  const m=clean.match(/^(.*?)\s*TH\s*(4|5|6|7|8|9|10|11|12|13|14|15|16|17|18)\b/i);
+  if(!m)return{name:"Base Nama",th:null};
+  const name=m[1].trim().replace(/[-_]+$/,"").trim();
+  return{name:name||"Base Nama",th:+m[2]};
+}
+function displayMeta(path){return parseMeta(path)}
+function renderFilters(){
+  const current=$(".filter.active")?.dataset.filter||"all";
+  filters.innerHTML="";
+  const all=document.createElement("button");
+  all.className="filter";all.dataset.filter="all";all.textContent="SEMUA";filters.append(all);
+  for(let n=18;n>=4;n--){
+    const b=document.createElement("button");
+    b.className="filter";b.dataset.filter=String(n);b.textContent=`TH ${n}`;filters.append(b);
+  }
+  $$(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter===current));
+}
+function render(reset=true){
+  if(reset){gallery.innerHTML="";shown=0}
+  const next=filtered.slice(shown,shown+8);
+  next.forEach((path,i)=>{
+    appendCard(gallery,path);
+  });
+  shown+=next.length;
+  loadMore.hidden=shown>=filtered.length;
+  if(!filtered.length)gallery.innerHTML='<div class="empty">Belum ada base untuk kategori ini.</div>';
+}
+function applyFilter(f){
+  renderFilters();
+  $$(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter===f));
+  filtered=f==="all"?allImages:[...allImages].filter(x=>displayMeta(x).th===Number(f));
+  render(true);
+}
+function cacheSave(){try{localStorage.setItem(CACHE_KEY,JSON.stringify({at:Date.now(),items:allImages}))}catch{}}
+function cacheLoad(){
+  try{const x=JSON.parse(localStorage.getItem(CACHE_KEY));if(x?.items?.length)return x.items}catch{}
+  return null;
+}
+async function fetchGallery(){
+  const cached=cacheLoad();
+  if(cached){allImages=cached;applyFilter("all");buildHero();fetchFresh()}
+  else{gallery.innerHTML='<div class="empty">Memuat katalog…</div>';await fetchFresh()}
+}
+function renderTestimonials(tree){
+  const box=$("#testiGallery");if(!box)return;
+  const files=(tree||[]).filter(x=>x.type==="blob"&&/^site\/testimoni\//i.test(x.path)&&/\.(webp|jpg|jpeg|png)$/i.test(x.path)).map(x=>x.path);
+  box.innerHTML="";if(!files.length){box.innerHTML='<div class="empty">Segera hadir</div>';return;}
+  files.forEach((path,i)=>{const c=document.createElement("article");c.className="testi-card";const im=document.createElement("img");im.src=RAW+enc(path);im.alt="Testimoni";im.loading=i<2?"eager":"lazy";im.decoding="async";c.append(im);box.append(c);});
+}
+async function fetchFresh(){
+  try{
+    const r=await fetch(API,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});
+    if(!r.ok)throw Error(r.status);
+    const t=await r.json();
+    renderTestimonials(t.tree);
+    const fresh=(t.tree||[]).filter(x=>x.type==="blob"&&/^site\/gallery\//i.test(x.path)&&/\.(webp|jpg|jpeg|png)$/i.test(x.path)).map(x=>x.path).sort((a,b)=>b.localeCompare(a,undefined,{numeric:true,sensitivity:"base"}));
+    if(JSON.stringify(fresh)!==JSON.stringify(allImages)){allImages=fresh;cacheSave();applyFilter($(".filter.active")?.dataset.filter||"all");buildHero();openHashBase()}
+    else if(!allImages.length){allImages=fresh;cacheSave();applyFilter("all");openHashBase()}
+  }catch(e){
+    console.warn("Gallery:",e);
+    if(!allImages.length)gallery.innerHTML='<div class="empty">Gagal memuat katalog. Coba refresh halaman.</div>';
+  }
+}
+async function getNewestGallery(){
+  try{
+    const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/commits?path=site/gallery&per_page=1`,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});
+    if(!r.ok)throw Error(r.status);
+    const commits=await r.json();const sha=commits?.[0]?.sha;if(!sha)return [];
+    const cr=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/commits/${sha}`,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});
+    if(!cr.ok)throw Error(cr.status);const c=await cr.json();
+    return (c.files||[]).filter(f=>/^(added|modified|renamed)$/i.test(f.status)&&/^site\/gallery\//i.test(f.filename)&&/\.(webp|jpg|jpeg|png)$/i.test(f.filename)).map(f=>f.filename);
+  }catch(e){return []}
+}
+async function buildHero(){
+  let newest=await getNewestGallery();if(!newest.length)newest=allImages.slice(0,6);
+  const first=newest[0]||allImages[0],hero=document.getElementById("heroCopy");
+  if(first)hero.style.setProperty("--hero-image",`url("${RAW+enc(first)}")`);
+  const row=document.getElementById("newestRow");if(!row)return;row.innerHTML="";
+  newest.slice(0,6).forEach((p,i)=>{const c=document.createElement("article");c.className="newest-card";const im=document.createElement("img");im.src=RAW+enc(p);im.loading=i<2?"eager":"lazy";im.decoding="async";im.alt="Base terbaru";const info=displayMeta(p);const b=document.createElement("b");b.textContent=info.th?`${info.name} • TH ${info.th}`:info.name;c.append(im,b);c.onclick=()=>openDetail(p);row.append(c);});
+}
+function renderFree(){
+  const box=$("#freeGallery");box.innerHTML="";
+  FREE_BASES.forEach((b,i)=>{
+    const c=document.createElement("article");c.className="free-card";
+    const im=document.createElement("img");im.src=RAW+enc(b.file);im.alt=b.name;im.loading=i?"lazy":"eager";im.onclick=()=>openFree(b);
+    const body=document.createElement("div");body.className="free-body";
+    body.innerHTML=`<b>${b.name}</b><small>FREE BASE</small><a href="${b.link}" target="_blank" rel="noopener">BUKA BASE</a>`;
+    c.append(im,body);box.append(c);
+  });
+}
+
+/* navigation */
+function go(id){
+  const target=document.getElementById(id);
+  if(!target)return;
+  closeDrawer();
+  setTimeout(()=>{
+    target.scrollIntoView({behavior:"smooth",block:"start"});
+  },80);
+}
+$$("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+const drawer=$("#drawer"),back=$("#drawerBackdrop");
+function openDrawer(){drawer.classList.add("open");back.classList.add("open");document.body.classList.add("locked")}
+function closeDrawer(){drawer.classList.remove("open");back.classList.remove("open");document.body.classList.remove("locked")}
+$("#menuBtn").onclick=openDrawer;
+$("#closeMenu").onclick=closeDrawer;
+back.onclick=(event)=>{
+  if(event.target===back) closeDrawer();
+};
+
+/* filters */
+filters.onclick=e=>{const b=e.target.closest(".filter");if(b)applyFilter(b.dataset.filter)}
+loadMore.onclick=()=>render(false);
+
+/* faq */
+$$(".faq-q").forEach(q=>{
+  q.setAttribute("aria-expanded","false");
+  q.onclick=()=>{
+    const item=q.parentElement;
+    const open=item.classList.toggle("open");
+    q.setAttribute("aria-expanded",String(open));
+    const mark=q.querySelector("span");
+    if(mark) mark.textContent=open?"−":"＋";
+  };
+});
+
+
+/* detail / share */
+$("#detailClose").onclick=()=>closeDetail();
+$("#detailModal").onclick=e=>{if(e.target===$("#detailModal"))closeDetail()};
+$("#detailShare").onclick=()=>{if(detailPath)shareBase(detailPath)};
+$("#detailCopy").onclick=async()=>{
+  if(!detailPath)return;
+  const url=baseUrl(detailPath);
+  try{await navigator.clipboard.writeText(url);showToast("Link base disalin.")}catch{showToast("Link: "+url)}
+};
+$("#detailFullscreen").onclick=()=>{
+  if(!detailPath)return;
+  const path=detailPath;
+  closeDetail(false);
+  const idx=filtered.indexOf(path);
+  if(idx>=0){openViewer(idx)}else{filtered=[...allImages];current=allImages.indexOf(path);viewer.classList.add("open");document.body.classList.add("locked");show()}
+};
+window.addEventListener("popstate",()=>{
+  if(detailPath)closeDetail(false);
+  const path=baseFromHash();
+  if(path&&allImages.includes(path))openDetail(path,false);
+});
+
+/* viewer */
+const viewer=$("#viewer"),vimg=$("#viewerImg"),count=$("#count"),prev=$("#prev"),next=$("#next");
+function openViewer(i){freeMode=false;current=i;viewer.classList.add("open");document.body.classList.add("locked");show()}
+function openFree(b){freeMode=true;viewer.classList.add("open");document.body.classList.add("locked");vimg.src=RAW+enc(b.file);vimg.alt=b.name;count.textContent="FREE";prev.disabled=next.disabled=true;requestAnimationFrame(()=>vimg.classList.add("show"))}
+function show(){
+  vimg.classList.remove("show");vimg.style.transform="";
+  vimg.src=RAW+enc(filtered[current]);count.textContent=`${current+1} / ${filtered.length}`;
+  prev.disabled=current<=0;next.disabled=current>=filtered.length-1;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>vimg.classList.add("show")));
+}
+function closeViewer(){viewer.classList.remove("open");document.body.classList.remove("locked");vimg.classList.remove("show");vimg.style.transform=""}
+$("#viewerClose").onclick=closeViewer;viewer.onclick=e=>{if(e.target===viewer)closeViewer()};
+prev.onclick=()=>{if(current>0){current--;show()}};next.onclick=()=>{if(current<filtered.length-1){current++;show()}};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeViewer();closeDrawer()}if(viewer.classList.contains("open")){if(e.key==="ArrowLeft"&&!prev.disabled)prev.click();if(e.key==="ArrowRight"&&!next.disabled)next.click()}});
+
+/* smooth touch viewer */
+vimg.addEventListener("touchstart",e=>{if(freeMode)return;drag=true;startX=moveX=e.touches[0].clientX;vimg.classList.add("drag")},{passive:true});
+vimg.addEventListener("touchmove",e=>{if(!drag||freeMode)return;moveX=e.touches[0].clientX;const dx=moveX-startX;vimg.style.transform=`translate3d(${Math.max(-180,Math.min(180,dx*.82))}px,0,0)`},{passive:true});
+vimg.addEventListener("touchend",()=>{if(!drag||freeMode)return;const dx=moveX-startX;drag=false;vimg.classList.remove("drag");if(Math.abs(dx)>70){if(dx<0&&!next.disabled)next.click();else if(dx>0&&!prev.disabled)prev.click();else vimg.style.transform=""}else vimg.style.transform=""},{passive:true});
+
+/* initial */
+renderFilters();
+renderFree();
+
+const cached=cacheLoad();
+if(cached){allImages=cached;applyFilter("all");buildHero();openHashBase()}
+fetchGallery();
+</script>
+</div>
+</body>
+</html>
